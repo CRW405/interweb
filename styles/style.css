@@ -8,6 +8,8 @@ div,
 footer {
     background-color: white;
     border: 5px solid lightblue;
-    padding: 10px;
-    margin: 50px;
+    padding: 2%;
+    margin: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
 }
