@@ -19,7 +19,7 @@ elements.forEach(element => {
             case "X":
                 button.addEventListener("click", (event) => {
                     let button = event.currentTarget
-                    button.parentElement.parentElement.remove()
+                    button.parentElement.parentElement.style.display = "none"
                     // this.parentElement.parentElement.remove()
                 })
                 break
