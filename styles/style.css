@@ -1,15 +1,49 @@
 body {
-    background-image: url(../medias/bg/animgridbg.gif);
-    /* background-size: 10%; */
+    background-image: url(../medias/bg/animgridbg50.gif);
+    background-size: 10%;
 }
 
-header,
-div,
-footer {
+/* Windows */
+
+.window{
     background-color: white;
     border: 5px solid lightblue;
+    border-top: 25px solid lightblue;
     padding: 2%;
     margin: 5%;
     margin-left: 10%;
     margin-right: 10%;
+    opacity: 85%;
+    position: relative;
+}
+
+.window:hover {
+    opacity: 95%;
+}
+
+/* Window Controls */
+
+.control-container {
+    background: none;
+    border: none;
+    position: absolute;
+    top: -21px;
+    right: 0px;
+    display: flex;
+    gap: 10px;
+}
+
+.control-container button {
+    border: none;
+    background: none;
+}
+
+.control-container button:hover {
+    background-color: rgb(230, 238, 245);
+}
+
+/* Status */
+
+#status.warning {
+    border-color: orange;
 }
