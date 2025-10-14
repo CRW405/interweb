@@ -13,17 +13,21 @@ elements.forEach(element => {
 
         switch (decoration) {
             case "◻":
+                // TODO: make this do something
                 break
             case "_":
+                button.addEventListener("click", (event) => {
+                    let button = event.currentTarget
+                    button.parentElement.parentElement.style.display = "none"
+                })
                 break
             case "X":
                 button.addEventListener("click", (event) => {
                     let button = event.currentTarget
                     button.parentElement.parentElement.style.display = "none"
-                    // this.parentElement.parentElement.remove()
                 })
                 break
-                default:
+            default:
         }
 
         container.appendChild(button)

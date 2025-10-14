@@ -5,14 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/style.css">
-    <!-- <link rel="stylesheet" href="https://unpkg.com/98.css"> -->
     <title>Index</title>
 </head>
 
-<!-- Styling very placeholder -->
 
 <body>
-
+    
+    <div id="window-list" class="window-no-controls">
+        <ul>
+            <!-- windows go here from js -->
+        </ul>
+    </div>
+    
     <header class="window">
         <h1>Welcome.</h1>
         <p>Welcome to my website. Enjoy your stay.</p>
@@ -21,6 +25,7 @@
             <p>This is far from the final or first product</p>
         </div>
     </header>
+
 
     <main>
         <div id="about" class="window">
@@ -98,7 +103,9 @@
         //
     </footer>
 
-    <script src="./scripts/addWindowButtons.js"></script>
+    <script src="./scripts/addWindowControls.js"></script>
+    <script src="./scripts/addWindowTitles.js"></script>
+    <script src="./scripts/populateWindowList.js"></script>
 
 </body>
 

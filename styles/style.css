@@ -5,7 +5,7 @@ body {
 
 /* Windows */
 
-.window{
+.window, .window-no-controls{
     background-color: white;
     border: 5px solid lightblue;
     border-top: 25px solid lightblue;
@@ -17,7 +17,7 @@ body {
     position: relative;
 }
 
-.window:hover {
+.window:hover, .window-no-controls {
     opacity: 95%;
 }
 
@@ -46,4 +46,10 @@ body {
 
 #status.warning {
     border-color: orange;
+}
+
+/* Window List */
+
+#window-list {
+
 }
