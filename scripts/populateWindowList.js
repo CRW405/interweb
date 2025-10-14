@@ -1,7 +1,7 @@
 const windowList = document.getElementById("window-list")
 const ul = windowList.firstElementChild
 
-const windows = document.querySelectorAll(".window")
+let windows = document.querySelectorAll(".window")
 
 for (const window of windows) {
     let li = document.createElement("li")
