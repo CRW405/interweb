@@ -21,7 +21,7 @@ body {
     opacity: 95%;
 }
 
-/* Window Controls */
+/* Window Controls and Decorations */
 
 .control-container {
     background: none;
@@ -42,6 +42,12 @@ body {
     background-color: rgb(230, 238, 245);
 }
 
+.window-title {
+    position: absolute;
+    top: -21px;
+    left: 0px;
+}
+
 /* Status */
 
 #status.warning {
@@ -50,6 +56,15 @@ body {
 
 /* Window List */
 
-#window-list {
+#window-list ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
 
+#window-list button {
+    width: 100px;
 }
