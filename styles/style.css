@@ -1,6 +1,10 @@
 body {
     background-image: url(../medias/bg/animgridbg50.gif);
     background-size: 10%;
+    display: block;
+    min-width: 750px;
+    max-width: 1500px;
+    margin: auto;
 }
 
 /* Windows */
@@ -37,8 +41,8 @@ body {
 #profile {
     width: 150px;
     position: absolute;
-    bottom: calc(100% - 250px);
-    left: calc(100% - 200px);
+    bottom: calc(100% - 275px);
+    left: calc(100% - 175px);
     /* top: 0px; */
     /* right: -150px; */
 }
