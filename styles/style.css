@@ -67,4 +67,12 @@ body {
 
 #window-list button {
     width: 100px;
+    border: 2px solid lightblue;
+    border-top: 10px solid lightblue;
+    background-color: white;
+    opacity: 70%;
+}
+
+#window-list button:hover {
+    opacity: 95%;
 }
