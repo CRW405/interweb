@@ -21,6 +21,28 @@ body {
     opacity: 95%;
 }
 
+/* Image Windows */
+
+.image-window {
+    min-width: 150px;
+    width: fit-content;
+    padding: 0px;
+    z-index: 100;
+}
+
+.image-window img {
+    width: 100%;
+}
+
+#profile {
+    width: 150px;
+    position: absolute;
+    bottom: calc(100% - 250px);
+    left: calc(100% - 200px);
+    /* top: 0px; */
+    /* right: -150px; */
+}
+
 /* Window Controls and Decorations */
 
 .control-container {
@@ -71,6 +93,7 @@ body {
     border-top: 10px solid lightblue;
     background-color: white;
     opacity: 70%;
+    margin: 5px;
 }
 
 #window-list button:hover {
