@@ -14,7 +14,11 @@ for (const window of windows) {
     button.textContent = title;
 
     button.addEventListener("click", () => {
-        window.style.display = "block"
+        if (window.style.display === "block") {
+            window.style.display = "none";
+        } else {
+            window.style.display = "block";
+        }
     })
 
     li.appendChild(button)
