@@ -43,8 +43,6 @@ body {
     position: absolute;
     bottom: calc(100% - 275px);
     left: calc(100% - 175px);
-    /* top: 0px; */
-    /* right: -150px; */
 }
 
 #hi {
@@ -114,6 +112,25 @@ body {
 
 #window-list button:hover {
     opacity: 95%;
+}
+
+/* Blink List */
+
+#blinks {
+    padding: 0;
+}
+
+#blinks ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#blinks img {
+    width: 100px;
 }
 
 /* Unique Window Styling */
