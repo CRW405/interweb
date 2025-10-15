@@ -1,5 +1,5 @@
 let blinkList = document.getElementById("blink-list")
-let path = "../medias/blinks/"
+let path = new URL("/medias/blinks/", document.baseURI)
 let blinks = [
     "aimlink.gif",
     "bestused.png",
@@ -16,10 +16,11 @@ let blinks = [
 ]
 
 for (const blink of blinks) {
-    let file = path + blink
+    let file = new URL(blink, path).href
     let li = document.createElement("li")
     let img = document.createElement("img")
     img.src = file
+    img.alt = blink
     li.appendChild(img)
     blinkList.appendChild(li)
 }
