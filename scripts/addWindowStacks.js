@@ -2,8 +2,8 @@
     class syntax:
         `.window-stack-{left/right}-{count}-{offset}`
         eg.
-        `.winow-stack-left-5-10`
-        `.winow-stack-right-10-5`
+        `.window-stack-left-5-10`
+        `.window-stack-right-10-5`
 
     ref:
         .window-stack {
@@ -22,16 +22,59 @@
 */
 (function () {
     let windows = Array.from(document.querySelectorAll('[class*="window-stack-"]'))
-        .filter(element => /window-stack-(?:left|right)-\d+-\d+/.test(element.className));
+        .filter(element => /window-stack-(?:left|right|top|bottom|topleft|topright|bottomleft|bottomright)-\d+-\d+/.test(element.className));
 
-    for (const window of windows) {
-        let input = window.className.match(/window-stack-(left|right)-(\d+)-(\d+)/)
+    for (const win of windows) {
+        let input = win.className.match(/window-stack-(left|right|top|bottom|topleft|topright|bottomleft|bottomright)-(\d+)-(\d+)/)
         let direction = input[1]
         let number = parseInt(input[2])
         let offset = parseInt(input[3])
 
+        let stackers = []
 
+        for (let i = 1; i < number+1; i++) {
+            let x
+            let y
 
+            switch (direction) {
+                case ("topleft"):
+                    x = i * offset
+                    y = -i * offset
+                    break
+                case ("top"):
+                    x = 0
+                    y = -i * offset
+                    break
+                case ("topright"):
+                    x = i * offset
+                    y = -i * offset
+                    break
+                case ("right"):
+                    x = i * offset
+                    y = 0
+                    break
+                case ("bottomright"):
+                    x = i * offset
+                    y = i * offset
+                    break
+                case ("bottom"):
+                    x = 0
+                    y = i * offset
+                    break
+                case ("bottomleft"):
+                    x = -i * offset
+                    y = i * offset
+                    break
+                case ("left"):
+                    x = -i * offset
+                    y = 0
+                    break
+                default:
+                    break
+            }
+            stackers.push(x+"px" + " " + y+"px" + " 0 lightblue")
+        }
+        win.style.boxShadow = stackers.join(", ")
     }        
 })()
 

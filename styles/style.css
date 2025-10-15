@@ -54,20 +54,6 @@ body {
     right: calc(100% - 200px);
 }
 
-.window-stack {
-  --offset: 5px;
-  --shadow-color: lightblue;
-  box-shadow:
-    calc(var(--offset) * -1) calc(var(--offset) * 1) 0 var(--shadow-color),
-    calc(var(--offset) * -2) calc(var(--offset) * 2) 0 var(--shadow-color),
-    calc(var(--offset) * -3) calc(var(--offset) * 3) 0 var(--shadow-color),
-    calc(var(--offset) * -4) calc(var(--offset) * 4) 0 var(--shadow-color),
-    calc(var(--offset) * -5) calc(var(--offset) * 5) 0 var(--shadow-color),
-    calc(var(--offset) * -6) calc(var(--offset) * 6) 0 var(--shadow-color),
-    calc(var(--offset) * -7) calc(var(--offset) * 7) 0 var(--shadow-color),
-    calc(var(--offset) * -8) calc(var(--offset) * 8) 0 var(--shadow-color)
-}
-
 /* Window Controls and Decorations */
 
 .control-container {
