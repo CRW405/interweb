@@ -17,7 +17,6 @@ let blinks = [
 
 for (const blink of blinks) {
     let file = path + blink
-    console.log(file);
     
     let li = document.createElement("li")
     let img = document.createElement("img")

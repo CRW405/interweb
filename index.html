@@ -10,8 +10,31 @@
 
 
 <body>
-
     <nav class="window-no-controls">
+        <div id="nav-list" class="window-no-controls">
+            <ul>
+                <li>
+                    <a href=".">Home</a>
+                </li>
+                <li>
+                    <a href=".">Coming Soon</a>
+                </li>
+                <li>
+                    <a href=".">Coming Soon</a>
+                </li>
+                <li>
+                    <a href=".">Coming Soon</a>
+                </li>
+                <li>
+                    <a href=".">Coming Soon</a>
+                </li>
+            </ul>
+
+            <div class="window-title">
+                Navigation
+            </div>
+        </div>
+
         <div id="window-list" class="window-no-controls">
             <ul>
                 <!-- windows go here from js -->
@@ -28,10 +51,6 @@
     <header class="window">
         <h1>Welcome.</h1>
         <p>Welcome to my website. Enjoy your stay.</p>
-        <div id="status" class="window warning">
-            <h4>Under Heavy Construction</h4>
-            <p>This is far from the final or first product</p>
-        </div>
         <div id="hi" class="window image-window window-stack-bottomleft-100-15 ">
             <img src="./medias/images/wave.gif" alt="">
         </div>
@@ -45,7 +64,6 @@
 
     <main>
         <div id="about" class="window">
-            <h2>About</h2>
             <h3>What do I do?</h3>
             <p>I am a programmer, teacher, and student.</p>
             <h3>What do I like?</h3>
@@ -67,35 +85,29 @@
 
 
         <div id="notes" class="window">
-            <h2>Notes</h2>
-            <h3>TODO</h3>
-            <ul>
-                <li>Figure out a theme</li>
-                <li>Finish index 1.0</li>
-                <li>Finish style 1.0</li>
-                <li>Create inspiration page</li>
-            </ul>
-            <h3>Ideas</h3>
-            <ul>
-                <li>
-                    <h4>Pages for things I like</h4>
+            <div id="status" class="window warning">
+                <h4>Under Heavy Construction</h4>
+                <p>This is far from the final or first product</p>
+            </div>
+            <div id="ideas" class="window inner-window flex">
+                <div id="page-ideas" class="window-no-controls">
                     <ul>
-                        <li>Music I like</li>
-                        <li>Paintings I like</li>
-                        <li>Movies and shows I like</li>
-                        <li>Books I like</li>
-                        <li>Games I like</li>
-                        <li>Linux</li>
+                        <li>Music</li>
+                        <li>Books</li>
+                        <li>Games</li>
                         <li>Programming</li>
+                        <li>Other Art</li>
+                        <li>Linux</li>
+                        <li>Blog</li>
+                        <li>Landing</li>
+                        <li>Cool Sites</li>
+                        <li>Inspiration</li>
                     </ul>
-                </li>
-                <li>Blog</li>
-                <li>
-                    <h4>Inspiration Page</h4>
-                    <p>A page for pictures, music, aesthetics, etc that I like and find inspiration from</p>
-                </li>
-                <li>
-                    <h4>Widgets</h4>
+                    <div class="window-title">
+                        Pages
+                    </div>
+                </div>
+                <div id="widget-ideas" class="window-no-controls">
                     <ul>
                         <li>Clock</li>
                         <li>Calender</li>
@@ -105,22 +117,24 @@
                         <li>New Blog Post</li>
                         <li>Guest Book</li>
                         <li>Visitor Metrics</li>
+                        <li>Message Ticker</li>
                     </ul>
-                </li>
-                <li>Landing Page</li>
-                <li>Cool Sites</li>
-                <li>Web Badges</li>
-                <li>File Tree and/or Directory</li>
-            </ul>
-        </div>
-
-        <div id="art" class="window">
-            <h2>Art I like</h2>
+                    <div class="window-title">
+                        Widgets
+                    </div>
+                </div>
+            </div>
+            <div id="lightbulb" class="window image-window window-stack-bottomright-100-15">
+                <img src="./medias/images/lightbulb.gif" alt="">
+            </div>
         </div>
     </main>
 
-    <footer class="window">
-        //
+    <footer class="window-no-controls">
+        <a href="#top">Back to the top</a>
+        <div class="window-title">
+            Footer
+        </div>
     </footer>
 
     <script src="./scripts/addWindowControls.js"></script>

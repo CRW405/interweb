@@ -9,12 +9,12 @@ for (const window of windows) {
 
     let titleContainer = window.querySelector(".window-title")
     let title = titleContainer ? titleContainer.textContent.trim() : (window.id || window.tagName.toLowerCase())
-    // console.log(title);
 
     button.textContent = title;
 
     button.addEventListener("click", () => {
-        if (window.style.display === "block") {
+        
+        if (getComputedStyle(window).display == "block") {
             window.style.display = "none";
         } else {
             window.style.display = "block";

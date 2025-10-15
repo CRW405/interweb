@@ -9,7 +9,8 @@ body {
 
 /* Windows */
 
-.window, .window-no-controls{
+.window,
+.window-no-controls {
     background-color: white;
     border: 5px solid lightblue;
     border-top: 25px solid lightblue;
@@ -19,10 +20,21 @@ body {
     margin-right: 10%;
     opacity: 85%;
     position: relative;
+    display: block;
 }
 
-.window:hover, .window-no-controls {
+.window:hover,
+.window-no-controls {
     opacity: 95%;
+}
+
+.inner-window {
+    margin: 0;
+    padding: 0;
+}
+
+.flex {
+    display: flex;
 }
 
 /* Image Windows */
@@ -85,6 +97,31 @@ body {
     border-color: orange;
 }
 
+/* Nav List */
+
+#nav-list {
+    width: 95%;
+    margin: auto;
+    margin-bottom: 5%;
+}
+
+#nav-list ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+#nav-list li::after {
+    content: "|";
+}
+
+#nav-list li::before {
+    content: "|";
+}
+
 /* Window List */
 
 #window-list {
@@ -133,7 +170,59 @@ body {
     width: 100px;
 }
 
+/* Notes */
+
+#notes {
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+#ideas {
+    background-image: url(../medias/bg/bliss.jpg);
+    background-size: cover;
+    padding: 0;
+}
+
+#notes .window-no-controls{
+    margin: 1%;
+    flex-grow: 1;
+}
+
+#notes ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+#status {
+    width: 95%;
+    margin: auto;
+    margin-bottom: 3%;
+    position: absolute;
+    width: 325px;
+    bottom: calc(100% - 75px);
+    right: calc(100% - 275px);
+    z-index: 1;
+}
+
+#lightbulb {
+    width: 150ox;
+    position: absolute;
+    left: calc(100% - 150px);
+    top: calc(100% - 175px);
+}
+
+
 /* Unique Window Styling */
 header {
+    text-align: center;
+}
+
+nav {
+    background-image: url(../medias/bg/bliss.jpg);
+    background-size: cover;
+}
+
+footer {
     text-align: center;
 }
