@@ -97,6 +97,10 @@ body {
     border-color: orange;
 }
 
+#status.ok {
+    border-color: lightgreen;
+}
+
 /* Nav List */
 
 #nav-list {
@@ -225,4 +229,10 @@ nav {
 
 footer {
     text-align: center;
+}
+
+#about-blurb {
+    width: 95%;
+    margin: 0;
+    margin-bottom: 1rem;
 }
