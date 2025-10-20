@@ -11,7 +11,7 @@
 
 <body>
     <nav class="window-no-controls">
-        <div id="nav-list" class="window-no-controls">
+        <div id="nav-list" class="window-no-controls window-list full-width">
             <ul>
                 <li>
                     <a href=".">Home</a>
@@ -35,7 +35,7 @@
             </div>
         </div>
 
-        <div id="window-list" class="window-no-controls">
+        <div id="window-list" class="window-no-controls window-list full-width">
             <ul>
                 <!-- windows go here from js -->
             </ul>
@@ -48,15 +48,15 @@
         </div>
     </nav>
 
-    <header class="window">
+    <header class="window center-text">
         <h1>Welcome.</h1>
         <p>Welcome to my website. Enjoy your stay.</p>
-        <div id="hi" class="window image-window window-stack-bottomleft-100-15 ">
+        <div id="hi" class="window image-window window-stack-bottomleft-100-15 floating">
             <img src="./medias/images/wave.gif" alt="">
         </div>
     </header>
 
-    <div id="blinks" class="window">
+    <div id="blinks" class="window window-list no-padding">
         <ul id="blink-list">
             <!-- blinks go here from js -->
         </ul>
@@ -64,14 +64,14 @@
 
     <main>
         <div id="about" class="window">
-            <div id="about-blurb" class="window-no-controls">
+            <div id="about-blurb" class="window-no-controls full-width">
                 I am a programmer, teacher, and student.
                 <div class="window-title">
                     About Me
                 </div>
             </div>
 
-            <div class="window-no-controls inner-window">
+            <div class="window-no-controls inner-window full-width">
                 <ul>
                     <li>Computers</li>
                     <li>Linux</li>
@@ -89,18 +89,18 @@
                 </div>
             </div>
 
-            <div id="profile" class="window image-window">
+            <div id="profile" class="window image-window floating">
                 <img src="./medias/images/profile.png" alt="Profile Picture">
             </div>
         </div>
 
 
         <div id="notes" class="window">
-            <div id="status" class="window ok">
+            <div id="status" class="window ok floating">
                 <h4>Version 1 - Under Construction</h4>
                 <p>Still under Construction, expect updates in the near future</p>
             </div>
-            <div id="ideas" class="window inner-window flex">
+            <div id="ideas" class="window inner-window flex full-width no-padding">
                 <div id="page-ideas" class="window-no-controls">
                     <ul>
                         <li>Music</li>
@@ -135,13 +135,13 @@
                     </div>
                 </div>
             </div>
-            <div id="lightbulb" class="window image-window window-stack-bottomright-100-15">
+            <div id="lightbulb" class="window image-window window-stack-bottomright-100-15 floating">
                 <img src="./medias/images/lightbulb.gif" alt="">
             </div>
         </div>
     </main>
 
-    <footer class="window-no-controls">
+    <footer class="window-no-controls center-text">
         <a href="#top">Back to the top</a>
         <div class="window-title">
             Footer
