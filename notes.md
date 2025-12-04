@@ -6,6 +6,13 @@
 - Rewrite content for
   - About Me
 
+## IDEAS
+
+- Custom Cursor
+- <https://scribblemakes.com/>
+  - ui
+  - intro animation
+
 ## V2
 
 ### HTML V2
@@ -52,3 +59,4 @@
 ### JS V2
 
 - Add some more control to script targets, eg, a class or value to prevent/set custom controls or title
+
