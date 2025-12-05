@@ -2,158 +2,118 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/style.css">
-    <title>Index</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./styles/style.css">
+  <link rel="stylesheet" href="./styles/window.css">
+  <title>Desktop</title>
 </head>
 
 
 <body>
-    <nav class="window-no-controls">
-        <div id="nav-list" class="window-no-controls window-list full-width">
-            <ul>
-                <li>
-                    <a href=".">Home</a>
-                </li>
-                <li>
-                    <a href=".">Coming Soon</a>
-                </li>
-                <li>
-                    <a href=".">Coming Soon</a>
-                </li>
-                <li>
-                    <a href=".">Coming Soon</a>
-                </li>
-                <li>
-                    <a href=".">Coming Soon</a>
-                </li>
-            </ul>
 
-            <div class="window-title">
-                Navigation
-            </div>
+  <header>
+    <!-- header goes here -->
+  </header>
+
+  <main>
+    <window-group id="info">
+      <window id="welcome" title="Welcome">
+        <h2>Hello!</h2>
+        <h3>Welcome to my site!</h3>
+        <p>This is just a simple site for me to establish some sort of presence on the web and hopefully share some cool
+          things</p>
+      </window>
+
+      <window id="controls" title="How to do things">
+        <h3>Controls</h3>
+        <p>If you dont want to look at a window/section then just click on the little "_" or "X" to get rid of it</p>
+        <p>If you decide you actually did want that window then just find it on the taskbar below</p>
+      </window>
+
+      <window id="about-me" title="About Me">
+        <h2>I am a ...</h2>
+
+        <div>
+          <h3>Teacher</h3>
+          <p>I currently work as an instructor where I teach students k-12 about programming</p>
         </div>
 
-        <div id="window-list" class="window-no-controls window-list full-width">
-            <ul>
-                <!-- windows go here from js -->
-            </ul>
-            <div class="window-title">
-                Window List
-            </div>
-        </div>
-        <div class="window-title">
-            Navigation
-        </div>
-    </nav>
-
-    <header class="window center-text">
-        <h1>Welcome.</h1>
-        <p>Welcome to my website. Enjoy your stay.</p>
-        <div id="hi" class="window image-window window-stack-bottomleft-100-15 floating">
-            <img src="./medias/images/wave.gif" alt="">
-        </div>
-    </header>
-
-    <div id="blinks" class="window window-list no-padding">
-        <ul id="blink-list">
-            <!-- blinks go here from js -->
-        </ul>
-    </div>
-
-    <main>
-        <div id="about" class="window">
-            <div id="about-blurb" class="window-no-controls full-width">
-                I am a programmer, teacher, and student.
-                <div class="window-title">
-                    About Me
-                </div>
-            </div>
-
-            <div class="window-no-controls inner-window full-width">
-                <ul>
-                    <li>Computers</li>
-                    <li>Linux</li>
-                    <li>Programming</li>
-                    <li>Web Dev</li>
-                    <li>Art</li>
-                    <li>Music</li>
-                    <li>Horror</li>
-                    <li>Nature</li>
-                    <li>Games</li>
-                </ul>
-
-                <div class="window-title inner-window">
-                    What Do I Like?
-                </div>
-            </div>
-
-            <div id="profile" class="window image-window floating">
-                <img src="./medias/images/profile.png" alt="Profile Picture">
-            </div>
+        <div>
+          <h4>What I've taught</h4>
+          <ul>
+            <li>Block coding</li>
+            <li>Python</li>
+            <li>Roblox Game dev</li>
+            <li>Cyber Security</li>
+            <li>Web Dev</li>
+          </ul>
         </div>
 
-
-        <div id="notes" class="window">
-            <div id="status" class="window ok floating">
-                <h4>Version 1 - Under Construction</h4>
-                <p>Still under Construction, expect updates in the near future</p>
-            </div>
-            <div id="ideas" class="window inner-window flex full-width no-padding">
-                <div id="page-ideas" class="window-no-controls">
-                    <ul>
-                        <li>Music</li>
-                        <li>Books</li>
-                        <li>Games</li>
-                        <li>Programming</li>
-                        <li>Other Art</li>
-                        <li>Linux</li>
-                        <li>Blog</li>
-                        <li>Landing</li>
-                        <li>Cool Sites</li>
-                        <li>Inspiration</li>
-                    </ul>
-                    <div class="window-title">
-                        Pages
-                    </div>
-                </div>
-                <div id="widget-ideas" class="window-no-controls">
-                    <ul>
-                        <li>Clock</li>
-                        <li>Calender</li>
-                        <li>Music</li>
-                        <li>Cursor Pet</li>
-                        <li>Git Tracker</li>
-                        <li>New Blog Post</li>
-                        <li>Guest Book</li>
-                        <li>Visitor Metrics</li>
-                        <li>Message Ticker</li>
-                    </ul>
-                    <div class="window-title">
-                        Widgets
-                    </div>
-                </div>
-            </div>
-            <div id="lightbulb" class="window image-window window-stack-bottomright-100-15 floating">
-                <img src="./medias/images/lightbulb.gif" alt="">
-            </div>
+        <div>
+          <h3>Programmer</h3>
+          <p>I like making things and I like learning things so I became a programmer</p>
+          <a href="https://github.com/CRW405">
+            <h4>See what I've done</h4>
+          </a>
         </div>
-    </main>
 
-    <footer class="window-no-controls center-text">
-        <a href="#top">Back to the top</a>
-        <div class="window-title">
-            Footer
+        <div>
+          <h3>Student</h3>
+          <p>Im currently working towards a Bachelors in Computer Science with a Minor in Cybersecurity</p>
         </div>
-    </footer>
+      </window>
+    </window-group>
 
-    <script src="./scripts/addWindowControls.js"></script>
-    <script src="./scripts/addWindowTitles.js"></script>
-    <script src="./scripts/populateWindowList.js"></script>
-    <script src="./scripts/addWindowStacks.js"></script>
-    <script src="./scripts/populateBlinks.js"></script>
+    <window-group id="this">
+      <window id="updates" title="Updates">
 
+      </window>
+
+      <window id="to-do" title="To Do">
+
+      </window>
+
+      <window id="status" title="Status">
+
+      </window>
+    </window-group>
+
+    <window-group id="stuff">
+
+      <!-- Fill with widgets and other cool stuff -->
+
+    </window-group>
+  </main>
+
+  <footer>
+
+  </footer>
+
+
+  </footer>
+
+</body>
+
+</html>
+</body>
+
+</html>
+</body>
+
+</html>
+</body>
+
+</html>
+</body>
+
+</html>
+</body>
+
+</html>
+</body>
+
+</html>
 </body>
 
 </html>

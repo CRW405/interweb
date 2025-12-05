@@ -1,252 +1,27 @@
-/* Variables */
 :root {
-    --primary: lightblue;
-    --warning: orange;
-    --ok: lightgreen;
-    --danger: red;
+  --primary: lightblue;
+  --primary-secondary: lightblue;
+  --active: blue; 
+  --active-secondary: blue;
+  --highlight: white;
+  --highlight-secondary: grey;
+  --background: black;
+  --background-secondary: grey;
+  --text: white;
+  --text-secondary: grey;
 }
 
+* {
+  box-sizing: border-box;
+  font-family: "Times New Roman";
+  color: var(--text)
+}
 
-
-/* General */
 body {
-    background-image: url(../medias/bg/animgridbg50.gif);
-    background-size: 10%;
-    min-width: 750px;
-    max-width: 1500px;
-    margin: auto;
+  background-color: var(--background);
 }
 
-nav {
-    background-image: url(../medias/bg/bliss.jpg);
-    background-size: cover;
-}
-
-
-
-/* Windows */
-.window,
-.window-no-controls {
-    background-color: white;
-    border: 5px solid var(--primary);
-    border-top: 25px solid var(--primary);
-    padding: 2%;
-    margin: 5%;
-    margin-left: 10%;
-    margin-right: 10%;
-    opacity: 0.85;
-    position: relative;
-    display: block;
-}
-
-.window:hover,
-.window-no-controls {
-    opacity: 0.95;
-}
-
-
-
-/* Image Windows */
-.image-window {
-    min-width: 150px;
-    width: fit-content;
-    padding: 0px;
-    z-index: 100;
-}
-
-.image-window img {
-    width: 100%;
-}
-
-
-
-/* Window Controls and Decorations */
-.control-container {
-    background: none;
-    border: none;
-    position: absolute;
-    top: -21px;
-    right: 0px;
-    display: flex;
-    gap: 10px;
-}
-
-.control-container button {
-    border: none;
-    background: none;
-}
-
-.control-container button:hover {
-    background-color: rgb(230, 238, 245);
-}
-
-.window-title {
-    position: absolute;
-    top: -21px;
-    left: 0px;
-}
-
-
-
-/* Lists */
-.window-list {
-    margin-bottom: 5%;
-}
-
-.window-list ul {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-
-
-
-/* Helper */
-.center-text {
-    text-align: center;
-}
-
-.flex {
-    display: flex;
-}
-
-.floating {
-    position: absolute;
-    z-index: 100;
-}
-
-.no-padding {
-    padding: 0;
-}
-
-.no-margin {
-    margin: 0;
-}
-
-.full-width {
-    width: 95%;
-    margin: auto;
-}
-
-
-
-/* Unique Styles */
-
-
-
-/* Unique Image Windows */
-#profile {
-    width: 150px;
-    bottom: calc(100% - 275px);
-    left: calc(100% - 175px);
-}
-
-#hi {
-    width: 175px;
-    top: calc(100% - 150px);
-    right: calc(100% - 200px);
-}
-
-#lightbulb {
-    width: 150px;
-    left: calc(100% - 150px);
-    top: calc(100% - 175px);
-}
-
-
-
-/* Unique Lists */
-#nav-list li::after {
-    content: "|";
-}
-
-#nav-list li::before {
-    content: "|";
-}
-
-#window-list button {
-    width: 100px;
-    border: 2px solid var(--primary);
-    border-top: 10px solid var(--primary);
-    background-color: white;
-    opacity: 0.7;
-    margin: 5px;
-}
-
-#window-list button:hover {
-    opacity: 0.95;
-}
-
-
-
-/* Unique Windows */
-
-
-
-/* Nav: Nav List */
-#nav-list {
-    margin-bottom: 3rem;
-}
-
-
-
-/* Blinks */
-#blinks ul {
-    justify-content: center;
-}
-
-#blinks img {
-    width: 100px;
-}
-
-
-
-/* Notes */
-#notes {
-    margin-top: 10%;
-    margin-bottom: 10%;
-    padding: 0;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-}
-#ideas {
-    background-image: url(../medias/bg/bliss.jpg);
-    background-size: cover;
-}
-
-#notes .window-no-controls{
-    margin: 1%;
-    flex-grow: 1;
-}
-
-#status {
-    margin: auto;
-    margin-bottom: 3%;
-    width: 325px;
-    bottom: calc(100% - 75px);
-    right: calc(100% - 275px);
-}
-
-#status.danger {
-    border-color: var(--danger);
-}
-
-#status.warning {
-    border-color: var(--warning);
-}
-
-#status.ok {
-    border-color: var(--ok);
-}
-
-
-
-
-/* About */
-#about-blurb {
-    width: 95%;
-    margin-bottom: 1rem;
+main {
+  margin-left: 10rem;
+  margin-right: 10rem;
 }
