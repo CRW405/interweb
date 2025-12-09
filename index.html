@@ -1,119 +1,116 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="./styles/window.css" />
+    <title>Desktop</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./styles/style.css">
-  <link rel="stylesheet" href="./styles/window.css">
-  <title>Desktop</title>
-</head>
+  <body>
+    <header>
+      <!-- header goes here -->
+    </header>
 
+    <main>
+      <window-group id="info">
+        <window id="welcome" title="Welcome">
+          <h2>Hello!</h2>
+          <h3>Welcome to my site!</h3>
+          <p>
+            This is just a simple site for me to establish some sort of presence
+            on the web and hopefully share some cool things
+          </p>
+        </window>
 
-<body>
+        <window id="controls" title="How to do things">
+          <h3>Controls</h3>
+          <p>
+            If you dont want to look at a window/section then just click on the
+            little "_" or "X" to get rid of it
+          </p>
+          <p>
+            If you decide you actually did want that window then just find it on
+            the taskbar below
+          </p>
+        </window>
 
-  <header>
-    <!-- header goes here -->
-  </header>
+        <window id="about-me" title="About Me">
+          <h2>I am a ...</h2>
 
-  <main>
-    <window-group id="info">
-      <window id="welcome" title="Welcome">
-        <h2>Hello!</h2>
-        <h3>Welcome to my site!</h3>
-        <p>This is just a simple site for me to establish some sort of presence on the web and hopefully share some cool
-          things</p>
-      </window>
+          <div>
+            <h3>Teacher</h3>
+            <p>
+              I currently work as an instructor where I teach students k-12
+              about programming
+            </p>
+          </div>
 
-      <window id="controls" title="How to do things">
-        <h3>Controls</h3>
-        <p>If you dont want to look at a window/section then just click on the little "_" or "X" to get rid of it</p>
-        <p>If you decide you actually did want that window then just find it on the taskbar below</p>
-      </window>
+          <div>
+            <h4>What I've taught</h4>
+            <ul>
+              <li>Block coding</li>
+              <li>Python</li>
+              <li>Roblox Game dev</li>
+              <li>Cyber Security</li>
+              <li>Web Dev</li>
+            </ul>
+          </div>
 
-      <window id="about-me" title="About Me">
-        <h2>I am a ...</h2>
+          <div>
+            <h3>Programmer</h3>
+            <p>
+              I like making things and I like learning things so I became a
+              programmer
+            </p>
+            <a href="https://github.com/CRW405">
+              <h4>See what I've done</h4>
+            </a>
+          </div>
 
-        <div>
-          <h3>Teacher</h3>
-          <p>I currently work as an instructor where I teach students k-12 about programming</p>
+          <div>
+            <h3>Student</h3>
+            <p>
+              Im currently working towards a Bachelors in Computer Science with
+              a Minor in Cybersecurity
+            </p>
+          </div>
+        </window>
+      </window-group>
+
+      <window-group id="this">
+        <window id="updates" title="Updates"> </window>
+
+        <window id="to-do" title="To Do"> </window>
+
+        <window id="status" title="Status"> </window>
+      </window-group>
+
+      <window-group id="stuff">
+        <!-- Fill with widgets and other cool stuff -->
+      </window-group>
+
+      <taskbar>
+        <img src="./medias/images/missing.jpg" alt="OS" />
+
+        <ul>
+          <li data-window="welcome">Welcome</li>
+          <li data-window="controls">Controls</li>
+          <li data-window="about-me">About Me</li>
+          <li data-window="updates">Updates</li>
+          <li data-window="to-do">To Do</li>
+          <li data-window="status">Status</li>
+        </ul>
+
+        <div class="time">
+          <span id="time">12:00 PM</span>
         </div>
+      </taskbar>
+    </main>
 
-        <div>
-          <h4>What I've taught</h4>
-          <ul>
-            <li>Block coding</li>
-            <li>Python</li>
-            <li>Roblox Game dev</li>
-            <li>Cyber Security</li>
-            <li>Web Dev</li>
-          </ul>
-        </div>
-
-        <div>
-          <h3>Programmer</h3>
-          <p>I like making things and I like learning things so I became a programmer</p>
-          <a href="https://github.com/CRW405">
-            <h4>See what I've done</h4>
-          </a>
-        </div>
-
-        <div>
-          <h3>Student</h3>
-          <p>Im currently working towards a Bachelors in Computer Science with a Minor in Cybersecurity</p>
-        </div>
-      </window>
-    </window-group>
-
-    <window-group id="this">
-      <window id="updates" title="Updates">
-
-      </window>
-
-      <window id="to-do" title="To Do">
-
-      </window>
-
-      <window id="status" title="Status">
-
-      </window>
-    </window-group>
-
-    <window-group id="stuff">
-
-      <!-- Fill with widgets and other cool stuff -->
-
-    </window-group>
-  </main>
-
-  <footer>
-
-  </footer>
-
-
-  </footer>
-
-</body>
-
-</html>
-</body>
-
-</html>
-</body>
-
-</html>
-</body>
-
-</html>
-</body>
-
-</html>
-</body>
-
-</html>
-</body>
-
-</html>
-</body>
-
+    <footer>
+      <!-- footer goes here -->
+    </footer>
+  </body>
 </html>

@@ -1,20 +1,21 @@
 :root {
   --primary: lightblue;
   --primary-secondary: lightblue;
-  --active: blue; 
+  --active: blue;
   --active-secondary: blue;
   --highlight: white;
   --highlight-secondary: grey;
   --background: black;
   --background-secondary: grey;
+  --window-background: white;
   --text: white;
+  --window-text: black;
   --text-secondary: grey;
 }
 
 * {
   box-sizing: border-box;
   font-family: "Times New Roman";
-  color: var(--text)
 }
 
 body {
@@ -22,6 +23,11 @@ body {
 }
 
 main {
-  margin-left: 10rem;
-  margin-right: 10rem;
+  min-width: 700px;
+  max-width: 1250px;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
 }
