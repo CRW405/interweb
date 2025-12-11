@@ -3,56 +3,57 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./styles/style.css" />
     <link rel="stylesheet" href="./styles/window.css" />
+    <link rel="stylesheet" href="./styles/style.css" />
     <title>Desktop</title>
   </head>
 
   <body>
     <header>
-      <!-- header goes here -->
+      <window id="header-window">
+        <h1>Welcome, User!</h1>
+      </window>
     </header>
 
     <main>
       <window-group id="info">
-        <window id="welcome" title="Welcome">
+        <window id="welcome" name="Welcome">
           <h2>Hello!</h2>
           <h3>Welcome to my site!</h3>
           <p>
             This is just a simple site for me to establish some sort of presence
-            on the web and hopefully share some cool things
+            on the web and hopefully share some cool things.
           </p>
         </window>
 
-        <window id="controls" title="How to do things">
+        <window id="controls" name="How to do things">
           <h3>Controls</h3>
           <p>
-            If you dont want to look at a window/section then just click on the
-            little "_" or "X" to get rid of it
+            If you dont want to look at a window then just click on the little
+            "_" or "X" to get rid of it.
           </p>
           <p>
             If you decide you actually did want that window then just find it on
-            the taskbar below
+            the taskbar below.
           </p>
         </window>
 
-        <window id="about-me" title="About Me">
+        <window id="about-me" name="About Me">
           <h2>I am a ...</h2>
 
           <div>
             <h3>Teacher</h3>
             <p>
               I currently work as an instructor where I teach students k-12
-              about programming
+              about programming.
             </p>
           </div>
 
           <div>
             <h4>What I've taught</h4>
             <ul>
-              <li>Block coding</li>
               <li>Python</li>
-              <li>Roblox Game dev</li>
+              <li>Roblox Game Dev</li>
               <li>Cyber Security</li>
               <li>Web Dev</li>
             </ul>
@@ -62,7 +63,7 @@
             <h3>Programmer</h3>
             <p>
               I like making things and I like learning things so I became a
-              programmer
+              programmer.
             </p>
             <a href="https://github.com/CRW405">
               <h4>See what I've done</h4>
@@ -73,18 +74,18 @@
             <h3>Student</h3>
             <p>
               Im currently working towards a Bachelors in Computer Science with
-              a Minor in Cybersecurity
+              a Minor in Cybersecurity.
             </p>
           </div>
         </window>
       </window-group>
 
       <window-group id="this">
-        <window id="updates" title="Updates"> </window>
+        <window id="updates" name="Updates"> </window>
 
-        <window id="to-do" title="To Do"> </window>
+        <window id="to-do" name="To Do"> </window>
 
-        <window id="status" title="Status"> </window>
+        <window id="status" name="Status"> </window>
       </window-group>
 
       <window-group id="stuff">
@@ -92,25 +93,24 @@
       </window-group>
 
       <taskbar>
-        <img src="./medias/images/missing.jpg" alt="OS" />
+        <img src="./medias/images/missing.jpg" alt="OS" class="icon" />
 
-        <ul>
-          <li data-window="welcome">Welcome</li>
-          <li data-window="controls">Controls</li>
-          <li data-window="about-me">About Me</li>
-          <li data-window="updates">Updates</li>
-          <li data-window="to-do">To Do</li>
-          <li data-window="status">Status</li>
+        <ul id="taskbar-items">
+          <li>Welcome</li>
+          <li>Controls</li>
+          <li>About Me</li>
         </ul>
 
-        <div class="time">
-          <span id="time">12:00 PM</span>
-        </div>
+        <div class="time">12:00 PM</div>
       </taskbar>
     </main>
 
     <footer>
-      <!-- footer goes here -->
+      <ul>
+        <li>
+          <a href="https://github.com/CRW405">Github</a>
+        </li>
+      </ul>
     </footer>
   </body>
 </html>

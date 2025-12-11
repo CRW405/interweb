@@ -1,25 +1,10 @@
-:root {
-  --primary: lightblue;
-  --primary-secondary: lightblue;
-  --active: blue;
-  --active-secondary: blue;
-  --highlight: white;
-  --highlight-secondary: grey;
-  --background: black;
-  --background-secondary: grey;
-  --window-background: white;
-  --text: white;
-  --window-text: black;
-  --text-secondary: grey;
-}
-
 * {
   box-sizing: border-box;
   font-family: "Times New Roman";
 }
 
 body {
-  background-color: var(--background);
+  background-color: black;
 }
 
 main {
