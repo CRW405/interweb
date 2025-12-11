@@ -1,6 +1,13 @@
+/* General */
+
+@font-face {
+  font-family: "w95";
+  src: url("../w95fa/W95FA.otf") format("opentype");
+}
+
 * {
   box-sizing: border-box;
-  font-family: "Times New Roman";
+  font-family: "w95", sans-serif;
 }
 
 body {
@@ -15,4 +22,37 @@ main {
   margin: auto;
   display: flex;
   flex-direction: column;
+}
+
+header {
+  min-width: 700px;
+  max-width: 1250px;
+  margin: auto;
+  text-align: center;
+}
+
+footer {
+  min-width: 700px;
+  max-width: 1250px;
+  margin: auto;
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+footer ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+footer ul li {
+  display: inline;
+  margin: 0 10px;
+}
+
+footer ul li::after {
+  content: "|";
+}
+
+footer ul li:before {
+  content: "|";
 }

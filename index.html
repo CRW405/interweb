@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./styles/window.css" />
     <link rel="stylesheet" href="./styles/style.css" />
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+    </style>
+
     <title>Desktop</title>
   </head>
 
@@ -80,7 +85,7 @@
         </window>
       </window-group>
 
-      <window-group id="this">
+      <window-group id="site">
         <window id="updates" name="Updates"> </window>
 
         <window id="to-do" name="To Do"> </window>
@@ -106,11 +111,20 @@
     </main>
 
     <footer>
-      <ul>
-        <li>
-          <a href="https://github.com/CRW405">Github</a>
-        </li>
-      </ul>
+      <window id="footer-window">
+        <h3>Thanks for visiting!</h3>
+        <ul>
+          <li>
+            <a href="https://github.com/CRW405">Github</a>
+          </li>
+        </ul>
+      </window>
     </footer>
+
+    <!-- JavaScript -->
+
+    <!-- window -->
+
+    <script src="./scripts/window/addWindowControls.js"></script>
   </body>
 </html>

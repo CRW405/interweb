@@ -4,17 +4,16 @@ const decorations = ["_", "X"];
 let elements = document.querySelectorAll("window");
 
 elements.forEach((element) => {
-  let container = document.createElement("div");
-  container.className = "control-container";
+  let container = document.createElement("window-controls");
 
   for (const decoration of decorations) {
     let button = document.createElement("button");
-    button.className = "window-button";
     button.textContent = decoration;
 
     switch (decoration) {
       case "◻":
         // TODO: make this do something
+        // I'll do it one day, maybe just make width and heigh 100%, idk
         break;
       case "_":
         button.addEventListener("click", (event) => {
