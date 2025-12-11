@@ -1,5 +1,6 @@
 :root {
-  --window-border: #add8e6;
+  --window-border-light: #add8e6;
+  --window-border-dark: #7777ea;
   --window-background: #ffffff;
 
   --interactive-background-light: #e0e0e0;
@@ -7,6 +8,10 @@
   --interactive-border-light: #eeeeee;
   --interactive-border-dark: #a0a0a0;
   --interactive-select: #dddddd;
+
+  --text: #555555;
+  --link: #0000ee;
+  --link-hover: #33008b;
 }
 
 /* windows */
@@ -14,12 +19,23 @@
 window,
 window-static {
   background-color: var(--window-background);
-  border: 5px solid var(--window-border);
-  border-top: 25px solid var(--window-border);
+  border: 5px solid var(--window-border-light);
+  border-top: 25px solid var(--window-border-light);
+  border-right: 5px solid var(--window-border-dark);
+  border-bottom: 5px solid var(--window-border-dark);
   padding: 1rem;
   display: block;
   margin: 1.5rem;
   position: relative;
+  color: var(--text);
+}
+
+window a {
+  color: var(--link);
+}
+
+window a:hover {
+  color: var(--link-hover);
 }
 
 window-group {
@@ -54,6 +70,21 @@ window-controls button:hover {
   border-color: var(--interactive-border-dark);
   border-right: 2px solid var(--interactive-border-select);
   border-bottom: 2px solid var(--interactive-border-select);
+}
+
+/* Window title */
+
+window-title {
+  position: absolute;
+  top: -23.5px;
+  left: 0;
+  width: 100%;
+  /* background: linear-gradient( */
+  /*   to left, */
+  /*   var(--window-border-light), */
+  /*   var(--window-border-dark) */
+  /* ); */
+  /* color: white; */
 }
 
 /* taskbar */
