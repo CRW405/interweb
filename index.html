@@ -32,7 +32,8 @@
         </window>
 
         <window id="controls" name="How to do things">
-          <h3>Controls</h3>
+          <h2>Controls</h2>
+          <h3>Windows and Taskbar</h3>
           <p>
             If you dont want to look at a window then just click on the little
             "_" or "X" to get rid of it.
@@ -40,6 +41,11 @@
           <p>
             If you decide you actually did want that window then just find it on
             the taskbar below.
+          </p>
+          <h4>Clock</h4>
+          <p>
+            If you click the clock in the taskbar you can toggle between AM/PM
+            format and 24 hour format
           </p>
         </window>
 
@@ -106,7 +112,12 @@
           <!-- <li>About Me</li> -->
         </ul>
 
-        <div class="time">12:00 PM</div>
+        <div
+          class="time"
+          title="If you have Resist Fingerprinting or similiar privacy settings enabled, this time may be incorrect."
+        >
+          12:00 PM
+        </div>
       </taskbar>
     </main>
 
@@ -128,5 +139,6 @@
     <script src="./scripts/window/addWindowControls.js"></script>
     <script src="./scripts/window/addWindowTitles.js"></script>
     <script src="./scripts/window/populateTaskBar.js"></script>
+    <script src="./scripts/window/taskbarTime.js"></script>
   </body>
 </html>
