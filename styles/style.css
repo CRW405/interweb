@@ -12,6 +12,9 @@
 
 body {
   background-color: black;
+  background-image: url("../medias/bg/bliss.jpg");
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 main {
@@ -55,4 +58,24 @@ footer ul li::after {
 
 footer ul li:before {
   content: "|";
+}
+
+.danger {
+  background-color: red;
+  color: white;
+}
+
+.warning {
+  background-color: yellow;
+  color: black;
+}
+
+.ok {
+  background-color: green;
+  color: white;
+}
+
+.border {
+  border: 2px inset var(--interactive-border-light);
+  padding: 0.25rem;
 }

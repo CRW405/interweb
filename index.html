@@ -33,20 +33,31 @@
 
         <window id="controls" name="How to do things">
           <h2>Controls</h2>
-          <h3>Windows and Taskbar</h3>
-          <p>
-            If you dont want to look at a window then just click on the little
-            "_" or "X" to get rid of it.
-          </p>
-          <p>
-            If you decide you actually did want that window then just find it on
-            the taskbar below.
-          </p>
-          <h4>Clock</h4>
-          <p>
-            If you click the clock in the taskbar you can toggle between AM/PM
-            format and 24 hour format
-          </p>
+
+          <div class="border">
+            <h3>Windows and Taskbar</h3>
+            <p>
+              If you dont want to look at a window then just click on the little
+              "_" or "X" to get rid of it.
+            </p>
+
+            <p>
+              If you decide you actually did want that window then just find it
+              on the taskbar below.
+            </p>
+
+            <h4>Clock</h4>
+
+            <p>
+              If you click the clock in the taskbar you can toggle between AM/PM
+              format and 24 hour format
+            </p>
+
+            <p>
+              If the time on the clock is incorrect than it may be due to your
+              browser's privacy settings.
+            </p>
+          </div>
         </window>
 
         <window id="about-me" name="About Me">
@@ -94,9 +105,58 @@
       <window-group id="site">
         <window id="updates" name="Updates"> </window>
 
-        <window id="to-do" name="To Do"> </window>
+        <window id="to-do" name="To Do">
+          <h2>To Do</h2>
+          <h3>Top Priority</h3>
+          <ul title="This is the stuff I'll do">
+            <li>
+              Make the start menu for closed windows and use existing
+              populateTaskBar.js for that, use modified script to just get
+              minimized and opened windows for taskbar
+            </li>
+            <li>Populate updates with this repo's commits</li>
+            <li>Add blinkies</li>
+          </ul>
+          <h3>Low Priority</h3>
+          <ul title="This is the stuff I'll say I'll do">
+            <li>Make a calendar open when hovering over the time</li>
+            <li>
+              Let the user edit the text in the welcome so that they can put
+              their own name
+            </li>
+            <li>Add widgets and other fun stuff</li>
+            <li>Add music and sound</li>
+            <li>Add SplashScreen</li>
+            <li>Address Mobile</li>
+            <li>Add WallPaper Changer</li>
+          </ul>
+        </window>
 
-        <window id="status" name="Status"> </window>
+        <window id="status" name="Status">
+          <h2>Status</h2>
+          <h3>This Website</h3>
+          <div class="warning">Work In Progress</div>
+          <h3>The WebMaster</h3>
+          <div class="ok">Tired</div>
+          <iframe
+            width="200px"
+            src="https://www.youtube.com/embed/M16CZ38PuFQ"
+            title="Can you believe it guys? Christmas is just a week away. Christmas is in a week"
+            frameborder="0"
+            allow="
+              accelerometer;
+              autoplay;
+              clipboard-write;
+              encrypted-media;
+              gyroscope;
+              picture-in-picture;
+              web-share;
+            "
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+            style="margin: auto; display: block"
+          ></iframe>
+        </window>
       </window-group>
 
       <window-group id="stuff">
@@ -106,18 +166,11 @@
       <taskbar>
         <img src="./medias/images/missing.jpg" alt="OS" class="icon" />
 
-        <ul id="tasks">
-          <!-- <li>Welcome</li> -->
-          <!-- <li>Controls</li> -->
-          <!-- <li>About Me</li> -->
+        <ul class="tasks">
+          <!-- Minimized or opened windows go here -->
         </ul>
 
-        <div
-          class="time"
-          title="If you have Resist Fingerprinting or similiar privacy settings enabled, this time may be incorrect."
-        >
-          12:00 PM
-        </div>
+        <div class="time">12:00 PM</div>
       </taskbar>
     </main>
 

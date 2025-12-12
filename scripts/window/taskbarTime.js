@@ -9,7 +9,7 @@ function updateTime() {
   let hours = now.getHours();
   const minutes = now.getMinutes().toString().padStart(2, "0");
   if (timeFormat === "12") {
-    ampm = hours >= 12 ? "pm" : "am";
+    ampm = hours >= 12 ? "PM" : "AM";
     hours = hours % 12 || 12; // Convert to 12-hour format
     div.textContent = `${hours}:${minutes} ${ampm}`;
   } else {
