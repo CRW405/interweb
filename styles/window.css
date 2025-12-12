@@ -10,8 +10,13 @@
   --interactive-select: #dddddd;
 
   --text: #555555;
+  --text-light: #ffffff;
   --link: #0000ee;
   --link-hover: #33008b;
+
+  --danger: #ff4c4c;
+  --warning: #ffcc00;
+  --ok: #4caf50;
 }
 
 /* windows */

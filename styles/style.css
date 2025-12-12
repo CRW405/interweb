@@ -61,21 +61,22 @@ footer ul li:before {
 }
 
 .danger {
-  background-color: red;
-  color: white;
+  background-color: var(--danger);
+  color: var(--text-light);
 }
 
 .warning {
-  background-color: yellow;
-  color: black;
+  background-color: var(--warning);
+  color: var(--text-light);
 }
 
 .ok {
-  background-color: green;
-  color: white;
+  background-color: var(--ok);
+  color: var(--text-light);
 }
 
 .border {
   border: 2px inset var(--interactive-border-light);
   padding: 0.25rem;
+  margin: 0.25rem;
 }
