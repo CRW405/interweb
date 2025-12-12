@@ -1,27 +1,23 @@
-const windowList = document.getElementById("window-list")
-const ul = windowList.firstElementChild
+const taskBar = document.querySelector("taskbar");
+const list = taskBar.querySelector("ul");
 
-let windows = document.querySelectorAll(".window")
+let allWindows = document.querySelectorAll("window");
 
-for (const window of windows) {
-    let li = document.createElement("li")
-    let button = document.createElement("button")
+for (const window of allWindows) {
+  let li = document.createElement("li");
+  let name = window.getAttribute("name");
+  let id = window.getAttribute("id");
 
-    let titleContainer = window.querySelector(".window-title")
-    let title = titleContainer ? titleContainer.textContent.trim() : (window.id || window.tagName.toLowerCase())
+  li.textContent = name;
 
-    button.textContent = title;
+  li.addEventListener("click", () => {
+    if (getComputedStyle(window).display == "block") {
+      window.style.display = "none";
+    } else {
+      window.style.display = "block";
+    }
+  });
 
-    button.addEventListener("click", () => {
-        
-        if (getComputedStyle(window).display == "block") {
-            window.style.display = "none";
-        } else {
-            window.style.display = "block";
-        }
-    })
-
-    li.appendChild(button)
-    ul.appendChild(li)
-    
+  list.appendChild(li);
 }
+

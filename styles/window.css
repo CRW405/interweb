@@ -79,12 +79,12 @@ window-title {
   top: -23.5px;
   left: 0;
   width: 100%;
-  /* background: linear-gradient( */
-  /*   to left, */
-  /*   var(--window-border-light), */
-  /*   var(--window-border-dark) */
-  /* ); */
-  /* color: white; */
+  background: linear-gradient(
+    to left,
+    var(--window-border-light),
+    var(--window-border-dark)
+  );
+  color: white;
 }
 
 /* taskbar */
