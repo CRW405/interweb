@@ -4,16 +4,23 @@ async function getUpdates() {
   const response = await fetch(url);
   const data = await response.json();
 
-  const formattedCommits = data.map((commit) => ({
-    message: commit.commit.message,
-    timestamp: commit.commit.author.date,
-    stats: {
-      additions: commit.stats?.additions,
-      deletions: commit.stats?.deletions,
-      total: commit.stats?.total,
-    },
-    link: commit.html_url,
-  }));
+  const formattedCommits = await Promise.all(
+    data.slice(0, 10).map(async (commit) => {
+      const detailResponse = await fetch(commit.url);
+      const detail = await detailResponse.json();
+
+      return {
+        message: commit.commit.message,
+        timestamp: commit.commit.author.date,
+        stats: {
+          additions: detail.stats?.additions || 0,
+          deletions: detail.stats?.deletions || 0,
+          total: detail.stats?.total || 0,
+        },
+        link: commit.html_url,
+      };
+    }),
+  );
   return formattedCommits;
 }
 
@@ -35,6 +42,13 @@ getUpdates().then((commits) => {
     timestamp.textContent = new Date(commit.timestamp).toLocaleString();
     additions.textContent = `+${commit.stats.additions}`;
     deletions.textContent = `-${commit.stats.deletions}`;
+
+    commitDiv.classList.add("update-commit");
+    timestamp.classList.add("update-timestamp");
+    statsDiv.classList.add("update-stats");
+    additions.classList.add("update-additions");
+    deletions.classList.add("update-deletions");
+
     statsDiv.appendChild(additions);
     statsDiv.appendChild(deletions);
     commitDiv.appendChild(header);

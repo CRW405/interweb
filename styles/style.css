@@ -1,4 +1,4 @@
-/* General */
+/* Setup */
 
 @font-face {
   font-family: "w95";
@@ -9,6 +9,8 @@
   box-sizing: border-box;
   font-family: "w95", sans-serif;
 }
+
+/* General */
 
 body {
   background-color: black;
@@ -79,4 +81,53 @@ footer ul li:before {
   border: 2px inset var(--interactive-border-light);
   padding: 0.25rem;
   margin: 0.25rem;
+}
+
+/* Windows */
+
+#about-me ul {
+  list-style-type: square;
+}
+
+/* Updates */
+
+#updates ul {
+  list-style-type: none;
+  height: 500px;
+  overflow-y: scroll;
+}
+
+#updates ul li {
+  border-bottom: 1px solid var(--interactive-border-dark);
+  padding: 0.5rem 0;
+}
+
+#updates ul li a {
+  text-decoration: none;
+}
+
+#updates ul li div {
+  color: var(--text);
+}
+
+#updates ul li h3 {
+  color: var(--link);
+  text-decoration: underline;
+}
+
+#updates ul li h3:hover {
+  color: var(--link-hover);
+}
+
+.update-timestamp {
+  float: right;
+}
+
+.update-additions {
+  color: var(--ok);
+  margin-right: 1rem;
+}
+
+.update-deletions {
+  color: var(--danger);
 }
