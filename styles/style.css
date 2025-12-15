@@ -85,7 +85,7 @@ footer ul li:before {
 
 /* Windows */
 
-#about-me ul {
+ul {
   list-style-type: square;
 }
 
