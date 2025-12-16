@@ -129,9 +129,10 @@ taskbar .tasks {
   display: flex;
   height: 100%;
   gap: 0.25rem;
-  padding-left: 0.5rem;
   align-items: center;
   min-width: max-content;
+  padding-right: 4rem;
+  padding-left: 2.5rem;
 }
 
 taskbar ul li {
@@ -163,11 +164,16 @@ taskbar ul li .close-btn:hover {
   color: var(--danger);
 }
 
-taskbar .icon,
-taskbar ul li .icon {
+taskbar .icon {
   margin: 0;
   padding: 0;
   height: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 2rem;
+  height: 2rem;
+  z-index: 1002;
 }
 
 taskbar .time {
@@ -179,6 +185,12 @@ taskbar .time {
   align-items: center;
   justify-content: center;
   width: 4rem;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  height: 2rem;
+  background-color: var(--interactive-background-light);
+  z-index: 1002;
 }
 
 taskbar .start-menu {
