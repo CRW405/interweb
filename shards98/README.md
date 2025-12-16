@@ -65,13 +65,13 @@ populateTaskBar();
 
 ```HTML
 <!-- how to make a window -->
-<window status="{opened|minimized|maximized}" name="name goes here">
+<window status="{opened|minimized|maximized}" name="{name goes here}">
   <!-- Whatever you want goes here -->
 </window>
 
 <!-- How to make the taskbar -->
 <taskbar>
-  <img src="./medias/images/missing.jpg" alt="OS" class="icon" />
+  <img src="{your icon goes here}" alt="{alt goes here}" class="icon" />
 
   <div class="start-menu">
     <h2>Start</h2>
