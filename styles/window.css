@@ -153,6 +153,16 @@ taskbar ul li:hover {
   border-bottom: 2px solid var(--interactive-border-select);
 }
 
+taskbar ul li .close-btn {
+  background: none;
+  border: none;
+  font-weight: bold;
+}
+
+taskbar ul li .close-btn:hover {
+  color: var(--danger);
+}
+
 taskbar .icon,
 taskbar ul li .icon {
   margin: 0;

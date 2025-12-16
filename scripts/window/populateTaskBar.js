@@ -56,10 +56,14 @@ function refreshTasks() {
   for (const window of allTaskWindows) {
     let li = document.createElement("li");
     let name = window.getAttribute("name");
+    let span = document.createElement("span");
+    let closeBtn = document.createElement("button");
 
-    li.textContent = name;
+    span.textContent = name;
+    closeBtn.textContent = "X";
+    closeBtn.className = "close-btn";
 
-    li.addEventListener("click", () => {
+    span.addEventListener("click", () => {
       if (getComputedStyle(window).display == "block") {
         window.style.display = "none";
         window.setAttribute("status", "minimized");
@@ -73,12 +77,24 @@ function refreshTasks() {
       refreshTasks();
     });
 
+    closeBtn.addEventListener("click", (event) => {
+      event.stopPropagation();
+      window.style.display = "none";
+      window.setAttribute("status", "closed");
+      if (window.classList.contains("maximized")) {
+        window.classList.remove("maximized");
+      }
+      refreshTasks();
+    });
+
     if (window.getAttribute("status") == "minimized") {
       li.style.backgroundColor = "var(--interactive-background-dark)";
     } else {
       li.style.backgroundColor = "var(--interactive-background-light)";
     }
 
+    li.appendChild(span);
+    li.appendChild(closeBtn);
     taskList.appendChild(li);
   }
 }
