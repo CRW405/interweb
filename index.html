@@ -10,14 +10,14 @@
 
   <body>
     <header>
-      <window id="header-window" name="Welcome, User!">
+      <window status="opened" id="header-window" name="Welcome, User!">
         <h1>Welcome, User!</h1>
       </window>
     </header>
 
     <main>
       <window-group id="info">
-        <window id="welcome" name="Welcome">
+        <window status="opened" id="welcome" name="Welcome">
           <h2>Hello!</h2>
           <h3>Welcome to my site!</h3>
           <p>
@@ -26,7 +26,7 @@
           </p>
         </window>
 
-        <window id="controls" name="How to do things">
+        <window status="opened" id="controls" name="How to do things">
           <h2>Controls</h2>
 
           <div>
@@ -55,7 +55,7 @@
           </div>
         </window>
 
-        <window id="about-me" name="About Me">
+        <window status="opened" id="about-me" name="About Me">
           <h2>I am a ...</h2>
 
           <div>
@@ -98,30 +98,24 @@
       </window-group>
 
       <window-group id="site">
-        <window id="updates" name="Updates">
+        <window status="opened" id="updates" name="Updates">
           <h2>Updates</h2>
 
           <ul class="border" id="update-list"></ul>
         </window>
 
-        <window id="to-do" name="To Do">
+        <window status="opened" id="to-do" name="To Do">
           <h2>To Do</h2>
           <div>
             <h3>Top Priority</h3>
 
             <ul title="This is the stuff I'll do">
-              <li>
-                Make the start menu for closed windows and use existing
-                populateTaskBar.js for that, use modified script to just get
-                minimized and opened windows for taskbar
-              </li>
-              <li>Populate updates with this repo's commits</li>
               <li>Add blinkies</li>
               <li>
                 Add a little button or hoverable that explains how its section
                 works
               </li>
-              <li>Find better list decoration</li>
+              <li>Add images and floating windows</li>
             </ul>
           </div>
 
@@ -139,12 +133,24 @@
               <li>Add SplashScreen</li>
               <li>Address Mobile</li>
               <li>Add WallPaper Changer</li>
-              <li>Yellow</li>
+              <li>Secrets</li>
+              <li>Make windows moveable and resizable</li>
+              <li>Clean up taskbar code</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3>Widgets</h3>
+            <p>Widgets I've seen others have and want to add to this</p>
+            <ul>
+              <li>Cursor Pet</li>
+              <li>Lastfm</li>
+              <li>Calendar</li>
             </ul>
           </div>
         </window>
 
-        <window id="status" name="Status">
+        <window status="opened" id="status" name="Status">
           <h2>Status</h2>
           <div>
             <h3>This Website</h3>
@@ -183,6 +189,11 @@
       <taskbar>
         <img src="./medias/images/missing.jpg" alt="OS" class="icon" />
 
+        <div class="start-menu">
+          <h2>Start</h2>
+          <ul class="start-list"></ul>
+        </div>
+
         <ul class="tasks">
           <!-- Minimized or opened windows go here -->
         </ul>
@@ -192,7 +203,7 @@
     </main>
 
     <footer>
-      <window id="footer-window" name="Thank you!">
+      <window status="opened" id="footer-window" name="Thank you!">
         <h3>Thanks for visiting!</h3>
         <ul>
           <li>
@@ -206,10 +217,22 @@
 
     <!-- window -->
 
-    <script src="./scripts/window/addWindowControls.js"></script>
-    <script src="./scripts/window/addWindowTitles.js"></script>
-    <script src="./scripts/window/populateTaskBar.js"></script>
-    <script src="./scripts/window/taskbarTime.js"></script>
-    <script src="./scripts/getUpdates.js"></script>
+    <script
+      src="./scripts/window/addWindowControls.js"
+      defer
+      type="module"
+    ></script>
+    <script
+      src="./scripts/window/addWindowTitles.js"
+      defer
+      type="module"
+    ></script>
+    <script
+      src="./scripts/window/populateTaskBar.js"
+      defer
+      type="module"
+    ></script>
+    <script src="./scripts/window/taskbarTime.js" defer type="module"></script>
+    <script src="./scripts/getUpdates.js" defer type="module"></script>
   </body>
 </html>

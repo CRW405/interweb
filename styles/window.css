@@ -103,10 +103,12 @@ taskbar {
   height: 2rem;
   background-color: var(--interactive-background-light);
   align-items: center;
-  z-index: 1000;
+  z-index: 1001;
+  overflow-x: scroll;
+  overflow-y: hidden;
 }
 
-taskbar ul {
+taskbar .tasks {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -115,6 +117,7 @@ taskbar ul {
   gap: 0.25rem;
   padding-left: 0.5rem;
   align-items: center;
+  min-width: max-content;
 }
 
 taskbar ul li {
@@ -152,4 +155,32 @@ taskbar .time {
   align-items: center;
   justify-content: center;
   width: 4rem;
+}
+
+taskbar .start-menu {
+  display: none;
+  position: fixed;
+  bottom: 2rem;
+  background-color: var(--interactive-background-dark);
+  border: 1px solid var(--interactive-border-light);
+  height: 150px;
+  overflow-y: scroll;
+  padding-left: 2rem;
+  background-image: url("../medias/bg/bliss.jpg");
+  background-size: cover;
+}
+
+taskbar .start-menu h2 {
+  padding: 0;
+  margin: 0;
+  background-color: var(--interactive-background-light);
+  text-align: center;
+  border-bottom: 1px solid var(--interactive-border-dark);
+}
+
+taskbar .start-menu ul {
+  background-color: var(--interactive-background-light);
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }

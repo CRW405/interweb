@@ -1,3 +1,5 @@
+import { refreshTasks } from "./populateTaskBar.js";
+
 // const decorations = ["◻", "_", "X"]
 const decorations = ["_", "X"];
 
@@ -19,12 +21,19 @@ elements.forEach((element) => {
         button.addEventListener("click", (event) => {
           let button = event.currentTarget;
           button.parentElement.parentElement.style.display = "none";
+          button.parentElement.parentElement.setAttribute(
+            "status",
+            "minimized",
+          );
+          refreshTasks();
         });
         break;
       case "X":
         button.addEventListener("click", (event) => {
           let button = event.currentTarget;
           button.parentElement.parentElement.style.display = "none";
+          button.parentElement.parentElement.setAttribute("status", "closed");
+          refreshTasks();
         });
         break;
       default:
