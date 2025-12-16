@@ -1,0 +1,186 @@
+:root {
+  --window-border-light: #add8e6;
+  --window-border-dark: #7777ea;
+  --window-background: #ffffff;
+
+  --interactive-background-light: #e0e0e0;
+  --interactive-background-dark: #c0c0c0;
+  --interactive-border-light: #eeeeee;
+  --interactive-border-dark: #a0a0a0;
+  --interactive-select: #dddddd;
+
+  --text: #555555;
+  --text-light: #ffffff;
+  --link: #0000ee;
+  --link-hover: #33008b;
+
+  --danger: #ff4c4c;
+  --warning: #ffcc00;
+  --ok: #4caf50;
+}
+
+/* windows */
+
+window,
+window-static {
+  background-color: var(--window-background);
+  border: 5px solid var(--window-border-light);
+  border-top: 25px solid var(--window-border-light);
+  border-right: 5px solid var(--window-border-dark);
+  border-bottom: 5px solid var(--window-border-dark);
+  padding: 1rem;
+  display: block;
+  margin: 1.5rem;
+  position: relative;
+  color: var(--text);
+}
+
+window a {
+  color: var(--link);
+}
+
+window a:hover {
+  color: var(--link-hover);
+}
+
+window-group {
+  display: flex;
+  flex-direction: column;
+}
+
+/* window controls */
+
+window-controls {
+  position: absolute;
+  top: -23.5px;
+  right: 0;
+  display: flex;
+  gap: 0.25rem;
+}
+
+window-controls button {
+  background: none;
+  width: 21.5px;
+  height: 21.5px;
+  background-color: var(--interactive-background-light);
+  border: 1px solid var(--interactive-border-light);
+  border-right: 2px solid var(--interactive-border-dark);
+  border-bottom: 2px solid var(--interactive-border-dark);
+  padding: 0;
+  margin: 0;
+}
+
+window-controls button:hover {
+  background-color: var(--interactive-background-dark);
+  border-color: var(--interactive-border-dark);
+  border-right: 2px solid var(--interactive-border-select);
+  border-bottom: 2px solid var(--interactive-border-select);
+}
+
+/* Window title */
+
+window-title {
+  position: absolute;
+  top: -23.5px;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(
+    to left,
+    var(--window-border-light),
+    var(--window-border-dark)
+  );
+  color: white;
+}
+
+/* taskbar */
+
+taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  height: 2rem;
+  background-color: var(--interactive-background-light);
+  align-items: center;
+  z-index: 1001;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+taskbar .tasks {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  height: 100%;
+  gap: 0.25rem;
+  padding-left: 0.5rem;
+  align-items: center;
+  min-width: max-content;
+}
+
+taskbar ul li {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  height: 90%;
+  border: 1px solid var(--interactive-border-light);
+  border-right: 2px solid var(--interactive-border-dark);
+  border-bottom: 2px solid var(--interactive-border-dark);
+  align-items: center;
+  padding: 0 0.5rem;
+}
+
+taskbar ul li:hover {
+  background-color: var(--interactive-background-dark);
+  border-color: var(--interactive-background-dark);
+  border-right: 2px solid var(--interactive-border-select);
+  border-bottom: 2px solid var(--interactive-border-select);
+}
+
+taskbar .icon,
+taskbar ul li .icon {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+taskbar .time {
+  justify-self: flex-end;
+  margin-left: auto;
+  border-left: 1px solid var(--interactive-border-dark);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+}
+
+taskbar .start-menu {
+  display: none;
+  position: fixed;
+  bottom: 2rem;
+  background-color: var(--interactive-background-dark);
+  border: 1px solid var(--interactive-border-light);
+  height: 150px;
+  overflow-y: scroll;
+  padding-left: 2rem;
+  background-image: url("../medias/bg/bliss.jpg");
+  background-size: cover;
+}
+
+taskbar .start-menu h2 {
+  padding: 0;
+  margin: 0;
+  background-color: var(--interactive-background-light);
+  text-align: center;
+  border-bottom: 1px solid var(--interactive-border-dark);
+}
+
+taskbar .start-menu ul {
+  background-color: var(--interactive-background-light);
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}

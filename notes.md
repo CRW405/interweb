@@ -33,7 +33,7 @@
   - group-window
   - window-controls
     - window-title
-    or could be values
+      or could be values
 
 #### Nav
 
@@ -55,8 +55,7 @@
   - .flex
   - .full-width
   - .floating
-  
+
 ### JS V2
 
 - Add some more control to script targets, eg, a class or value to prevent/set custom controls or title
-
