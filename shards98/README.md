@@ -52,8 +52,6 @@ Include directly in your HTML:
 
 ## Usage
 
-After including the library, you can use the available functions to create Windows 98-style UI elements:
-
 ```javascript
 // Add window controls (minimize, maximize, close buttons)
 addWindowControls();
