@@ -23,6 +23,9 @@ for (const window of allWindows) {
     if (getComputedStyle(window).display == "block") {
       window.style.display = "none";
       window.setAttribute("status", "minimized");
+      if (window.classList.contains("maximized")) {
+        window.classList.remove("maximized");
+      }
     } else {
       window.style.display = "block";
       window.setAttribute("status", "opened");
@@ -60,6 +63,9 @@ function refreshTasks() {
       if (getComputedStyle(window).display == "block") {
         window.style.display = "none";
         window.setAttribute("status", "minimized");
+        if (window.classList.contains("maximized")) {
+          window.classList.remove("maximized");
+        }
       } else {
         window.style.display = "block";
         window.setAttribute("status", "opened");

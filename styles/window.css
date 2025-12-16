@@ -92,6 +92,20 @@ window-title {
   color: white;
 }
 
+/* maximized window */
+
+window.maximized {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border-radius: 0;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
 /* taskbar */
 
 taskbar {
