@@ -1,0 +1,26 @@
+{
+  "name": "shards98",
+  "version": "1.0.0",
+  "description": "CSS and JS style library inspired by 98.css",
+  "main": "js/index.js",
+  "style": "shards98.css",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "js",
+    "w95fa",
+    "shards98.css",
+    "README.md"
+  ],
+  "keywords": [
+    "windows98",
+    "ui",
+    "retro",
+    "css"
+  ],
+  "author": "CRW405",
+  "license": "ISC",
+  "type": "module",
+  "private": false
+}

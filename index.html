@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./styles/window.css" />
+    <link rel="stylesheet" href="./shards98/shards98.css" />
     <link rel="stylesheet" href="./styles/style.css" />
     <title>Desktop</title>
   </head>
@@ -203,7 +203,9 @@
 
         <div class="start-menu">
           <h2>Start</h2>
-          <ul class="start-list"></ul>
+          <ul class="start-list">
+            <!-- closed windows go here -->
+          </ul>
         </div>
 
         <ul class="tasks">
@@ -230,21 +232,13 @@
     <!-- window -->
 
     <script
-      src="./scripts/window/addWindowControls.js"
+      src="./shards98/js/addWindowControls.js"
       defer
       type="module"
     ></script>
-    <script
-      src="./scripts/window/addWindowTitles.js"
-      defer
-      type="module"
-    ></script>
-    <script
-      src="./scripts/window/populateTaskBar.js"
-      defer
-      type="module"
-    ></script>
-    <script src="./scripts/window/taskbarTime.js" defer type="module"></script>
+    <script src="./shards98/js/addWindowTitles.js" defer type="module"></script>
+    <script src="./shards98/js/populateTaskBar.js" defer type="module"></script>
+    <script src="./shards98/js/taskbarTime.js" defer type="module"></script>
     <script src="./scripts/getUpdates.js" defer type="module"></script>
   </body>
 </html>
