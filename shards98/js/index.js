@@ -1,15 +1,5 @@
-import { refreshTasks } from "./populateTaskBar.js";
-import "./addWindowTitles.js";
-import "./addWindowControls.js";
-import "./taskbarTime.js";
-
-// Export public API
-export function init() {
-  refreshTasks();
-  console.log("Shards98 initialized!");
-}
-
-// Auto-initialize if desired
-if (typeof window !== "undefined") {
-  window.Shards98 = { init, refreshTasks };
-}
+export { refreshTasks } from "./populateTaskBar.js";
+export { populateTaskBar } from "./populateTaskBar.js";
+export { addWindowTitles } from "./addWindowTitles.js";
+export { addWindowControls } from "./addWindowControls.js";
+export { taskbarTime } from "./taskbarTime.js";

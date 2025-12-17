@@ -6,6 +6,8 @@ CSS and JS style library inspired by [98.css](https://jdan.github.io/98.css)
 
 ### Via npm
 
+I don't recommend this but you can do it if you want
+
 ```bash
 npm install shards98
 ```
@@ -17,7 +19,7 @@ import "shards98/shards98.css";
 import { addWindowControls, addWindowTitles, populateTaskBar } from "shards98";
 ```
 
-### Via CDN (no installation required)
+### Via CDN (no installation required, recommended)
 
 Include directly in your HTML:
 
@@ -25,7 +27,7 @@ Include directly in your HTML:
 <!-- CSS -->
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/shards98@1.0.0/shards98.css"
+  href="https://cdn.jsdelivr.net/npm/shards98@1.0.8/shards98.css"
 />
 
 <!-- JavaScript -->
@@ -34,7 +36,7 @@ Include directly in your HTML:
     addWindowControls,
     addWindowTitles,
     populateTaskBar,
-  } from "https://cdn.jsdelivr.net/npm/shards98@1.0.0/js/index.js";
+  } from "https://cdn.jsdelivr.net/npm/shards98@1.0.8/js/index.js";
 
   // Your code here
 </script>
@@ -51,17 +53,6 @@ Include directly in your HTML:
 ```
 
 ## Usage
-
-```javascript
-// Add window controls (minimize, maximize, close buttons)
-addWindowControls();
-
-// Add window titles
-addWindowTitles();
-
-// Populate taskbar
-populateTaskBar();
-```
 
 ```HTML
 <!-- how to make a window -->
@@ -86,4 +77,23 @@ populateTaskBar();
 
   <div class="time">12:00 PM</div>
 </taskbar>
+```
+
+## Styling
+
+```CSS
+taskbar .start-menu {
+  /* set your start menu's background here */
+}
+
+window-title {
+  /* for custom window titles*/
+}
+
+window-controls {
+  /* for custom window controls */
+}
+window-controls button {
+  /* for custom window control buttons */
+}
 ```

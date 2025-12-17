@@ -1,6 +1,6 @@
 {
   "name": "shards98",
-  "version": "1.0.1",
+  "version": "1.0.8",
   "description": "CSS and JS style library inspired by 98.css",
   "main": "js/index.js",
   "style": "shards98.css",

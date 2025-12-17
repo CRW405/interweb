@@ -131,3 +131,9 @@ ul {
 .update-deletions {
   color: var(--danger);
 }
+
+/* per window styling */
+
+taskbar .start-menu {
+  background-image: url("../medias/bg/bliss.jpg");
+}

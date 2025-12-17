@@ -56,6 +56,7 @@ window-controls {
   right: 0;
   display: flex;
   gap: 0.25rem;
+  z-index: 10;
 }
 
 window-controls button {
@@ -202,7 +203,6 @@ taskbar .start-menu {
   height: 150px;
   overflow-y: scroll;
   padding-left: 2rem;
-  background-image: url("../medias/bg/bliss.jpg");
   background-size: cover;
 }
 

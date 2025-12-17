@@ -1,12 +1,18 @@
-let windows = document.querySelectorAll("window");
+export { addWindowTitles };
 
-windows.forEach((element) => {
-  let name = element.getAttribute("name") || "empty";
+function addWindowTitles() {
+  let windows = document.querySelectorAll("window");
 
-  let titleContainer = document.createElement("window-title");
-  titleContainer.textContent = name;
-  if (name === "empty") {
-    titleContainer.style.color = "transparent";
-  }
-  element.prepend(titleContainer);
-});
+  windows.forEach((element) => {
+    let name = element.getAttribute("name") || "empty";
+
+    let titleContainer = document.createElement("window-title");
+    titleContainer.textContent = name;
+    if (name === "empty") {
+      titleContainer.style.color = "transparent";
+    }
+    element.prepend(titleContainer);
+  });
+}
+
+addWindowTitles();
