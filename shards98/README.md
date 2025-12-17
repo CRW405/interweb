@@ -67,12 +67,12 @@ Include directly in your HTML:
   <div class="start-menu">
     <h2>Start</h2>
     <ul class="start-list">
-      <!-- closed windows go here -->
+      <!-- populated via js -->
     </ul>
   </div>
 
   <ul class="tasks">
-    <!-- Minimized or opened windows go here -->
+    <!-- populated via js -->
   </ul>
 
   <div class="time">12:00 PM</div>
