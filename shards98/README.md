@@ -54,6 +54,8 @@ Include directly in your HTML:
 
 ## Usage
 
+Until I change it, the taskbar is required
+
 ```HTML
 <!-- how to make a window -->
 <window status="{opened|minimized|maximized}" name="{name goes here}">
