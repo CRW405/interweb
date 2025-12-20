@@ -3,22 +3,6 @@
 CSS and JS style library inspired by [98.css](https://jdan.github.io/98.css)
 
 ## Installation
-
-### Via npm
-
-I don't recommend this but you can do it if you want
-
-```bash
-npm install shards98
-```
-
-Then import in your project:
-
-```javascript
-import "shards98/shards98.css";
-import { addWindowControls, addWindowTitles, populateTaskBar } from "shards98";
-```
-
 ### Via CDN (no installation required, recommended)
 
 Include directly in your HTML:
@@ -52,24 +36,39 @@ Include directly in your HTML:
 ></script>
 ```
 
+### Via npm
+
+I don't recommend this but you can do it if you want
+
+```bash
+npm install shards98
+```
+
+Then import in your project:
+
+```javascript
+import "shards98/shards98.css";
+import { addWindowControls, addWindowTitles, populateTaskBar } from "shards98";
+```
 ## Usage
 
 Until I change it, the taskbar is required
 
+Add this to your html:
 ```HTML
 <!-- how to make a window -->
-<window status="{opened|minimized|maximized}" name="{name goes here}">
-  <!-- Whatever you want goes here -->
+<window status="{opened|closed|minimized|maximized}" name="{name goes here}">
+  <!-- Content inside of the body of the window. Full HTML works here -->
 </window>
 
 <!-- How to make the taskbar -->
 <taskbar>
-  <img src="{your icon goes here}" alt="{alt goes here}" class="icon" />
+  <img src="./link/to/icon/file" alt="description of icon" class="icon" />
 
   <div class="start-menu">
     <h2>Start</h2>
     <ul class="start-list">
-      <!-- populated via js -->
+      <!-- populated via js. <window> tags with the status of "closed" will appear here but nowhere else until launched. -->
     </ul>
   </div>
 
@@ -77,11 +76,13 @@ Until I change it, the taskbar is required
     <!-- populated via js -->
   </ul>
 
+<!-- time will update via js -->
   <div class="time">12:00 PM</div>
 </taskbar>
 ```
 
 ## Styling
+Most of the style will come in using the CDN import. Add additional using the template below:
 
 ```CSS
 taskbar .start-menu {
