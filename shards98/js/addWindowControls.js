@@ -22,9 +22,11 @@ function addWindowControls() {
             if (windowElement.getAttribute("status") === "maximized") {
               windowElement.setAttribute("status", "opened");
               windowElement.classList.remove("maximized");
+              button.innerHTML = "◻";
             } else {
               windowElement.setAttribute("status", "maximized");
               windowElement.classList.add("maximized");
+              button.innerHTML = '<span class="maximized-icon">⧉</span>';
             }
           });
           break;

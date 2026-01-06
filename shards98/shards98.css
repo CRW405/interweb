@@ -69,6 +69,7 @@ window-controls button {
   border-bottom: 2px solid var(--interactive-border-dark);
   padding: 0;
   margin: 0;
+  font-weight: bold;
 }
 
 window-controls button:hover {
@@ -76,6 +77,14 @@ window-controls button:hover {
   border-color: var(--interactive-border-dark);
   border-right: 2px solid var(--interactive-border-select);
   border-bottom: 2px solid var(--interactive-border-select);
+}
+
+.maximized-icon {
+  font-size: 20px;
+  vertical-align: middle;
+  position: relative;
+  top: -2px;
+  font-weight: lighter;
 }
 
 /* Window title */

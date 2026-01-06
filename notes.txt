@@ -1,0 +1,11 @@
+visitor counter
+music
+  what music?
+    atmospheric, dnb
+more interesting page title
+  js
+neko web button: <a href="https://nekoweb.org/"><img src="https://nekoweb.org/assets/buttons/button3.gif"></a><!-- button by exund -->
+paint
+maximize button switch
+
+https://win98icons.alexmeub.com/
