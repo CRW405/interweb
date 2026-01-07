@@ -63,6 +63,12 @@ footer ul li:before {
   content: "|";
 }
 
+hr {
+  border-color: var(--interactive-border-light);
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
 .danger {
   background-color: var(--danger);
   color: var(--text-light);
@@ -173,4 +179,10 @@ aerial-banner ul li {
 
 taskbar .start-menu {
   background-image: url("../medias/bg/Ascent.jpg");
+}
+
+/* Multiplayer Cursor */
+
+.cursors-root {
+  border-radius: 0px;
 }
