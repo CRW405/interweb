@@ -17,6 +17,7 @@ body {
   background-image: url("../medias/bg/bliss.jpg");
   background-size: cover;
   background-attachment: fixed;
+  overflow-x: hidden;
 }
 
 main {
@@ -153,12 +154,10 @@ aerial-banner ul {
   padding: 0;
   margin: 0;
   display: flex;
-  white-space: nowrap;
-  animation: scroll 10s linear infinite;
+  /* animation: scroll 10s linear infinite; */
 }
 
 aerial-banner ul li {
-  flex-shrink: 0;
 }
 
 @keyframes scroll {
