@@ -132,6 +132,44 @@ ul {
   color: var(--danger);
 }
 
+/* blink */
+
+.blink {
+  display: block;
+  width: 7.5rem;
+}
+
+/* aerial banner */
+
+aerial-banner {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+aerial-banner ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  white-space: nowrap;
+  animation: scroll 10s linear infinite;
+}
+
+aerial-banner ul li {
+  flex-shrink: 0;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 /* per window styling */
 
 taskbar .start-menu {
