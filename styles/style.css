@@ -14,7 +14,7 @@
 
 body {
   background-color: black;
-  background-image: url("../medias/bg/bliss.jpg");
+  background-image: url("../medias/bg/Ascent.jpg");
   background-size: cover;
   background-attachment: fixed;
   overflow-x: hidden;
@@ -70,7 +70,7 @@ footer ul li:before {
 
 .warning {
   background-color: var(--warning);
-  color: var(--text-light);
+  color: var(--text-dark);
 }
 
 .ok {
@@ -172,5 +172,5 @@ aerial-banner ul li {
 /* per window styling */
 
 taskbar .start-menu {
-  background-image: url("../medias/bg/bliss.jpg");
+  background-image: url("../medias/bg/Ascent.jpg");
 }
