@@ -1,9 +1,5 @@
-visitor counter
-music
-  what music?
-    atmospheric, dnb
-more interesting page title
-  js
+
 neko web button: <a href="https://nekoweb.org/"><img src="https://nekoweb.org/assets/buttons/button3.gif"></a><!-- button by exund -->
-paint
 https://win98icons.alexmeub.com/
+https://atabook.org/control/messages
+https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Visualizations_with_Web_Audio_API
