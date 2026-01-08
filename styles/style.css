@@ -106,6 +106,13 @@ ul {
   list-style-type: square;
 }
 
+#visitor-span {
+  vertical-align: -5px;
+}
+
+#visitor-span img {
+}
+
 /* Updates */
 
 #updates ul {
