@@ -31,16 +31,16 @@
     </aerial-banner>
 
     <main>
-      <window-group id="info">
-        <window status="opened" id="welcome" name="Welcome">
-          <h2>Hello!</h2>
-          <h3>Welcome to my site!</h3>
-          <p>
-            This is just a simple site for me to establish some sort of presence
-            on the web and hopefully share some cool things
-          </p>
-        </window>
+      <window status="opened" id="welcome" name="Welcome">
+        <h2>Hello!</h2>
+        <h3>Welcome to my site!</h3>
+        <p>
+          This is just a simple site for me to establish some sort of presence
+          on the web and hopefully share some cool things
+        </p>
+      </window>
 
+      <window-group id="info">
         <window status="opened" id="controls" name="Read Me">
           <h2>Controls</h2>
 
@@ -145,62 +145,13 @@
         </window>
       </window-group>
 
+      <window status="opened" id="updates" name="Updates">
+        <h2>Updates</h2>
+
+        <ul class="border" id="update-list"></ul>
+      </window>
+
       <window-group id="site">
-        <window status="opened" id="updates" name="Updates">
-          <h2>Updates</h2>
-
-          <ul class="border" id="update-list"></ul>
-        </window>
-
-        <window status="opened" id="to-do" name="To Do">
-          <h2>To Do</h2>
-          <div>
-            <h3>Top Priority</h3>
-
-            <ul title="This is the stuff I'll do">
-              <li>Add images and floating windows</li>
-              <li>Resources section with tools, references, and inspiration</li>
-              <li>Guest Book</li>
-              <li>visitor Counter</li>
-            </ul>
-          </div>
-
-          <div>
-            <h3>Low Priority</h3>
-
-            <ul title="This is the stuff I'll say I'll do">
-              <li>Add per window styling</li>
-              <li>Make a calendar open when hovering over the time</li>
-              <li>
-                Let the user edit the text in the welcome so that they can put
-                their own name
-              </li>
-              <li>Add music and sound, with audio bars</li>
-              <li>Add SplashScreen</li>
-              <li>Address Mobile</li>
-              <li>Add WallPaper Changer</li>
-              <li>Secrets</li>
-              <li>Make windows moveable and resizable</li>
-              <li>Clean up taskbar code</li>
-              <li>Custom Cursor</li>
-              <li>Animations</li>
-              <li>Better Header</li>
-              <li>Paint</li>
-              <li>Make library documentation better</li>
-              <li>Make library better</li>
-            </ul>
-          </div>
-
-          <div>
-            <h3>Widgets</h3>
-            <p>Widgets I've seen others have and want to add to this</p>
-            <ul>
-              <li>Lastfm</li>
-              <li>Calendar</li>
-            </ul>
-          </div>
-        </window>
-
         <window status="opened" id="status" name="Status">
           <h2>Status</h2>
           <div>
@@ -213,10 +164,71 @@
             <div class="ok border">OK</div>
           </div>
         </window>
+
+        <window status="opened" id="todo" name="To Do">
+          <h2>To Do</h2>
+          <div class="" id="todo-div">
+            <div>
+              <h3>Top Priority</h3>
+
+              <ul title="This is the stuff I'll do">
+                <li>Add images and floating windows</li>
+                <li>
+                  Resources section with tools, references, and inspiration
+                </li>
+                <li>visitor Counter</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3>Low Priority</h3>
+
+              <ul title="This is the stuff I'll say I'll do">
+                <li>Add per window styling</li>
+                <li>Make a calendar open when hovering over the time</li>
+                <li>
+                  Let the user edit the text in the welcome so that they can put
+                  their own name
+                </li>
+                <li>Add music and sound, with audio bars</li>
+                <li>Add SplashScreen</li>
+                <li>Address Mobile</li>
+                <li>Add WallPaper Changer</li>
+                <li>Secrets</li>
+                <li>Make windows moveable and resizable</li>
+                <li>Clean up taskbar code</li>
+                <li>Custom Cursor</li>
+                <li>Animations</li>
+                <li>Better Header</li>
+                <li>Paint</li>
+                <li>Make library documentation better</li>
+                <li>Make library better</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3>Widgets</h3>
+              <p>Widgets I've seen others have and want to add to this</p>
+              <ul>
+                <li>Lastfm</li>
+                <li>Calendar</li>
+              </ul>
+            </div>
+          </div>
+        </window>
       </window-group>
 
       <window-group id="stuff">
         <!-- Fill with widgets and other cool stuff -->
+        <window status="open" id="guestbook" name="Guest Book">
+          <h2>Sign My Guestbook</h2>
+          <iframe
+            src="https://katzmotel.atabook.org/"
+            width="100%"
+            height="90%"
+            class="border"
+          ></iframe>
+        </window>
       </window-group>
 
       <taskbar>

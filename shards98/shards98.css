@@ -30,7 +30,7 @@ window-static {
   border-bottom: 5px solid var(--window-border-dark);
   padding: 1rem;
   display: block;
-  margin: 1.5rem;
+  /* margin: 1.5rem; */
   position: relative;
   color: var(--text);
 }

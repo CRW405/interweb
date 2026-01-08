@@ -92,6 +92,16 @@ hr {
 
 /* Windows */
 
+window {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+
+window {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 ul {
   list-style-type: square;
 }
@@ -100,7 +110,7 @@ ul {
 
 #updates ul {
   list-style-type: none;
-  height: 500px;
+  height: 300px;
   overflow-y: scroll;
 }
 
@@ -137,6 +147,28 @@ ul {
 
 .update-deletions {
   color: var(--danger);
+}
+
+#status {
+  flex-grow: 2;
+}
+
+#todo {
+  flex-grow: 3;
+}
+
+/* window groups */
+
+#info {
+  flex-direction: row;
+}
+
+#site {
+  flex-direction: row;
+}
+
+#guestbook {
+  min-height: 750px;
 }
 
 /* blink */
@@ -185,4 +217,8 @@ taskbar .start-menu {
 
 .cursors-root {
   border-radius: 0px;
+}
+
+/* cat */
+#layerNeko0 {
 }
