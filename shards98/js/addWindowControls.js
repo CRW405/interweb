@@ -20,10 +20,38 @@ function addWindowControls() {
             let button = event.currentTarget;
             let windowElement = button.parentElement.parentElement;
             if (windowElement.getAttribute("status") === "maximized") {
+              if (windowElement.hasAttribute("floating")) {
+                windowElement.style.position = "absolute";
+                // Restore saved position
+                if (windowElement.dataset.savedTop) {
+                  windowElement.style.top = windowElement.dataset.savedTop;
+                  windowElement.style.left = windowElement.dataset.savedLeft;
+                  windowElement.style.width = windowElement.dataset.savedWidth;
+                  windowElement.style.height =
+                    windowElement.dataset.savedHeight;
+                }
+              }
               windowElement.setAttribute("status", "opened");
               windowElement.classList.remove("maximized");
               button.innerHTML = "◻";
             } else {
+              if (windowElement.hasAttribute("floating")) {
+                // Save current position before maximizing (use computed styles)
+                const computed = getComputedStyle(windowElement);
+                windowElement.dataset.savedTop =
+                  windowElement.style.top || computed.top;
+                windowElement.dataset.savedLeft =
+                  windowElement.style.left || computed.left;
+                windowElement.dataset.savedWidth =
+                  windowElement.style.width || computed.width;
+                windowElement.dataset.savedHeight =
+                  windowElement.style.height || computed.height;
+                windowElement.style.top = "0";
+                windowElement.style.left = "0";
+                windowElement.style.width = "100%";
+                windowElement.style.height = "100%";
+                windowElement.style.position = "fixed";
+              }
               windowElement.setAttribute("status", "maximized");
               windowElement.classList.add("maximized");
               button.innerHTML = '<span class="maximized-icon">⧉</span>';

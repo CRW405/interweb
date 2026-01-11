@@ -178,6 +178,47 @@ ul {
   min-height: 750px;
 }
 
+#welcome-group {
+  margin-bottom: 3rem;
+}
+
+#welcome {
+  padding-bottom: 100px;
+}
+
+#hello-img-window {
+  position: absolute;
+  left: -200px;
+  bottom: -60px;
+  margin: 0;
+}
+
+#hello-img-window img {
+  width: 200px;
+}
+
+#katz-img-window {
+  position: absolute;
+  bottom: 25px;
+  right: -100px;
+  padding: 0;
+}
+
+#katz-img-window img {
+  width: 250px;
+}
+
+#light-img-window {
+  position: absolute;
+  right: -70px;
+  top: 50px;
+  padding: 0;
+}
+
+#light-img-window img {
+  width: 250px;
+}
+
 /* blink */
 
 .blink {

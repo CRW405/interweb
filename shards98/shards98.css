@@ -35,6 +35,10 @@ window-static {
   color: var(--text);
 }
 
+window[floating] {
+  z-index: 11;
+}
+
 window a {
   color: var(--link);
 }
@@ -46,6 +50,7 @@ window a:hover {
 window-group {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 /* window controls */

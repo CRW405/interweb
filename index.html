@@ -31,24 +31,30 @@
     </aerial-banner>
 
     <main>
-      <window status="opened" id="welcome" name="Welcome">
-        <h2>Hello!</h2>
-        <h3>Welcome to my site!</h3>
-        <p>
-          This is just a simple site for me to establish some sort of presence
-          on the web and hopefully share some cool things
-        </p>
+      <window-group id="welcome-group">
+        <window status="opened" id="welcome" name="Welcome">
+          <h2>Hello!</h2>
+          <h3>Welcome to my site!</h3>
+          <p>
+            This is just a simple site for me to establish some sort of presence
+            on the web and hopefully share some cool things
+          </p>
 
-        <p>
-          You are the
-          <span id="visitor-span">
-            <img
-              src="https://hitscounter.dev/api/hit?url=https%3A%2F%2Fkatzmo.tel%2F&label=&color=%23add8e6&message=&style=flat-square"
-            />
-          </span>
-          th visitor
-        </p>
-      </window>
+          <p>
+            You are the
+            <span id="visitor-span" title="of the day / of all time">
+              <img
+                src="https://hitscounter.dev/api/hit?url=https%3A%2F%2Fkatzmo.tel%2F&label=&color=%23add8e6&message=&style=flat-square"
+              />
+            </span>
+            visitor
+          </p>
+        </window>
+
+        <window status="opened" id="hello-img-window" name="Hello.gif" floating>
+          <img src="./medias/images/wave.gif" alt="wave.gif" />
+        </window>
+      </window-group>
 
       <window-group id="info">
         <window status="opened" id="controls" name="Read Me">
@@ -153,6 +159,10 @@
             </p>
           </div>
         </window>
+
+        <window status="opened" id="katz-img-window" name="Katz.png" floating>
+          <img src="./medias/images/profile.png" alt="katz.png" />
+        </window>
       </window-group>
 
       <window status="opened" id="updates" name="Updates">
@@ -225,6 +235,10 @@
               </ul>
             </div>
           </div>
+        </window>
+
+        <window status="open" id="light-img-window" name="Idea.gif" floating>
+          <img src="./medias/images/lightbulb.gif" alt="idea.gif" />
         </window>
       </window-group>
 
