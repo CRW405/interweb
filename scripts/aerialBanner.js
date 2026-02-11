@@ -10,15 +10,12 @@ anydamnbrowser.gif
 bestused.png                 
 bestview.gif                 
 bestviewed.gif               
-chrmevil.gif                 
 debian.gif                   
 dontfeedai.gif               
 eos.gif                      
-fuckadobe.gif                
 getacomputer.jpg             
 iexplorer.gif                
 isurvived.gif                
-jesus.gif                    
 mouse.gif                    
 neko scape.gif             
 neocities.png                
