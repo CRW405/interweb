@@ -1,4 +1,7 @@
 :root {
+  --titlebar-height: 25px;
+  --taskbar-height: 2rem;
+
   --window-border-light: #add8e6;
   --window-border-dark: #7777ea;
   --window-background: #ffffff;
@@ -8,6 +11,7 @@
   --interactive-border-light: #eeeeee;
   --interactive-border-dark: #a0a0a0;
   --interactive-select: #dddddd;
+  --interactive-border-select: var(--interactive-select);
 
   --text: #555555;
   --text-light: #ffffff;
@@ -25,7 +29,7 @@ window,
 window-static {
   background-color: var(--window-background);
   border: 5px solid var(--window-border-light);
-  border-top: 25px solid var(--window-border-light);
+  border-top: var(--titlebar-height) solid var(--window-border-light);
   border-right: 5px solid var(--window-border-dark);
   border-bottom: 5px solid var(--window-border-dark);
   padding: 1rem;
@@ -57,7 +61,7 @@ window-group {
 
 window-controls {
   position: absolute;
-  top: -23.5px;
+  top: calc(-1 * var(--titlebar-height) + 1.5px);
   right: 0;
   display: flex;
   gap: 0.25rem;
@@ -96,7 +100,7 @@ window-controls button:hover {
 
 window-title {
   position: absolute;
-  top: -23.5px;
+  top: calc(-1 * var(--titlebar-height) + 1.5px);
   left: 0;
   width: 100%;
   background: linear-gradient(
@@ -110,15 +114,20 @@ window-title {
 /* maximized window */
 
 window.maximized {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  position: fixed !important;
+  top: calc(var(--titlebar-height) - 1.5px) !important;
+  left: 0 !important;
+  right: auto !important;
+  bottom: auto !important;
+  width: 100dvw !important;
+  height: calc(100dvh - var(--taskbar-height) - (var(--titlebar-height) - 1.5px)) !important;
   margin: 0;
   border-radius: 0;
   box-sizing: border-box;
   z-index: 1000;
+  max-width: none;
+  overflow: visible;
+  transform: none;
 }
 
 /* taskbar */
@@ -129,37 +138,39 @@ taskbar {
   left: 0;
   width: 100%;
   display: flex;
-  height: 2rem;
+  height: calc(var(--taskbar-height) + env(safe-area-inset-bottom, 0px));
+  padding-bottom: env(safe-area-inset-bottom, 0px);
   background-color: var(--interactive-background-light);
-  align-items: center;
+  align-items: stretch;
   z-index: 1001;
-  overflow-x: scroll;
-  overflow-y: hidden;
+  overflow: hidden;
 }
 
 taskbar .tasks {
   list-style-type: none;
   margin: 0;
-  padding: 0;
+  padding: 0 0.25rem;
   display: flex;
-  height: 100%;
-  gap: 0.25rem;
-  align-items: center;
-  min-width: max-content;
-  padding-right: 4rem;
-  padding-left: 2.5rem;
+  height: var(--taskbar-height);
+  gap: 0.2rem;
+  align-items: stretch;
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 taskbar ul li {
   margin: 0;
-  padding: 0;
   display: flex;
-  height: 90%;
+  height: 100%;
   border: 1px solid var(--interactive-border-light);
   border-right: 2px solid var(--interactive-border-dark);
   border-bottom: 2px solid var(--interactive-border-dark);
   align-items: center;
   padding: 0 0.5rem;
+  line-height: 1;
+  white-space: nowrap;
 }
 
 taskbar ul li:hover {
@@ -182,28 +193,24 @@ taskbar ul li .close-btn:hover {
 taskbar .icon {
   margin: 0;
   padding: 0;
-  height: 100%;
-  position: fixed;
-  bottom: 0;
-  left: 0;
+  position: static;
+  display: block;
+  flex: 0 0 2rem;
   width: 2rem;
-  height: 2rem;
+  height: var(--taskbar-height);
   z-index: 1002;
 }
 
 taskbar .time {
-  justify-self: flex-end;
-  margin-left: auto;
+  margin-left: 0;
   border-left: 1px solid var(--interactive-border-dark);
-  height: 100%;
+  height: var(--taskbar-height);
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 4rem;
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  height: 2rem;
+  width: 4.5rem;
+  flex: 0 0 4.5rem;
+  position: static;
   background-color: var(--interactive-background-light);
   z-index: 1002;
 }
@@ -211,7 +218,8 @@ taskbar .time {
 taskbar .start-menu {
   display: none;
   position: fixed;
-  bottom: 2rem;
+  bottom: calc(var(--taskbar-height) + env(safe-area-inset-bottom, 0px));
+  left: 0;
   background-color: var(--interactive-background-dark);
   border: 1px solid var(--interactive-border-light);
   height: 150px;
