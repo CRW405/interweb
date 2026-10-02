@@ -1,102 +1,84 @@
 # shards98
 
-CSS and JS style library inspired by [98.css](https://jdan.github.io/98.css)
+CSS and JavaScript window controls inspired by Windows 98.
 
 ## Installation
-### Via CDN (no installation required, recommended)
-
-Include directly in your HTML:
 
 ```html
-<!-- CSS -->
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/shards98@1.0.8/shards98.css"
+  href="https://cdn.jsdelivr.net/npm/shards98@1.1.0/shards98.css"
 />
-
-<!-- JavaScript -->
-<script type="module">
-  import {
-    addWindowControls,
-    addWindowTitles,
-    populateTaskBar,
-  } from "https://cdn.jsdelivr.net/npm/shards98@1.0.8/js/index.js";
-
-  // Your code here
-</script>
+<script type="module" src="./shards98/js/shards98.js"></script>
 ```
 
-**Alternative CDN (unpkg):**
+The module automatically enhances existing `window`, `window-group`, and
+`taskbar` elements. A taskbar is optional.
+
+## Windows
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/shards98@1.0.0/shards98.css" />
-<script
-  type="module"
-  src="https://unpkg.com/shards98@1.0.0/js/index.js"
-></script>
-```
-
-### Via npm
-
-I don't recommend this but you can do it if you want
-
-```bash
-npm install shards98
-```
-
-Then import in your project:
-
-```javascript
-import "shards98/shards98.css";
-import { addWindowControls, addWindowTitles, populateTaskBar } from "shards98";
-```
-## Usage
-
-Until I change it, the taskbar is required
-
-Add this to your html:
-```HTML
-<!-- how to make a window -->
-<window status="{opened|closed|minimized|maximized}" name="{name goes here}">
-  <!-- Content inside of the body of the window. Full HTML works here -->
+<window status="opened" name="Welcome">
+  <h1>Hello</h1>
 </window>
-
-<!-- How to make the taskbar -->
-<taskbar>
-  <img src="./link/to/icon/file" alt="description of icon" class="icon" />
-
-  <div class="start-menu">
-    <h2>Start</h2>
-    <ul class="start-list">
-      <!-- populated via js. <window> tags with the status of "closed" will appear here but nowhere else until launched. -->
-    </ul>
-  </div>
-
-  <ul class="tasks">
-    <!-- populated via js -->
-  </ul>
-
-<!-- time will update via js -->
-  <div class="time">12:00 PM</div>
-</taskbar>
 ```
 
-## Styling
-Most of the style will come in using the CDN import. Add additional using the template below:
+Windows can be dragged from their title bar and resized from any edge or
+corner. Dragging a grouped window out of its group preserves the group’s
+layout; the dock control returns it to its original group position and size.
+The default controls support minimizing, maximizing, restoring, and closing.
 
-```CSS
-taskbar .start-menu {
-  /* set your start menu's background here */
-}
+## Creating windows
 
-window-title {
-  /* for custom window titles*/
-}
+`CreateWindow` creates and enhances a window without inserting it into the
+document. This lets the caller choose its parent:
 
-window-controls {
-  /* for custom window controls */
-}
-window-controls button {
-  /* for custom window control buttons */
-}
+```js
+import { CreateWindow } from "./shards98/js/shards98.js";
+
+const welcome = CreateWindow("<h1>Hello</h1>", {
+  draggable: true,
+  resizable: true,
+});
+welcome.setTitle("Dynamic window");
+document.querySelector("main").append(welcome.element);
+```
+
+Available window options are `draggable`, `resizable`, `controls`, `title`,
+`minimize`, `maximize`, and `close`.
+
+## Manual initialization
+
+Automatic initialization can be supplemented or replaced in an application
+that controls when its markup is ready:
+
+```js
+import { initialize } from "./shards98/js/shards98.js";
+
+const manager = initialize(document, { resizable: false });
+```
+
+The manager exposes `windows`, `groups`, and the optional `taskbar`. Individual
+windows expose `open()`, `minimize()`, `close()`, `toggleMaximize()`,
+`restore()`, `setTitle()`, and `setOption()`.
+
+## Source layout
+
+The JavaScript entrypoint is `js/shards98.js`. Its implementation is split into
+`window.js`, `taskbar.js`, `groups.js`, `manager.js`, and `config.js`, so each
+part of the library can be maintained independently while consumers keep
+using the single entrypoint.
+
+## Taskbar markup
+
+```html
+<taskbar>
+  <button class="icon" type="button" aria-label="Start"></button>
+  <div class="start-menu" hidden>
+    <h2>Start</h2>
+    <ul class="start-list"></ul>
+  </div>
+  <ul class="tasks"></ul>
+  <div class="time"></div>
+</taskbar>
 ```

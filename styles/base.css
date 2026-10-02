@@ -1,0 +1,124 @@
+:root {
+	--shards98-titlebar-height: 25px;
+	--shards98-taskbar-height: 2rem;
+	--window-border-light: #add8e6;
+	--window-border-dark: #7777ea;
+	--window-background: #ffffff;
+	--interactive-background-light: #e0e0e0;
+	--interactive-background-dark: #c0c0c0;
+	--interactive-border-light: #eeeeee;
+	--interactive-border-dark: #a0a0a0;
+	--interactive-select: #dddddd;
+	--interactive-border-select: var(--interactive-select);
+	--text: #555555;
+	--text-light: #ffffff;
+	--link: #0000ee;
+	--link-hover: #33008b;
+	--danger: #ff4c4c;
+	--warning: #ffcc00;
+	--ok: #4caf50;
+}
+
+@font-face {
+	font-family: "w95";
+	src: url("../font/W95FA.otf") format("opentype");
+}
+
+* {
+	box-sizing: border-box;
+	font-family: "w95", sans-serif;
+	cursor: url("../cursor/arrow.cur"), default;
+}
+
+a,
+a * {
+	cursor: url("../cursor/Cursor_15.cur"), pointer;
+}
+
+a:hover,
+a:hover * {
+	cursor: url("../cursor/Cursor_15.cur"), pointer;
+}
+
+html {
+	background-color: black;
+	overflow-x: hidden;
+}
+
+body {
+	margin: 0;
+	min-height: 100dvh;
+	position: relative;
+	overflow-x: hidden;
+	background: transparent;
+}
+
+body::before {
+	content: "";
+	position: fixed;
+	inset: 0;
+	background: black url("../medias/bg/Ascent.jpg") center / cover no-repeat;
+	z-index: -1;
+	pointer-events: none;
+}
+
+main {
+	width: min(1250px, 100%);
+	padding: 0 clamp(0.75rem, 5vw, 5rem)
+		calc(2.5rem + env(safe-area-inset-bottom, 0px));
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+}
+
+header,
+footer {
+	width: min(1250px, 100%);
+	margin: auto;
+	text-align: center;
+}
+
+footer {
+	margin-bottom: 5rem;
+}
+
+footer ul {
+	list-style: none;
+	padding: 0;
+}
+
+footer ul li {
+	display: inline;
+	margin: 0 10px;
+}
+
+footer ul li::before,
+footer ul li::after {
+	content: "|";
+}
+
+hr {
+	border-color: var(--interactive-border-light);
+	margin: 2rem 0;
+}
+
+.danger {
+	background-color: var(--danger);
+	color: var(--text-light);
+}
+
+.warning {
+	background-color: var(--warning);
+	color: var(--text-dark);
+}
+
+.ok {
+	background-color: var(--ok);
+	color: var(--text-light);
+}
+
+.border {
+	border: 2px inset var(--interactive-border-light);
+	padding: 0.25rem;
+	margin: 0.25rem;
+}

@@ -19,9 +19,11 @@
 		</h1>
 
 		<header>
-			<window status="opened" id="header-window" name="Welcome, User!">
-				<h1>Welcome, User!</h1>
-			</window>
+			<window-group id="header-group">
+				<window status="opened" id="header-window" name="Welcome, User!">
+					<h1>Welcome, User!</h1>
+				</window>
+			</window-group>
 		</header>
 
 		<aerial-banner>
@@ -63,30 +65,43 @@
 					<div>
 						<h3>Windows and Taskbar</h3>
 						<p>
-							If you dont want to look at a window then just click on the little
-							"_" or "X" to get rid of it
+							Drag a window by its title bar to move it. Click a window to bring
+							it in front of the others.
 						</p>
 						<p>
-							If you decide you actually did want that window then just find it
-							on the taskbar below. If you clicked the "X" then open the start
-							menu by clicking on the icon on the bottom left
+							Drag a window edge or corner to resize it. Windows inside a group
+							cannot be resized until they are dragged out.
 						</p>
 						<p>
-							The "◻" button toggles the window between maximized and normal
+							Use "_" to minimize a window and "X" to close it. Minimized
+							windows can be restored from the taskbar, while closed windows are
+							available through the Start menu.
+						</p>
+						<p>
+							The maximize button fills the available screen space. The restore
+							button returns the window to its previous position and size.
+						</p>
+						<p>
+							When a grouped window is dragged out, use the dock button to
+							return it to its original group position and size. Middle-click a
+							taskbar window to close it.
 						</p>
 
-						<h4>Clock</h4>
+						<h4>Clock and Calendar</h4>
 						<p>
-							If you click the clock in the taskbar you can toggle between AM/PM
-							format and 24 hour format
+							Hover over the taskbar clock to open the calendar. Use its arrow
+							buttons to view other months. Click the clock to toggle between
+							AM/PM and 24-hour time.
 						</p>
 
 						<p>
-							If the time on the clock is incorrect than it may be due to your
-							browser's privacy settings
+							If the time is incorrect, it may be due to your browser's privacy
+							settings.
 						</p>
 
-						<a href="https://github.com/CRW405/interweb/tree/main/shards98"
+						<a
+							target="_blank"
+							href="https://github.com/CRW405/interweb/tree/main/shards98"
 							><h3>Want to make your site look like this?</h3></a
 						>
 
@@ -103,7 +118,9 @@
 						<h3>Cat</h3>
 						<p>Click on the cat in the corner to wake it up</p>
 
-						<a href="https://webneko.net/">Add a cat to your site</a>
+						<a target="_blank" href="https://webneko.net/"
+							>Add a cat to your site</a
+						>
 
 						<hr />
 
@@ -113,7 +130,7 @@
 							visitors to my site, if you press "t" then you can talk to them
 						</p>
 
-						<a href="https://github.com/armincerf/cursor-party"
+						<a target="_blank" href="https://github.com/armincerf/cursor-party"
 							>Add Cursor party to your site</a
 						>
 					</div>
@@ -146,7 +163,7 @@
 							I like making things and I like learning things so I became a
 							programmer.
 						</p>
-						<a href="https://github.com/CRW405">
+						<a target="_blank" href="https://github.com/CRW405">
 							<h4>See what I've done</h4>
 						</a>
 					</div>
@@ -182,12 +199,12 @@
 					<h2>Status</h2>
 					<div>
 						<h3>This Website</h3>
-						<div class="ok border">Fixed some bugs</div>
+						<div class="ok border">Updated, Yippe</div>
 					</div>
 
 					<div>
 						<h3>The WebMaster</h3>
-						<div class="ok border">Vim-Pilled and Motion-Maxxing</div>
+						<div class="warning border">Been better</div>
 					</div>
 				</window>
 
@@ -198,10 +215,6 @@
 							<h3>Top Priority</h3>
 
 							<ul title="This is the stuff I'll do">
-								<li>Fix the mobile sizing and alignment problems</li>
-								<li>Make windows moveable and resizable</li>
-								<li>Custom Cursor</li>
-								<li>Animations</li>
 								<li>Add per window styling</li>
 								<li>Add music and sound, with audio bars</li>
 							</ul>
@@ -211,11 +224,6 @@
 							<h3>Low Priority</h3>
 
 							<ul title="This is the stuff I'll say I'll do">
-								<li>Make a calendar open when hovering over the time</li>
-								<li>
-									Let the user edit the text in the welcome so that they can put
-									their own name
-								</li>
 								<li>Add SplashScreen</li>
 								<li>Add WallPaper Changer</li>
 								<li>Secrets</li>
@@ -244,6 +252,11 @@
 				<!-- Fill with widgets and other cool stuff -->
 				<window status="open" id="guestbook" name="Guest Book">
 					<h2>Sign My Guestbook</h2>
+					<h3>
+						<a target="_blank" href="https://katzmotel.atabook.org/"
+							>Iframe Not Working?</a
+						>
+					</h3>
 					<iframe
 						src="https://katzmotel.atabook.org/"
 						width="100%"
@@ -256,7 +269,7 @@
 			<taskbar>
 				<img src="./medias/images/smiley.png" alt="OS" class="icon" />
 
-				<div class="start-menu">
+				<div class="start-menu" hidden>
 					<h2>Start</h2>
 					<ul class="start-list">
 						<!-- closed windows go here -->
@@ -276,10 +289,13 @@
 				<h3>Thanks for visiting!</h3>
 				<ul>
 					<li>
-						<a href="https://github.com/CRW405">Github</a>
+						<a target="_blank" href="https://github.com/CRW405">Github</a>
 					</li>
 					<li>
-						<a href="https://github.com/CRW405/interweb/tree/main/shards98">
+						<a
+							target="_blank"
+							href="https://github.com/CRW405/interweb/tree/main/shards98"
+						>
 							Shards98 Library
 						</a>
 					</li>
@@ -294,14 +310,7 @@
 
 		<!-- window -->
 
-		<script
-			src="./shards98/js/addWindowControls.js"
-			defer
-			type="module"
-		></script>
-		<script src="./shards98/js/addWindowTitles.js" defer type="module"></script>
-		<script src="./shards98/js/populateTaskBar.js" defer type="module"></script>
-		<script src="./shards98/js/taskbarTime.js" defer type="module"></script>
+		<script src="./shards98/js/shards98.js" defer type="module"></script>
 		<script src="./scripts/getUpdates.js" defer type="module"></script>
 		<script src="./scripts/aerialBanner.js"></script>
 		<script src="./scripts/visitCounter.js"></script>

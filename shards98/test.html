@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Shards98 Test Page</title>
+		<link rel="stylesheet" href="./shards98.css" />
+		<style>
+			body {
+				margin: 0;
+				padding: 2rem 2rem 5rem;
+				background: #d8e8f0;
+				font-family: sans-serif;
+			}
+
+			main {
+				display: grid;
+				gap: 1rem;
+				max-width: 900px;
+				margin: 0 auto;
+			}
+
+			.actions {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.5rem;
+			}
+
+			.actions button {
+				padding: 0.5rem 0.75rem;
+			}
+
+			.preview-image {
+				display: block;
+				width: min(100%, 240px);
+				height: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<window-group id="examples">
+				<window status="opened" name="Welcome">
+					<h1>Welcome to Shards98</h1>
+					<p>
+						This page demonstrates the default window, group, taskbar, and
+						dynamic window behavior.
+					</p>
+				</window>
+
+				<window status="opened" name="Controls">
+					<h2>Try the controls</h2>
+					<ul>
+						<li>Drag the title bar to move this window.</li>
+						<li>Drag an edge or corner to resize it.</li>
+						<li>Use the taskbar to minimize, restore, or close it.</li>
+					</ul>
+				</window>
+			</window-group>
+
+			<window status="opened" name="Standalone Window" floating>
+				<h2>Standalone window</h2>
+				<p>This window is not part of a window group.</p>
+				<div class="actions">
+					<button id="create-window" type="button">Create a dynamic window</button>
+				</div>
+			</window>
+		</main>
+
+		<taskbar>
+			<button class="icon" type="button" aria-label="Open start menu">Start</button>
+			<div class="start-menu" hidden>
+				<h2>Start</h2>
+				<ul class="start-list"></ul>
+			</div>
+			<ul class="tasks"></ul>
+			<div class="time"></div>
+		</taskbar>
+
+		<script type="module">
+			import { CreateWindow } from "./js/shards98.js";
+
+			document.querySelector("#create-window").addEventListener("click", () => {
+				const dynamicWindow = CreateWindow(
+					"<h2>Dynamic window</h2><p>This window was created with CreateWindow.</p>",
+				);
+				dynamicWindow.setTitle("Dynamic Window");
+				document.querySelector("main").append(dynamicWindow.element);
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,101 @@
+window {
+	background-color: var(--window-background);
+	border: 5px solid var(--window-border-light);
+	border-top: calc(var(--shards98-titlebar-height) + 5px) solid var(--window-border-light);
+	padding: 1rem;
+	color: var(--text);
+	overflow: visible;
+	margin: 1rem 0.25rem;
+}
+
+window > .window-content {
+	width: 100%;
+	height: auto;
+	max-width: 100%;
+}
+
+window[floating] {
+	z-index: 10;
+}
+
+window a {
+	color: var(--link);
+}
+
+window a:hover {
+	color: var(--link-hover);
+}
+
+window-controls {
+	gap: 0.15rem;
+}
+
+window-controls button {
+	width: var(--shards98-titlebar-height);
+	height: var(--shards98-titlebar-height);
+	background-color: var(--interactive-background-light);
+	border: 1px solid var(--interactive-border-light);
+	border-right: 2px solid var(--interactive-border-dark);
+	border-bottom: 2px solid var(--interactive-border-dark);
+	padding: 0;
+	margin: 0;
+	font-weight: bold;
+}
+
+window-controls button:hover {
+	background-color: var(--interactive-background-dark);
+	border-color: var(--interactive-border-dark);
+	border-right-color: var(--interactive-border-select);
+	border-bottom-color: var(--interactive-border-select);
+}
+
+window-controls .minimize,
+window-controls .close {
+	font-size: 1rem;
+	line-height: 1;
+}
+
+window-title {
+	padding: 0 0.35rem;
+	line-height: var(--shards98-titlebar-height);
+	cursor: url("../cursor/Cursor_10.cur"), move;
+	background: linear-gradient(to left, var(--window-border-light), var(--window-border-dark));
+	color: var(--text-light);
+}
+
+window-title:active,
+window-title.is-dragging {
+	cursor: url("../cursor/Cursor_10.cur"), move;
+}
+
+window input,
+window textarea,
+window [contenteditable="true"] {
+	cursor: url("../cursor/Beam.cur"), text;
+}
+
+window.maximized {
+	top: calc(var(--shards98-titlebar-height) - 1.5px) !important;
+	height: calc(100dvh - var(--shards98-taskbar-height) - (var(--shards98-titlebar-height) - 1.5px)) !important;
+	border-radius: 0;
+}
+
+.resize-n,
+.resize-s {
+	cursor: url("../cursor/Cursor_9.cur"), ns-resize;
+}
+
+.resize-e,
+.resize-w {
+	cursor: url("../cursor/Cursor_8.cur"), ew-resize;
+}
+
+.resize-se,
+.resize-nw {
+	cursor: url("../cursor/Cursor_6.cur"), nwse-resize;
+}
+
+.resize-sw,
+.resize-ne {
+	cursor: url("../cursor/Cursor_7.cur"), nesw-resize;
+}

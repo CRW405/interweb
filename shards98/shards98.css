@@ -1,54 +1,20 @@
 :root {
-	--titlebar-height: 25px;
-	--taskbar-height: 2rem;
-
-	--window-border-light: #add8e6;
-	--window-border-dark: #7777ea;
-	--window-background: #ffffff;
-
-	--interactive-background-light: #e0e0e0;
-	--interactive-background-dark: #c0c0c0;
-	--interactive-border-light: #eeeeee;
-	--interactive-border-dark: #a0a0a0;
-	--interactive-select: #dddddd;
-	--interactive-border-select: var(--interactive-select);
-
-	--text: #555555;
-	--text-light: #ffffff;
-	--link: #0000ee;
-	--link-hover: #33008b;
-
-	--danger: #ff4c4c;
-	--warning: #ffcc00;
-	--ok: #4caf50;
+	--shards98-titlebar-height: 1.75rem;
+	--shards98-taskbar-height: 2rem;
 }
-
-/* windows */
 
 window,
 window-static {
-	background-color: var(--window-background);
-	border: 5px solid var(--window-border-light);
-	border-top: var(--titlebar-height) solid var(--window-border-light);
-	border-right: 5px solid var(--window-border-dark);
-	border-bottom: 5px solid var(--window-border-dark);
-	padding: 1rem;
 	display: block;
-	/* margin: 1.5rem; */
 	position: relative;
-	color: var(--text);
+	box-sizing: border-box;
+	min-width: 160px;
+	min-height: 80px;
+	background-color: white;
 }
 
-window[floating] {
-	z-index: 10;
-}
-
-window a {
-	color: var(--link);
-}
-
-window a:hover {
-	color: var(--link-hover);
+window[hidden] {
+	display: none !important;
 }
 
 window-group {
@@ -57,190 +23,251 @@ window-group {
 	position: relative;
 }
 
-/* window controls */
+.window-placeholder {
+	display: block;
+	flex: 0 0 auto;
+	visibility: hidden;
+}
 
 window-controls {
 	position: absolute;
-	top: calc(-1 * var(--titlebar-height) + 1.5px);
+	top: calc(-1 * var(--shards98-titlebar-height));
 	right: 0;
 	display: flex;
-	gap: 0.25rem;
 	z-index: 10;
 }
 
 window-controls button {
-	background: none;
-	width: 21.5px;
-	height: 21.5px;
-	background-color: var(--interactive-background-light);
-	border: 1px solid var(--interactive-border-light);
-	border-right: 2px solid var(--interactive-border-dark);
-	border-bottom: 2px solid var(--interactive-border-dark);
-	padding: 0;
-	margin: 0;
-	font-weight: bold;
+	display: grid;
+	place-items: center;
+	cursor: pointer;
 }
 
-window-controls button:hover {
-	background-color: var(--interactive-background-dark);
-	border-color: var(--interactive-border-dark);
-	border-right: 2px solid var(--interactive-border-select);
-	border-bottom: 2px solid var(--interactive-border-select);
+window-controls svg,
+taskbar .close-btn svg {
+	width: 0.8rem;
+	height: 0.8rem;
+	pointer-events: none;
 }
 
-.maximized-icon {
-	font-size: 20px;
-	vertical-align: middle;
-	position: relative;
-	top: -2px;
-	font-weight: lighter;
+window-controls .dock {
+	display: none;
 }
 
-/* Window title */
+window-controls .dock:not([hidden]) {
+	display: grid;
+}
 
 window-title {
 	position: absolute;
-	top: calc(-1 * var(--titlebar-height) + 1.5px);
+	top: calc(-1 * var(--shards98-titlebar-height));
 	left: 0;
 	width: 100%;
-	background: linear-gradient(
-		to left,
-		var(--window-border-light),
-		var(--window-border-dark)
-	);
-	color: white;
+	height: var(--shards98-titlebar-height);
+	box-sizing: border-box;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	cursor: grab;
+	touch-action: none;
+	user-select: none;
+	-webkit-user-select: none;
+	background-color: lightgray;
 }
 
-/* maximized window */
+window-title:active {
+	cursor: grabbing;
+}
+
+.window-content {
+	display: block;
+	box-sizing: border-box;
+	width: 100%;
+	height: auto;
+	min-width: 0;
+	min-height: 0;
+	max-width: 100%;
+	max-height: 100%;
+	overflow: hidden;
+}
 
 window.maximized {
 	position: fixed !important;
-	top: calc(var(--titlebar-height) - 1.5px) !important;
+	top: var(--shards98-titlebar-height) !important;
 	left: 0 !important;
-	right: auto !important;
-	bottom: auto !important;
 	width: 100dvw !important;
 	height: calc(
-		100dvh - var(--taskbar-height) - (var(--titlebar-height) - 1.5px)
+		100dvh - var(--shards98-taskbar-height) - var(--shards98-titlebar-height)
 	) !important;
 	margin: 0;
-	border-radius: 0;
 	box-sizing: border-box;
 	z-index: 1000;
 	max-width: none;
 	overflow: visible;
 	transform: none;
+	touch-action: none;
 }
 
-/* taskbar */
+.resize-handle {
+	position: absolute;
+	z-index: 11;
+	user-select: none;
+	-webkit-user-select: none;
+}
+
+.resize-n,
+.resize-s {
+	left: 0.5rem;
+	right: 0.5rem;
+	height: 0.45rem;
+	cursor: ns-resize;
+}
+
+.resize-n {
+	top: -0.2rem;
+}
+.resize-s {
+	bottom: -0.2rem;
+}
+
+.resize-e,
+.resize-w {
+	top: 0.5rem;
+	bottom: 0.5rem;
+	width: 0.45rem;
+	cursor: ew-resize;
+}
+
+.resize-e {
+	right: -0.2rem;
+}
+.resize-w {
+	left: -0.2rem;
+}
+
+.resize-ne,
+.resize-sw,
+.resize-se,
+.resize-nw {
+	width: 0.65rem;
+	height: 0.65rem;
+}
+
+.resize-ne {
+	top: -0.2rem;
+	right: -0.2rem;
+	cursor: nesw-resize;
+}
+.resize-sw {
+	bottom: -0.2rem;
+	left: -0.2rem;
+	cursor: nesw-resize;
+}
+.resize-se {
+	bottom: -0.2rem;
+	right: -0.2rem;
+	cursor: nwse-resize;
+}
+.resize-nw {
+	top: -0.2rem;
+	left: -0.2rem;
+	cursor: nwse-resize;
+}
 
 taskbar {
 	position: fixed;
 	bottom: 0;
 	left: 0;
 	width: 100%;
-	display: flex;
-	height: calc(var(--taskbar-height) + env(safe-area-inset-bottom, 0px));
+	height: calc(
+		var(--shards98-taskbar-height) + env(safe-area-inset-bottom, 0px)
+	);
 	padding-bottom: env(safe-area-inset-bottom, 0px);
-	background-color: var(--interactive-background-light);
+	display: flex;
 	align-items: stretch;
 	z-index: 1001;
 	overflow: hidden;
+	background-color: white;
 }
 
 taskbar .tasks {
-	list-style-type: none;
+	display: flex;
+	flex: 1 1 auto;
+	align-items: stretch;
+	min-width: 0;
+	height: var(--shards98-taskbar-height);
 	margin: 0;
 	padding: 0 0.25rem;
-	display: flex;
-	height: var(--taskbar-height);
-	gap: 0.2rem;
-	align-items: stretch;
-	flex: 1 1 auto;
-	min-width: 0;
 	overflow-x: auto;
 	overflow-y: hidden;
 }
 
 taskbar ul li {
-	margin: 0;
 	display: flex;
-	height: 100%;
-	border: 1px solid var(--interactive-border-light);
-	border-right: 2px solid var(--interactive-border-dark);
-	border-bottom: 2px solid var(--interactive-border-dark);
 	align-items: center;
-	padding: 0 0.5rem;
-	line-height: 1;
+	height: 100%;
+	margin: 0;
 	white-space: nowrap;
+	background-color: lightgray;
 }
 
 taskbar ul li:hover {
-	background-color: var(--interactive-background-dark);
-	border-color: var(--interactive-background-dark);
-	border-right: 2px solid var(--interactive-border-select);
-	border-bottom: 2px solid var(--interactive-border-select);
+	background-color: gray;
 }
 
-taskbar ul li .close-btn {
-	background: none;
-	border: none;
-	font-weight: bold;
-}
-
-taskbar ul li .close-btn:hover {
-	color: var(--danger);
+taskbar .close-btn {
+	display: grid;
+	place-items: center;
 }
 
 taskbar .icon {
-	margin: 0;
-	padding: 0;
-	position: static;
 	display: block;
 	flex: 0 0 2rem;
 	width: 2rem;
-	height: var(--taskbar-height);
-	z-index: 1002;
+	height: var(--shards98-taskbar-height);
+	margin: 0;
+	padding: 0;
 }
 
 taskbar .time {
-	margin-left: 0;
-	border-left: 1px solid var(--interactive-border-dark);
-	height: var(--taskbar-height);
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 4.5rem;
 	flex: 0 0 4.5rem;
-	position: static;
-	background-color: var(--interactive-background-light);
-	z-index: 1002;
+	width: 4.5rem;
+	height: var(--shards98-taskbar-height);
 }
 
 taskbar .start-menu {
 	display: none;
 	position: fixed;
-	bottom: calc(var(--taskbar-height) + env(safe-area-inset-bottom, 0px));
+	bottom: calc(
+		var(--shards98-taskbar-height) + env(safe-area-inset-bottom, 0px)
+	);
 	left: 0;
-	background-color: var(--interactive-background-dark);
-	border: 1px solid var(--interactive-border-light);
-	height: 150px;
-	overflow-y: scroll;
-	padding-left: 2rem;
-	background-size: cover;
+	z-index: 1003;
+	background-color: white;
 }
 
-taskbar .start-menu h2 {
-	padding: 0;
-	margin: 0;
-	background-color: var(--interactive-background-light);
-	text-align: center;
-	border-bottom: 1px solid var(--interactive-border-dark);
+taskbar .start-menu[hidden] {
+	display: none;
 }
 
-taskbar .start-menu ul {
-	background-color: var(--interactive-background-light);
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
+taskbar .start-menu:not([hidden]) {
+	display: block;
+}
+
+taskbar .tasks li > button:first-child,
+taskbar .start-list button {
+	background: none;
+	border: 0;
+	font: inherit;
+	cursor: pointer;
+}
+
+@media (max-width: 600px) {
+	:root {
+		--shards98-titlebar-height: 1.75rem;
+		--shards98-taskbar-height: 2.5rem;
+	}
 }
