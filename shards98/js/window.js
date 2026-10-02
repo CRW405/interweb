@@ -1,4 +1,4 @@
-import { DEFAULTS, ICONS, SELECTORS, clamp } from "./config.js";
+import { DEFAULTS, ICONS, SELECTORS } from "./config.js";
 
 export class Window {
 	static nextZIndex = 10;
@@ -196,6 +196,15 @@ export class Window {
 		const startY = event.clientY;
 		const minWidth = parseFloat(getComputedStyle(this.element).minWidth) || 160;
 		const minHeight = parseFloat(getComputedStyle(this.element).minHeight) || 80;
+		const offsetParent = this.element.offsetParent || document.body;
+		const parentRect = offsetParent.getBoundingClientRect();
+		const parentPageLeft = parentRect.left + window.scrollX;
+		const parentPageTop = parentRect.top + window.scrollY;
+		const toParentLeft = (pageLeft) => pageLeft - parentPageLeft;
+		const toParentTop = (pageTop) => pageTop - parentPageTop;
+		this.element.style.position = "absolute";
+		this.element.style.left = `${toParentLeft(rect.left + window.scrollX)}px`;
+		this.element.style.top = `${toParentTop(rect.top + window.scrollY)}px`;
 		this.element.setPointerCapture(event.pointerId);
 		const move = (moveEvent) => {
 			const dx = moveEvent.clientX - startX;
@@ -214,9 +223,8 @@ export class Window {
 				height = Math.max(minHeight, rect.height - dy);
 				top = rect.bottom - height;
 			}
-			this.element.style.position = "fixed";
-			this.element.style.left = `${clamp(left, 0, window.innerWidth - minWidth)}px`;
-			this.element.style.top = `${clamp(top, 0, window.innerHeight - minHeight - this._taskbarHeight())}px`;
+			this.element.style.left = `${toParentLeft(left + window.scrollX)}px`;
+			this.element.style.top = `${toParentTop(top + window.scrollY)}px`;
 			this.element.style.width = `${Math.min(width, window.innerWidth)}px`;
 			this.element.style.height = `${Math.min(height, window.innerHeight)}px`;
 		};
@@ -228,10 +236,6 @@ export class Window {
 		this.element.addEventListener("pointermove", move);
 		this.element.addEventListener("pointerup", stop);
 		this.element.addEventListener("pointercancel", stop);
-	}
-
-	_taskbarHeight() {
-		return document.querySelector(SELECTORS.taskbar)?.getBoundingClientRect().height || 0;
 	}
 
 	_applyStatus() {
