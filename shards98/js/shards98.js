@@ -15,7 +15,10 @@ export function CreateWindow(htmlContent, options = {}) {
 }
 
 export function initialize(root = document, options = {}) {
-	return new WindowManager(root, options);
+	if (root.__shards98Manager) return root.__shards98Manager;
+	const manager = new WindowManager(root, options);
+	root.__shards98Manager = manager;
+	return manager;
 }
 
 if (document.readyState === "loading") {

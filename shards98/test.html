@@ -78,7 +78,9 @@
 		</taskbar>
 
 		<script type="module">
-			import { CreateWindow } from "./js/shards98.js";
+			import { CreateWindow, initialize } from "./js/shards98.js";
+
+			const manager = initialize(document);
 
 			document.querySelector("#create-window").addEventListener("click", () => {
 				const dynamicWindow = CreateWindow(
@@ -86,6 +88,7 @@
 				);
 				dynamicWindow.setTitle("Dynamic Window");
 				document.querySelector("main").append(dynamicWindow.element);
+				manager.taskbar?.register(dynamicWindow);
 			});
 		</script>
 	</body>

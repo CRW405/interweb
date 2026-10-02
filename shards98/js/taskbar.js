@@ -1,3 +1,5 @@
+import { Window } from "./window.js";
+
 export class Taskbar {
 	constructor(element, windows) {
 		this.element = element;
@@ -116,6 +118,15 @@ export class Taskbar {
 			minute: "2-digit",
 			hour12: !this.use24Hour,
 		});
+	}
+
+	register(instance) {
+		if (!(instance instanceof Window)) {
+			throw new TypeError("Taskbar.register requires a Window instance.");
+		}
+		if (!this.windows.includes(instance)) this.windows.push(instance);
+		this.refresh();
+		return instance;
 	}
 
 	refresh() {

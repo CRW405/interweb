@@ -39,6 +39,10 @@ export class Window {
 		this.element.addEventListener("click", () => this.focus());
 	}
 
+	get content() {
+		return this.contentElement;
+	}
+
 	_removeGeneratedParts() {
 		this.element
 			.querySelectorAll(

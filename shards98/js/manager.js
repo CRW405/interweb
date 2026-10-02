@@ -32,7 +32,7 @@ export class WindowManager {
 	enhance(element, options = this.options) {
 		const instance = new Window(element, options);
 		if (!this.windows.includes(instance)) this.windows.push(instance);
-		this.taskbar?.refresh();
+		this.taskbar?.register(instance);
 		return instance;
 	}
 }
