@@ -188,11 +188,13 @@
 				</window>
 			</window-group>
 
-			<window status="opened" id="updates" name="Updates">
-				<h2>Updates</h2>
+			<window-group id="updates-group">
+				<window status="opened" id="updates" name="Updates">
+					<h2>Updates</h2>
 
-				<ul class="border" id="update-list"></ul>
-			</window>
+					<ul class="border" id="update-list"></ul>
+				</window>
+			</window-group>
 
 			<window-group id="site">
 				<window status="opened" id="status" name="Status">
@@ -285,25 +287,27 @@
 		</main>
 
 		<footer>
-			<window status="opened" id="footer-window" name="Thank you!">
-				<h3>Thanks for visiting!</h3>
-				<ul>
-					<li>
-						<a target="_blank" href="https://github.com/CRW405">Github</a>
-					</li>
-					<li>
-						<a
-							target="_blank"
-							href="https://github.com/CRW405/interweb/tree/main/shards98"
-						>
-							Shards98 Library
-						</a>
-					</li>
-					<li>
-						<a href="#top">Back To Top</a>
-					</li>
-				</ul>
-			</window>
+			<window-group id="footer-group">
+				<window status="opened" id="footer-window" name="Thank you!">
+					<h3>Thanks for visiting!</h3>
+					<ul>
+						<li>
+							<a target="_blank" href="https://github.com/CRW405">Github</a>
+						</li>
+						<li>
+							<a
+								target="_blank"
+								href="https://github.com/CRW405/interweb/tree/main/shards98"
+							>
+								Shards98 Library
+							</a>
+						</li>
+						<li>
+							<a href="#top">Back To Top</a>
+						</li>
+					</ul>
+				</window>
+			</window-group>
 		</footer>
 
 		<!-- JavaScript -->
@@ -313,7 +317,6 @@
 		<script src="./shards98/js/shards98.js" defer type="module"></script>
 		<script src="./scripts/getUpdates.js" defer type="module"></script>
 		<script src="./scripts/aerialBanner.js"></script>
-		<script src="./scripts/visitCounter.js"></script>
 		<script src="https://cursor-party.crw405.partykit.dev/cursors.js"></script>
 	</body>
 </html>

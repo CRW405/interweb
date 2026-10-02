@@ -89,23 +89,36 @@ window-title:active {
 	max-width: 100%;
 	max-height: 100%;
 	overflow: auto;
+	margin: 0;
+	padding: 0;
 }
 
 window.maximized {
 	position: fixed !important;
-	top: var(--shards98-titlebar-height) !important;
+	top: 0 !important;
 	left: 0 !important;
-	width: 100dvw !important;
+	width: 100% !important;
 	height: calc(
-		100dvh - var(--shards98-taskbar-height) - var(--shards98-titlebar-height)
-	) !important;
+			100dvh - var(--shards98-taskbar-height) - env(safe-area-inset-bottom, 0px)
+		) !important;
 	margin: 0;
+	min-height: 0 !important;
 	box-sizing: border-box;
 	z-index: 1000;
 	max-width: none;
 	overflow: visible;
 	transform: none;
 	touch-action: none;
+	display: flex;
+	flex-direction: column;
+}
+
+window.maximized > .window-content {
+	flex: 1 1 auto;
+	display: flex;
+	flex-direction: column;
+	min-height: 0;
+	max-height: none;
 }
 
 .resize-handle {

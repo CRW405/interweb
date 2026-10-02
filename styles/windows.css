@@ -1,7 +1,8 @@
 window {
 	background-color: var(--window-background);
 	border: 5px solid var(--window-border-light);
-	border-top: calc(var(--shards98-titlebar-height) + 5px) solid var(--window-border-light);
+	border-top: calc(var(--shards98-titlebar-height) + 5px) solid
+		var(--window-border-light);
 	padding: 1rem;
 	color: var(--text);
 	overflow: visible;
@@ -59,7 +60,11 @@ window-title {
 	padding: 0 0.35rem;
 	line-height: var(--shards98-titlebar-height);
 	cursor: url("../cursor/Cursor_10.cur"), move;
-	background: linear-gradient(to left, var(--window-border-light), var(--window-border-dark));
+	background: linear-gradient(
+		to left,
+		var(--window-border-light),
+		var(--window-border-dark)
+	);
 	color: var(--text-light);
 }
 
@@ -75,8 +80,6 @@ window [contenteditable="true"] {
 }
 
 window.maximized {
-	top: calc(var(--shards98-titlebar-height) - 1.5px) !important;
-	height: calc(100dvh - var(--shards98-taskbar-height) - (var(--shards98-titlebar-height) - 1.5px)) !important;
 	border-radius: 0;
 }
 

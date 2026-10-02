@@ -12,6 +12,12 @@ ul {
 	overflow-y: scroll;
 }
 
+window.maximized#updates ul {
+	height: auto;
+	min-height: 0;
+	flex: 1 1 auto;
+}
+
 #updates ul li {
 	border-bottom: 1px solid var(--interactive-border-dark);
 	padding: 0.5rem 0;
@@ -69,6 +75,12 @@ ul {
 	width: 100%;
 	min-height: 550px;
 	height: 70vh;
+}
+
+window.maximized#guestbook iframe {
+	height: auto;
+	min-height: 0;
+	flex: 1 1 auto;
 }
 
 #welcome-group {
@@ -151,8 +163,12 @@ aerial-banner ul {
 }
 
 @keyframes scroll {
-	from { transform: translateX(0); }
-	to { transform: translateX(-50%); }
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-50%);
+	}
 }
 
 taskbar .start-menu {
