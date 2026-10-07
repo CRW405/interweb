@@ -148,6 +148,7 @@ window {
 	color: var(--text);
 	overflow: visible;
 	margin: 1rem 0.25rem;
+	z-index: 0;
 }
 
 window > .window-content {
@@ -401,4 +402,22 @@ taskbar .start-menu ul {
 .ok {
 	background-color: var(--ok);
 	color: var(--text-light);
+}
+
+/* ------------------------------------------------------------------ *
+ * Responsive
+ * ------------------------------------------------------------------ */
+/* :root above redefines these tokens, which out-cascades shards98's own
+ * phone breakpoint (same specificity, earlier in the cascade), so restate
+ * them here and give the taskbar buttons the full row as a tap target. */
+@media (max-width: 600px) {
+	:root {
+		--shards98-titlebar-height: 1.75rem;
+		--shards98-taskbar-height: 2.5rem;
+	}
+
+	taskbar .tasks li > button {
+		align-self: stretch;
+		height: auto;
+	}
 }

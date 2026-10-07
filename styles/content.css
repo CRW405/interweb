@@ -83,11 +83,10 @@ window.maximized#updates ul {
 
 /* ------------------------------------------------------------------ *
  * Guestbook
- * ------------------------------------------------------------------ */
-#guestbook {
-	min-height: 750px;
-}
-
+ * ------------------------------------------------------------------ *
+ * No min-height on the window: it would leave dead space below the iframe
+ * whenever the viewport is shorter than ~870px. The iframe's own sizing
+ * guarantees the window's presence instead. */
 #guestbook iframe {
 	display: block;
 	width: 100%;
@@ -122,7 +121,9 @@ window.maximized#guestbook iframe {
 }
 
 .image-window img {
-	width: 250px;
+	display: block;
+	width: 100%;
+	height: 100%;
 }
 
 #hello-img-window {
@@ -139,6 +140,10 @@ window.maximized#guestbook iframe {
 	right: -100px;
 }
 
+#katz-img-window img {
+	width: 250px;
+}
+
 #light-img-window {
 	right: -70px;
 	top: 50px;
@@ -149,7 +154,17 @@ window.maximized#guestbook iframe {
  * ------------------------------------------------------------------ */
 #lastfm-window {
 	position: absolute;
-	left: -100px;
+	/* Overhang the left edge of the content column, but never run off the
+	 * left of the screen: main's inline padding is clamp(0.75rem, 5vw, 5rem)
+	 * and main is only centred above 1250px, so cap the 100px overhang by
+	 * the room that actually exists to the left of the group. */
+	left: calc(
+		-1 *
+			min(
+				100px,
+				clamp(0.75rem, 5vw, 5rem) + (100vw - min(100vw, 1250px)) / 2 - 8px
+			)
+	);
 	top: -100px;
 	width: 300px;
 }
@@ -186,6 +201,8 @@ window.maximized#guestbook iframe {
 	height: 64px;
 	padding: 0;
 	margin: 0;
+	min-width: 0;
+	flex: 1 1 auto;
 }
 
 #trackInfo h3,
@@ -307,8 +324,21 @@ taskbar .start-menu {
  * ------------------------------------------------------------------ */
 @media (max-width: 900px) {
 	#info,
-	#site {
+	#site,
+	#music {
 		flex-direction: column;
+	}
+
+	#music-highlights-window,
+	#music-player-window {
+		width: auto;
+	}
+
+	#lastfm-window {
+		position: relative;
+		left: auto;
+		top: auto;
+		width: auto;
 	}
 
 	#hello-img-window,
@@ -320,5 +350,21 @@ taskbar .start-menu {
 		right: auto;
 		top: auto;
 		bottom: auto;
+		width: fit-content;
+		max-width: 100%;
+	}
+
+	/* Cap, don't restyle: each image keeps its own width from the base
+	 * rules (hello 200px, katz 250px, light at natural size) and only
+	 * shrinks when the viewport is narrower than the image. */
+	#hello-img-window img,
+	#katz-img-window img,
+	#light-img-window img {
+		max-width: 100%;
+		height: auto;
+	}
+
+	#welcome {
+		padding-bottom: 0;
 	}
 }

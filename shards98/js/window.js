@@ -333,7 +333,11 @@ export class Window {
 			placeholder.remove();
 		} else {
 			const { nextSibling } = this.groupState;
-			parent.insertBefore(this.element, nextSibling);
+			if (nextSibling && nextSibling.parentNode === parent) {
+				parent.insertBefore(this.element, nextSibling);
+			} else {
+				parent.append(this.element);
+			}
 		}
 		this.element.style.cssText = cssText;
 		Object.assign(this.element.style, inlineStyles);
