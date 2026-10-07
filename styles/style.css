@@ -1,4 +1,404 @@
-@import url("./base.css");
-@import url("./windows.css");
-@import url("./taskbar.css");
-@import url("./content.css");
+/**
+ * style.css — the site's base theme: design tokens, global rules, window and
+ * taskbar chrome, and shared utility classes.
+ *
+ * The tokens in :root are what scripts/colors.js overrides to theme a given
+ * window or card from an image. Load this before content.css.
+ */
+
+/* ------------------------------------------------------------------ *
+ * Theme tokens
+ * ------------------------------------------------------------------ */
+:root {
+	--shards98-titlebar-height: 25px;
+	--shards98-taskbar-height: 2rem;
+	--window-border-light: #add8e6;
+	--window-border-dark: #7777ea;
+	--window-background: #ffffff;
+	--interactive-background-light: #e0e0e0;
+	--interactive-background-dark: #c0c0c0;
+	--interactive-border-light: #eeeeee;
+	--interactive-border-dark: #a0a0a0;
+	--interactive-select: #dddddd;
+	--interactive-border-select: var(--interactive-select);
+	--text: #555555;
+	--text-grey: #000000;
+	--text-light: #ffffff;
+	--link: #0000ee;
+	--link-hover: #33008b;
+	--danger: #ff4c4c;
+	--warning: #ffcc00;
+	--ok: #4caf50;
+}
+
+@font-face {
+	font-family: "w95";
+	src: url("../font/W95FA.otf") format("opentype");
+}
+
+/* ------------------------------------------------------------------ *
+ * Reset + global typography
+ * ------------------------------------------------------------------ */
+* {
+	box-sizing: border-box;
+	font-family: "w95", sans-serif;
+	cursor: url("../cursor/arrow.cur"), default;
+}
+
+html {
+	background-color: black;
+	overflow-x: hidden;
+}
+
+body {
+	margin: 0;
+	min-height: 100dvh;
+	position: relative;
+	overflow-x: hidden;
+	background: transparent;
+}
+
+body::before {
+	content: "";
+	position: fixed;
+	inset: 0;
+	background: black url("../medias/bg/Ascent.jpg") center / cover no-repeat;
+	z-index: -1;
+	pointer-events: none;
+}
+
+main {
+	width: min(1250px, 100%);
+	padding: 0 clamp(0.75rem, 5vw, 5rem)
+		calc(2.5rem + env(safe-area-inset-bottom, 0px));
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+}
+
+header,
+footer {
+	width: min(1250px, 100%);
+	margin: auto;
+	text-align: center;
+}
+
+footer {
+	margin-bottom: 5rem;
+}
+
+footer ul {
+	list-style: none;
+	padding: 0;
+}
+
+footer ul li {
+	display: inline;
+	margin: 0 10px;
+}
+
+footer ul li::before,
+footer ul li::after {
+	content: "|";
+}
+
+ul {
+	list-style-type: square;
+}
+
+hr {
+	border-color: var(--interactive-border-light);
+	margin: 2rem 0;
+}
+
+/* ------------------------------------------------------------------ *
+ * Cursors
+ * ------------------------------------------------------------------ */
+a,
+a *,
+button,
+select,
+summary,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+[role="button"],
+[onclick],
+taskbar .tasks li,
+.time,
+.icon {
+	cursor: url("../cursor/Cursor_15.cur"), pointer;
+}
+
+window input:not([type="button"]):not([type="submit"]):not([type="reset"]),
+window textarea,
+window [contenteditable="true"] {
+	cursor: url("../cursor/Beam.cur"), text;
+}
+
+/* ------------------------------------------------------------------ *
+ * Window chrome
+ * ------------------------------------------------------------------ */
+window {
+	background-color: var(--window-background);
+	border: 5px solid var(--window-border-light);
+	border-top: calc(var(--shards98-titlebar-height) + 5px) solid
+		var(--window-border-light);
+	padding: 1rem;
+	color: var(--text);
+	overflow: visible;
+	margin: 1rem 0.25rem;
+}
+
+window > .window-content {
+	width: 100%;
+	height: auto;
+	max-width: 100%;
+}
+
+window[floating] {
+	z-index: 10;
+}
+
+window a {
+	color: var(--link);
+}
+
+window a:hover {
+	color: var(--link-hover);
+}
+
+window-controls {
+	gap: 0.15rem;
+}
+
+window-controls button {
+	width: var(--shards98-titlebar-height);
+	height: var(--shards98-titlebar-height);
+	background-color: var(--interactive-background-light);
+	border: 1px solid var(--interactive-border-light);
+	border-right: 2px solid var(--interactive-border-dark);
+	border-bottom: 2px solid var(--interactive-border-dark);
+	padding: 0;
+	margin: 0;
+	font-weight: bold;
+}
+
+window-controls button:hover {
+	background-color: var(--interactive-background-dark);
+	border-color: var(--interactive-border-dark);
+	border-right-color: var(--interactive-border-select);
+	border-bottom-color: var(--interactive-border-select);
+}
+
+window-controls .minimize,
+window-controls .close {
+	font-size: 1rem;
+	line-height: 1;
+}
+
+window-title {
+	padding: 0 0.35rem;
+	line-height: var(--shards98-titlebar-height);
+	cursor: url("../cursor/Cursor_10.cur"), move;
+	background: linear-gradient(
+		to left,
+		var(--window-border-light),
+		var(--window-border-dark)
+	);
+	color: var(--text-light);
+}
+
+window-title:active,
+window-title.is-dragging {
+	cursor: url("../cursor/Cursor_10.cur"), move;
+}
+
+window.maximized {
+	border-radius: 0;
+}
+
+.resize-n,
+.resize-s {
+	cursor: url("../cursor/Cursor_9.cur"), ns-resize;
+}
+
+.resize-e,
+.resize-w {
+	cursor: url("../cursor/Cursor_8.cur"), ew-resize;
+}
+
+.resize-se,
+.resize-nw {
+	cursor: url("../cursor/Cursor_6.cur"), nwse-resize;
+}
+
+.resize-sw,
+.resize-ne {
+	cursor: url("../cursor/Cursor_7.cur"), nesw-resize;
+}
+
+/* ------------------------------------------------------------------ *
+ * Taskbar chrome
+ * ------------------------------------------------------------------ */
+taskbar {
+	background-color: var(--interactive-background-light);
+}
+
+taskbar .tasks {
+	gap: 0.2rem;
+}
+
+taskbar ul li {
+	border: 1px solid var(--interactive-border-light);
+	border-right: 2px solid var(--interactive-border-dark);
+	border-bottom: 2px solid var(--interactive-border-dark);
+	padding: 0 0.5rem;
+	line-height: 1;
+}
+
+taskbar ul li:hover {
+	background-color: var(--interactive-background-dark);
+	border-color: var(--interactive-background-dark);
+	border-right-color: var(--interactive-border-select);
+	border-bottom-color: var(--interactive-border-select);
+}
+
+taskbar ul li.status-minimized,
+taskbar ul li.status-minimized > button:first-child {
+	background-color: var(--interactive-background-dark);
+}
+
+taskbar ul li .close-btn {
+	width: 1.25rem;
+	height: 1.5rem;
+	padding: 0;
+	border: 0;
+	font-weight: bold;
+}
+
+taskbar ul li .close-btn:hover {
+	color: var(--danger);
+}
+
+taskbar .time {
+	border-left: 1px solid var(--interactive-border-dark);
+	background-color: var(--interactive-background-light);
+}
+
+taskbar .taskbar-calendar {
+	position: fixed;
+	right: 0;
+	bottom: calc(var(--shards98-taskbar-height) + env(safe-area-inset-bottom, 0px));
+	width: 15rem;
+	height: 15rem;
+	box-sizing: border-box;
+	padding: 0.5rem;
+	background-color: var(--interactive-background-light);
+	border: 1px solid var(--interactive-border-light);
+	border-right: 2px solid var(--interactive-border-dark);
+	border-bottom: 2px solid var(--interactive-border-dark);
+	z-index: 1004;
+}
+
+taskbar .taskbar-calendar[hidden] {
+	display: none;
+}
+
+taskbar .taskbar-calendar header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	margin: 0 0 0.5rem;
+}
+
+taskbar .taskbar-calendar header button {
+	width: 1.5rem;
+	height: 1.5rem;
+	padding: 0;
+}
+
+taskbar .calendar-grid {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	grid-template-rows: repeat(7, 1fr);
+	gap: 0.15rem;
+	height: calc(100% - 2rem);
+	text-align: center;
+}
+
+taskbar .calendar-grid > span {
+	padding: 0.2rem 0;
+}
+
+taskbar .calendar-weekday {
+	font-weight: bold;
+}
+
+taskbar .calendar-today {
+	background-color: var(--interactive-background-dark);
+	font-weight: bold;
+}
+
+taskbar .start-menu {
+	height: 150px;
+	padding-left: 2rem;
+	overflow-y: scroll;
+	background-color: var(--interactive-background-dark);
+	border: 1px solid var(--interactive-border-light);
+	background-size: cover;
+}
+
+taskbar .start-menu h2 {
+	padding: 0;
+	margin: 0;
+	background-color: var(--interactive-background-light);
+	text-align: center;
+	border-bottom: 1px solid var(--interactive-border-dark);
+}
+
+taskbar .start-menu ul {
+	background-color: var(--interactive-background-light);
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+/* ------------------------------------------------------------------ *
+ * Shared utilities
+ * ------------------------------------------------------------------ */
+/* Inset box, e.g. list panels and status chips. */
+.border {
+	border: 2px inset var(--interactive-border-light);
+	padding: 0.25rem;
+	margin: 0.25rem;
+}
+
+/* Lists with their markers and spacing removed. */
+.plain-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+/* Lay a flex container's children out horizontally. */
+.row {
+	flex-direction: row;
+}
+
+/* Status colours. */
+.danger {
+	background-color: var(--danger);
+	color: var(--text-light);
+}
+
+.warning {
+	background-color: var(--warning);
+	color: var(--text-grey);
+}
+
+.ok {
+	background-color: var(--ok);
+	color: var(--text-light);
+}

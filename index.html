@@ -5,6 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="./shards98/shards98.css" />
 		<link rel="stylesheet" href="./styles/style.css" />
+		<link rel="stylesheet" href="./styles/content.css" />
 		<link rel="icon" href="./medias/images/smiley.png" />
 		<title>Desktop</title>
 	</head>
@@ -53,12 +54,12 @@
 					</p>
 				</window>
 
-				<window status="opened" id="hello-img-window" name="Hello.gif" floating>
+				<window status="opened" id="hello-img-window" name="Hello.gif" class="image-window" floating>
 					<img src="./medias/images/wave.gif" alt="wave.gif" />
 				</window>
 			</window-group>
 
-			<window-group id="info">
+			<window-group id="info" class="row">
 				<window status="opened" id="controls" name="Read Me">
 					<h2>Controls</h2>
 
@@ -183,7 +184,7 @@
 					</div>
 				</window>
 
-				<window status="opened" id="katz-img-window" name="Katz.png" floating>
+				<window status="opened" id="katz-img-window" name="Katz.png" class="image-window" floating>
 					<img src="./medias/images/profile.png" alt="katz.png" />
 				</window>
 			</window-group>
@@ -192,11 +193,11 @@
 				<window status="opened" id="updates" name="Updates">
 					<h2>Updates</h2>
 
-					<ul class="border" id="update-list"></ul>
+					<ul class="border plain-list" id="update-list"></ul>
 				</window>
 			</window-group>
 
-			<window-group id="site">
+			<window-group id="site" class="row">
 				<window status="opened" id="status" name="Status">
 					<h2>Status</h2>
 					<div>
@@ -212,7 +213,7 @@
 
 				<window status="opened" id="todo" name="To Do">
 					<h2>To Do</h2>
-					<div class="" id="todo-div">
+					<div id="todo-div">
 						<div>
 							<h3>Top Priority</h3>
 
@@ -234,25 +235,105 @@
 								<li>Cool Stuff Corner</li>
 							</ul>
 						</div>
-
-						<div>
-							<h3>Widgets</h3>
-							<p>Widgets I've seen others have and want to add to this</p>
-							<ul>
-								<li>Lastfm</li>
-							</ul>
-						</div>
 					</div>
 				</window>
 
-				<window status="open" id="light-img-window" name="Idea.gif" floating>
+				<window id="light-img-window" name="Idea.gif" class="image-window" floating>
 					<img src="./medias/images/lightbulb.gif" alt="idea.gif" />
 				</window>
 			</window-group>
 
+			<window-group id="music" class="row">
+				<window status="opened" id="lastfm-window" name="Last.fm" floating>
+					<div id="listening">
+						<h2>Loading...</h2>
+					</div>
+				</window>
+
+				<window id="music-highlights-window" name="Highlights">
+					<h2>What Have I Been Listening To Recently?</h2>
+					<ol class="border plain-list" id="music-highlights-list">
+						<li class="music-card">
+							<a target="_blank" href="https://www.youtube.com/@Femtanyl03">
+								<div>
+									<img
+										src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcoverartarchive.org%2Frelease%2Fb0be64bb-80b2-4fc8-9304-f576752e5651%2F36779100627-1200.jpg&f=1&nofb=1&ipt=2fb53ad740cee73dc2115e549e647131691197957fafbcf9d4761154226c8d2a&ipo=images"
+										alt=""
+									/>
+									<h3>Femtynal</h3>
+								</div>
+							</a>
+						</li>
+						<li class="music-card">
+							<a
+								target="_blank"
+								href="https://www.youtube.com/watch?v=wi2TwqjjDHw"
+							>
+								<div>
+									<img
+										src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.albumoftheyear.org%2Falbum%2F1452971-stardust_084540.jpg&f=1&nofb=1&ipt=54954a83bd1b3e07f169709176dbb5c5a2a1fae0c64222c66e9679f0dab834ec&ipo=images"
+										alt=""
+									/>
+									<h3>Danny Brown</h3>
+								</div>
+							</a>
+						</li>
+						<li target="_blank" class="music-card">
+							<a
+								href="https://www.youtube.com/channel/UC7RRj9U9NBcavlfOBw3x0_Q"
+							>
+								<div>
+									<img
+										src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.sonemic.net%2Fi%2F600%2Fs%2F1119ae3c5f820e15f70c92dc688c45fe%2F13726043%2Fboko-yout-gusto-cover-art.jpg&f=1&nofb=1&ipt=c728f92acf97683556f543f50547967f231d72454c5968724608380a6832f660&ipo=images"
+										alt=""
+									/>
+									<h3>Boko Yout</h3>
+								</div>
+							</a>
+						</li>
+						<li class="music-card">
+							<a
+								target="_blank"
+								href="https://www.youtube.com/watch?v=_5gwc2HEvIw&list=PLvTzlmt53bQ935y2baLAwQWOC0RfoH9AP"
+							>
+								<div>
+									<img
+										src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi1.sndcdn.com%2Fartworks-WoDq9B08SavTSem2-1uRVNQ-t1080x1080.jpg&f=1&nofb=1&ipt=8b01d85f3e3e23344d0c528320d7687e636a0d34c53773227c8e5d0975731b4b&ipo=images"
+										alt=""
+									/>
+									<h3>Easy Delivery Co. OST</h3>
+								</div>
+							</a>
+						</li>
+						<li class="music-card">
+							<a
+								target="_blank"
+								href="https://www.youtube.com/watch?v=4HolYenvF6w&list=OLAK5uy_kCykyJoPUm3T-LxaZne1vaYLoJzDjSpE0"
+							>
+								<div>
+									<img
+										src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fassets.crownnote.com%2Fs3fs-public%2F2024-11%2F1000x1000bb%2520(4149)_0.jpg&f=1&nofb=1&ipt=83064a8de1ae23ac8b1ed3645c9b6f9fb8e6c09cd7a616b0e5a4f81c6b155504&ipo=images"
+										alt=""
+									/>
+									<h3>Machine Girl</h3>
+								</div>
+							</a>
+						</li>
+					</ol>
+				</window>
+
+                <window id="music-player-window" name="Music Player">
+                    <h2>Music Player</h2>
+                    <div id="music-player">
+                        <div class="warning border">
+                            Coming Soon!
+                        </div>
+                    </div>
+			</window-group>
+
 			<window-group id="stuff">
 				<!-- Fill with widgets and other cool stuff -->
-				<window status="open" id="guestbook" name="Guest Book">
+				<window id="guestbook" name="Guest Book">
 					<h2>Sign My Guestbook</h2>
 					<h3>
 						<a target="_blank" href="https://katzmotel.atabook.org/"
@@ -315,6 +396,8 @@
 		<!-- window -->
 
 		<script src="./shards98/js/shards98.js" defer type="module"></script>
+		<script src="./scripts/lastfm.js" defer type="module"></script>
+		<script src="./scripts/imageTheme.js" defer type="module"></script>
 		<script src="./scripts/getUpdates.js" defer type="module"></script>
 		<script src="./scripts/aerialBanner.js"></script>
 		<script src="https://cursor-party.crw405.partykit.dev/cursors.js"></script>

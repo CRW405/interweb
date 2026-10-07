@@ -1,13 +1,30 @@
-ul {
-	list-style-type: square;
+/**
+ * content.css — page- and section-specific styles.
+ * Load after style.css.
+ */
+
+/* ------------------------------------------------------------------ *
+ * Window groups
+ * ------------------------------------------------------------------ */
+#status {
+	flex-grow: 2;
 }
 
+#todo {
+	flex-grow: 3;
+}
+
+/* ------------------------------------------------------------------ *
+ * Visitor counter
+ * ------------------------------------------------------------------ */
 #visitor-span {
 	vertical-align: -5px;
 }
 
+/* ------------------------------------------------------------------ *
+ * Updates
+ * ------------------------------------------------------------------ */
 #updates ul {
-	list-style: none;
 	height: 300px;
 	overflow-y: scroll;
 }
@@ -53,19 +70,20 @@ window.maximized#updates ul {
 	color: var(--danger);
 }
 
-#status {
-	flex-grow: 2;
+.update-message,
+.update-notice {
+	color: var(--text);
+	font-style: italic;
+	opacity: 0.8;
 }
 
-#todo {
-	flex-grow: 3;
+.update-error {
+	color: var(--danger);
 }
 
-#info,
-#site {
-	flex-direction: row;
-}
-
+/* ------------------------------------------------------------------ *
+ * Guestbook
+ * ------------------------------------------------------------------ */
 #guestbook {
 	min-height: 750px;
 }
@@ -83,6 +101,9 @@ window.maximized#guestbook iframe {
 	flex: 1 1 auto;
 }
 
+/* ------------------------------------------------------------------ *
+ * Welcome
+ * ------------------------------------------------------------------ */
 #welcome-group {
 	margin-bottom: 3rem;
 }
@@ -91,11 +112,22 @@ window.maximized#guestbook iframe {
 	padding-bottom: 100px;
 }
 
-#hello-img-window {
+/* ------------------------------------------------------------------ *
+ * Floating image windows
+ * ------------------------------------------------------------------ */
+.image-window {
 	position: absolute;
-	left: -200px;
-	bottom: -60px;
 	margin: 0;
+	padding: 0;
+}
+
+.image-window img {
+	width: 250px;
+}
+
+#hello-img-window {
+	left: -100px;
+	bottom: -50px;
 }
 
 #hello-img-window img {
@@ -103,42 +135,130 @@ window.maximized#guestbook iframe {
 }
 
 #katz-img-window {
-	position: absolute;
-	bottom: 25px;
+	bottom: 50px;
 	right: -100px;
-	padding: 0;
-}
-
-#katz-img-window img,
-#light-img-window img {
-	width: 250px;
 }
 
 #light-img-window {
-	position: absolute;
 	right: -70px;
 	top: 50px;
+}
+
+/* ------------------------------------------------------------------ *
+ * Last.fm "now playing"
+ * ------------------------------------------------------------------ */
+#lastfm-window {
+	position: absolute;
+	left: -100px;
+	top: -100px;
+	width: 300px;
+}
+
+#listening {
+	width: 100%;
+	height: 100%;
 	padding: 0;
+	margin: 0;
 }
 
-@media (max-width: 900px) {
-	#info,
-	#site {
-		flex-direction: column;
-	}
-
-	#hello-img-window,
-	#katz-img-window,
-	#light-img-window {
-		position: relative;
-		margin: 0.5rem auto;
-		left: auto;
-		right: auto;
-		top: auto;
-		bottom: auto;
-	}
+#listening h2 {
+	padding: 0;
+	margin: 0;
+	padding-bottom: 1rem;
+	font-size: 1rem;
 }
 
+#listening a {
+	display: flex;
+	align-items: stretch;
+	gap: 0.75rem;
+}
+
+#lastfm-window img {
+	display: block;
+	flex: 0 0 auto;
+	width: 64px;
+	height: 64px;
+	object-fit: cover;
+}
+
+#trackInfo {
+	height: 64px;
+	padding: 0;
+	margin: 0;
+}
+
+#trackInfo h3,
+#trackInfo h4 {
+	margin: 0;
+	font-size: 1rem;
+	line-height: 1.2rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+#trackInfo h4 {
+	padding-top: 0.25rem;
+}
+
+/* ------------------------------------------------------------------ *
+ * Music highlights
+ * ------------------------------------------------------------------ */
+#music-highlights-window {
+	width: 33.333%;
+}
+
+#music-highlights-list li {
+	border-bottom: 1px solid var(--interactive-border-dark);
+}
+
+.music-card {
+	background-color: var(--window-background);
+	border: 2px solid var(--window-border-light);
+	color: var(--text);
+	padding: 0.5rem;
+	margin: 0.25rem 0;
+	transition:
+		background-color 0.3s ease,
+		border-color 0.3s ease,
+		color 0.3s ease;
+}
+
+.music-card a {
+	color: var(--link);
+}
+
+.music-card a:hover {
+	color: var(--link-hover);
+}
+
+.music-card a > div {
+	display: flex;
+	align-items: stretch;
+	gap: 1rem;
+}
+
+.music-card img {
+	display: block;
+	flex: 0 0 auto;
+	width: 5rem;
+	height: 5rem;
+	object-fit: cover;
+}
+
+.music-card h3 {
+	align-self: center;
+	margin: 0;
+}
+
+#music-player-window {
+	width: 66.666%;
+}
+
+/* ------------------------------------------------------------------ *
+ * Banner
+ * ------------------------------------------------------------------ */
 .blink {
 	display: block;
 	width: 7.5rem;
@@ -171,6 +291,9 @@ aerial-banner ul {
 	}
 }
 
+/* ------------------------------------------------------------------ *
+ * Third-party widgets
+ * ------------------------------------------------------------------ */
 taskbar .start-menu {
 	background-image: url("../medias/bg/Ascent.jpg");
 }
@@ -179,5 +302,23 @@ taskbar .start-menu {
 	border-radius: 0;
 }
 
-#layerNeko0 {
+/* ------------------------------------------------------------------ *
+ * Responsive
+ * ------------------------------------------------------------------ */
+@media (max-width: 900px) {
+	#info,
+	#site {
+		flex-direction: column;
+	}
+
+	#hello-img-window,
+	#katz-img-window,
+	#light-img-window {
+		position: relative;
+		margin: 0.5rem auto;
+		left: auto;
+		right: auto;
+		top: auto;
+		bottom: auto;
+	}
 }
