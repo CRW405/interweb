@@ -11,6 +11,25 @@
 	</head>
 
 	<body>
+		<aside
+			id="mobile-warning"
+			class="mobile-warning"
+			role="dialog"
+			aria-modal="true"
+			aria-labelledby="mobile-warning-title"
+		>
+			<div class="mobile-warning-window">
+				<h2 id="mobile-warning-title">Desktop Recommended</h2>
+				<p>
+					This site is intended for and best viewed on a desktop computer. Some
+					features may be difficult to use on a mobile device.
+				</p>
+				<button type="button" id="mobile-warning-dismiss">
+					Continue anyway
+				</button>
+			</div>
+		</aside>
+
 		<script>
 			NekoType = "blue";
 		</script>
@@ -54,7 +73,13 @@
 					</p>
 				</window>
 
-				<window status="opened" id="hello-img-window" name="Hello.gif" class="image-window" floating>
+				<window
+					status="opened"
+					id="hello-img-window"
+					name="Hello.gif"
+					class="image-window"
+					floating
+				>
 					<img src="./medias/images/wave.gif" alt="wave.gif" />
 				</window>
 			</window-group>
@@ -88,31 +113,11 @@
 							taskbar window to close it.
 						</p>
 
-						<h4>Clock and Calendar</h4>
-						<p>
-							Hover over the taskbar clock to open the calendar. Use its arrow
-							buttons to view other months. Click the clock to toggle between
-							AM/PM and 24-hour time.
-						</p>
-
-						<p>
-							If the time is incorrect, it may be due to your browser's privacy
-							settings.
-						</p>
-
 						<a
 							target="_blank"
 							href="https://github.com/CRW405/interweb/tree/main/shards98"
 							><h3>Want to make your site look like this?</h3></a
 						>
-
-						<hr />
-
-						<h3>Updates</h3>
-						<p>
-							The updates section makes a GitHub API request and gets the
-							commits of this sites repo
-						</p>
 
 						<hr />
 
@@ -184,7 +189,13 @@
 					</div>
 				</window>
 
-				<window status="opened" id="katz-img-window" name="Katz.png" class="image-window" floating>
+				<window
+					status="opened"
+					id="katz-img-window"
+					name="Katz.png"
+					class="image-window"
+					floating
+				>
 					<img src="./medias/images/profile.png" alt="katz.png" />
 				</window>
 			</window-group>
@@ -207,7 +218,7 @@
 
 					<div>
 						<h3>The WebMaster</h3>
-						<div class="warning border">Been better</div>
+						<div class="danger border">I was fine. Before the creature.</div>
 					</div>
 				</window>
 
@@ -218,7 +229,10 @@
 							<h3>Top Priority</h3>
 
 							<ul title="This is the stuff I'll do">
-								<li>Add per window styling</li>
+								<li>Halloween stuff</li>
+								<li>
+									Add per window styling (Did this kinda but wanna do more)
+								</li>
 								<li>Add music and sound, with audio bars</li>
 							</ul>
 						</div>
@@ -228,7 +242,6 @@
 
 							<ul title="This is the stuff I'll say I'll do">
 								<li>Add SplashScreen</li>
-								<li>Add WallPaper Changer</li>
 								<li>Secrets</li>
 								<li>Paint</li>
 								<li>Blog</li>
@@ -238,7 +251,12 @@
 					</div>
 				</window>
 
-				<window id="light-img-window" name="Idea.gif" class="image-window" floating>
+				<window
+					id="light-img-window"
+					name="Idea.gif"
+					class="image-window"
+					floating
+				>
 					<img src="./medias/images/lightbulb.gif" alt="idea.gif" />
 				</window>
 			</window-group>
@@ -322,18 +340,51 @@
 					</ol>
 				</window>
 
-                <window id="music-player-window" name="Music Player">
-                    <h2>Music Player</h2>
-                    <div id="music-player">
-                        <div class="warning border">
-                            Coming Soon!
-                        </div>
-                    </div>
-                </window>
+				<window id="music-player-window" name="Music Player">
+					<h2>Music Player</h2>
+					<div id="music-player">
+						<div class="warning border">Coming Soon!</div>
+						<h3>This is me working on it VVV</h3>
+						<img
+							src="./medias/images/old-man-working-david.gif"
+							alt=""
+							id="construction-gif"
+						/>
+					</div>
+				</window>
 			</window-group>
 
 			<window-group id="stuff">
 				<!-- Fill with widgets and other cool stuff -->
+				<window id="wallpaper-window" name="Wallpaper">
+					<h2>Wallpaper</h2>
+					<form id="wallpaper-form">
+						<label for="wallpaper-select">Choose a wallpaper</label>
+						<select id="wallpaper-select"></select>
+
+						<label for="wallpaper-file">Use your own wallpaper</label>
+						<input id="wallpaper-file" type="file" accept="image/*" />
+
+						<fieldset>
+							<legend>Theme</legend>
+							<label>
+								<input
+									type="radio"
+									name="wallpaper-theme"
+									value="default"
+									checked
+								/>
+								Default
+							</label>
+							<label>
+								<input type="radio" name="wallpaper-theme" value="generated" />
+								Generated from wallpaper
+							</label>
+						</fieldset>
+
+						<p id="wallpaper-status" role="status">Using the default theme.</p>
+					</form>
+				</window>
 				<window id="guestbook" name="Guest Book">
 					<h2>Sign My Guestbook</h2>
 					<h3>
@@ -399,8 +450,16 @@
 		<script src="./shards98/js/shards98.js" defer type="module"></script>
 		<script src="./scripts/lastfm.js" defer type="module"></script>
 		<script src="./scripts/imageTheme.js" defer type="module"></script>
+		<script src="./scripts/wallpaper.js" defer type="module"></script>
 		<script src="./scripts/getUpdates.js" defer type="module"></script>
-		<script src="./scripts/aerialBanner.js"></script>
+		<script src="./scripts/aerialBanner.js" type="module"></script>
 		<script src="https://cursor-party.crw405.partykit.dev/cursors.js"></script>
+		<script>
+			document
+				.getElementById("mobile-warning-dismiss")
+				.addEventListener("click", () => {
+					document.getElementById("mobile-warning").hidden = true;
+				});
+		</script>
 	</body>
 </html>

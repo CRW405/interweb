@@ -1,8 +1,3 @@
-/**
- * content.css — page- and section-specific styles.
- * Load after style.css.
- */
-
 /* ------------------------------------------------------------------ *
  * Window groups
  * ------------------------------------------------------------------ */
@@ -83,15 +78,13 @@ window.maximized#updates ul {
 
 /* ------------------------------------------------------------------ *
  * Guestbook
- * ------------------------------------------------------------------ *
- * No min-height on the window: it would leave dead space below the iframe
- * whenever the viewport is shorter than ~870px. The iframe's own sizing
- * guarantees the window's presence instead. */
+ * ------------------------------------------------------------------ */
+
 #guestbook iframe {
 	display: block;
 	width: 100%;
 	min-height: 550px;
-	height: 70vh;
+	height: 20rem;
 }
 
 window.maximized#guestbook iframe {
@@ -104,7 +97,7 @@ window.maximized#guestbook iframe {
  * Welcome
  * ------------------------------------------------------------------ */
 #welcome-group {
-	margin-bottom: 3rem;
+	/* margin-bottom: 0.5rem; */
 }
 
 #welcome {
@@ -128,7 +121,7 @@ window.maximized#guestbook iframe {
 
 #hello-img-window {
 	left: -100px;
-	bottom: -50px;
+	bottom: -15px;
 }
 
 #hello-img-window img {
@@ -136,7 +129,7 @@ window.maximized#guestbook iframe {
 }
 
 #katz-img-window {
-	bottom: 50px;
+	bottom: -25px;
 	right: -100px;
 }
 
@@ -146,7 +139,7 @@ window.maximized#guestbook iframe {
 
 #light-img-window {
 	right: -70px;
-	top: 50px;
+	top: 75px;
 }
 
 /* ------------------------------------------------------------------ *
@@ -154,17 +147,7 @@ window.maximized#guestbook iframe {
  * ------------------------------------------------------------------ */
 #lastfm-window {
 	position: absolute;
-	/* Overhang the left edge of the content column, but never run off the
-	 * left of the screen: main's inline padding is clamp(0.75rem, 5vw, 5rem)
-	 * and main is only centred above 1250px, so cap the 100px overhang by
-	 * the room that actually exists to the left of the group. */
-	left: calc(
-		-1 *
-			min(
-				100px,
-				clamp(0.75rem, 5vw, 5rem) + (100vw - min(100vw, 1250px)) / 2 - 8px
-			)
-	);
+	left: -100px;
 	top: -100px;
 	width: 300px;
 }
@@ -312,11 +295,19 @@ aerial-banner ul {
  * Third-party widgets
  * ------------------------------------------------------------------ */
 taskbar .start-menu {
-	background-image: url("../medias/bg/Ascent.jpg");
+	background-image: var(--wallpaper-image);
 }
 
 .cursors-root {
 	border-radius: 0;
+}
+
+/* ------------------------------------------------------------------ *
+ * Etc
+ * ------------------------------------------------------------------ */
+
+#construction-gif {
+	height: 20rem;
 }
 
 /* ------------------------------------------------------------------ *
@@ -354,9 +345,6 @@ taskbar .start-menu {
 		max-width: 100%;
 	}
 
-	/* Cap, don't restyle: each image keeps its own width from the base
-	 * rules (hello 200px, katz 250px, light at natural size) and only
-	 * shrinks when the viewport is narrower than the image. */
 	#hello-img-window img,
 	#katz-img-window img,
 	#light-img-window img {

@@ -1,34 +1,9 @@
+import blinks from "./blinks.js";
+
 const aerialBanner = document.querySelector("aerial-banner");
 const bannerList = aerialBanner.querySelector("ul");
 
 const blinksPath = "../medias/blinks/";
-
-const blinks = `
-aimlink.gif
-antinft.gif
-anydamnbrowser.gif
-bestused.png
-bestview.gif
-bestviewed.gif
-chrmevil.gif
-debian.gif
-dontfeedai.gif
-eos.gif
-fuckadobe.gif
-getacomputer.jpg
-iexplorer.gif
-isurvived.gif
-jesus.gif
-mouse.gif
-neko scape.gif
-neocities.png
-neocities_vaporwave_stamp.png
-neovim.gif
-nogpt.gif
-piracy2.gif
-saynotoweb3.gif
-yeehaw.gif
-`;
 
 function shuffle(array) {
 	for (let i = array.length - 1; i > 0; i--) {
@@ -38,15 +13,10 @@ function shuffle(array) {
 	return array;
 }
 
-const blinksList = shuffle(
-	blinks
-		.split("\n")
-		.filter(Boolean)
-		.map((item) => item.trim()),
-);
+const blinksList = shuffle([...blinks]);
 
-for (const blink in blinksList) {
-	let filePath = blinksPath + blinksList[blink];
+for (const blink of blinksList) {
+	let filePath = blinksPath + blink;
 	let li = document.createElement("li");
 	let img = document.createElement("img");
 	img.classList.add("blink");

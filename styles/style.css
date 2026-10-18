@@ -1,11 +1,3 @@
-/**
- * style.css — the site's base theme: design tokens, global rules, window and
- * taskbar chrome, and shared utility classes.
- *
- * The tokens in :root are what scripts/colors.js overrides to theme a given
- * window or card from an image. Load this before content.css.
- */
-
 /* ------------------------------------------------------------------ *
  * Theme tokens
  * ------------------------------------------------------------------ */
@@ -14,6 +6,10 @@
 	--shards98-taskbar-height: 2rem;
 	--window-border-light: #add8e6;
 	--window-border-dark: #7777ea;
+	--wallpaper-image: url("../medias/bg/Ascent.jpg");
+	--wallpaper-position: center;
+	--wallpaper-repeat: no-repeat;
+	--wallpaper-size: cover;
 	--window-background: #ffffff;
 	--interactive-background-light: #e0e0e0;
 	--interactive-background-dark: #c0c0c0;
@@ -62,7 +58,11 @@ body::before {
 	content: "";
 	position: fixed;
 	inset: 0;
-	background: black url("../medias/bg/Ascent.jpg") center / cover no-repeat;
+	background-color: black;
+	background-image: var(--wallpaper-image);
+	background-position: var(--wallpaper-position);
+	background-repeat: var(--wallpaper-repeat);
+	background-size: var(--wallpaper-size);
 	z-index: -1;
 	pointer-events: none;
 }
@@ -109,6 +109,10 @@ ul {
 hr {
 	border-color: var(--interactive-border-light);
 	margin: 2rem 0;
+}
+
+window-group {
+	padding: 1rem 0;
 }
 
 /* ------------------------------------------------------------------ *
@@ -275,10 +279,12 @@ taskbar ul li .close-btn {
 	height: 1.5rem;
 	padding: 0;
 	border: 0;
+	background-color: inherit;
 	font-weight: bold;
 }
 
 taskbar ul li .close-btn:hover {
+	background-color: inherit;
 	color: var(--danger);
 }
 
@@ -290,7 +296,9 @@ taskbar .time {
 taskbar .taskbar-calendar {
 	position: fixed;
 	right: 0;
-	bottom: calc(var(--shards98-taskbar-height) + env(safe-area-inset-bottom, 0px));
+	bottom: calc(
+		var(--shards98-taskbar-height) + env(safe-area-inset-bottom, 0px)
+	);
 	width: 15rem;
 	height: 15rem;
 	box-sizing: border-box;
@@ -348,7 +356,9 @@ taskbar .start-menu {
 	overflow-y: scroll;
 	background-color: var(--interactive-background-dark);
 	border: 1px solid var(--interactive-border-light);
-	background-size: cover;
+	background-position: var(--wallpaper-position);
+	background-repeat: var(--wallpaper-repeat);
+	background-size: var(--wallpaper-size);
 }
 
 taskbar .start-menu h2 {
@@ -405,11 +415,58 @@ taskbar .start-menu ul {
 }
 
 /* ------------------------------------------------------------------ *
+ * Mobile warning
+ * ------------------------------------------------------------------ */
+.mobile-warning {
+	display: none;
+}
+
+.mobile-warning-window {
+	background-color: var(--window-background);
+	border: 5px solid var(--window-border-light);
+	border-top: calc(var(--shards98-titlebar-height) + 5px) solid
+		var(--window-border-light);
+	box-shadow: 0 0 0 100vmax rgb(0 0 0 / 65%);
+	color: var(--text);
+	max-width: min(24rem, calc(100vw - 2rem));
+	padding: 1rem;
+	position: relative;
+}
+
+.mobile-warning-window h2 {
+	background: linear-gradient(
+		to left,
+		var(--window-border-light),
+		var(--window-border-dark)
+	);
+	color: var(--text-light);
+	font-size: 1rem;
+	font-weight: normal;
+	margin: calc(-1rem - var(--shards98-titlebar-height) - 5px) -1rem 1rem;
+	padding: 0.25rem 0.35rem;
+}
+
+.mobile-warning-window button {
+	background-color: var(--interactive-background-light);
+	border: 1px solid var(--interactive-border-light);
+	border-right: 2px solid var(--interactive-border-dark);
+	border-bottom: 2px solid var(--interactive-border-dark);
+	color: var(--text-grey);
+	display: block;
+	margin: 1rem auto 0;
+	padding: 0.35rem 0.75rem;
+}
+
+.mobile-warning-window button:active {
+	border-top-color: var(--interactive-border-dark);
+	border-left-color: var(--interactive-border-dark);
+	border-right-color: var(--interactive-border-light);
+	border-bottom-color: var(--interactive-border-light);
+}
+
+/* ------------------------------------------------------------------ *
  * Responsive
  * ------------------------------------------------------------------ */
-/* :root above redefines these tokens, which out-cascades shards98's own
- * phone breakpoint (same specificity, earlier in the cascade), so restate
- * them here and give the taskbar buttons the full row as a tap target. */
 @media (max-width: 600px) {
 	:root {
 		--shards98-titlebar-height: 1.75rem;
@@ -419,5 +476,14 @@ taskbar .start-menu ul {
 	taskbar .tasks li > button {
 		align-self: stretch;
 		height: auto;
+	}
+
+	.mobile-warning:not([hidden]) {
+		align-items: center;
+		display: flex;
+		inset: 0;
+		justify-content: center;
+		position: fixed;
+		z-index: 1000;
 	}
 }

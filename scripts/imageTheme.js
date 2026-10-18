@@ -1,5 +1,28 @@
 import { applyTheme, createTheme, extractPalette } from "./colors.js";
 
+const themeProperties = [
+	"--window-background",
+	"--window-border-light",
+	"--window-border-dark",
+	"--interactive-background-light",
+	"--interactive-background-dark",
+	"--interactive-border-light",
+	"--interactive-border-dark",
+	"--interactive-select",
+	"--text",
+	"--text-grey",
+	"--text-light",
+	"--link",
+	"--link-hover",
+];
+
+const defaultTheme = Object.fromEntries(
+	themeProperties.map((property) => [
+		property,
+		getComputedStyle(document.documentElement).getPropertyValue(property),
+	]),
+);
+
 function unwrapProxy(url) {
 	try {
 		const parsed = new URL(url, document.baseURI);
@@ -38,6 +61,11 @@ export async function themeElementFromImage(target, image, options) {
 	}
 }
 
+export function resetTheme(target = document.documentElement) {
+	return applyTheme(defaultTheme, target);
+}
+
+// put images and elements here
 function themeStaticContent() {
 	const katz = document.querySelector("#katz-img-window");
 	if (katz) themeElementFromImage(katz, katz.querySelector("img"));
