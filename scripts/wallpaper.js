@@ -1,4 +1,6 @@
 import { resetTheme, themeElementFromImage } from "./imageTheme.js";
+import { applyTheme } from "./colors.js";
+import { theme as halloweenTheme } from "../seasons/halloween/theme.js";
 
 const wallpaperWindow = document.querySelector("#wallpaper-window");
 const wallpaperSelect = wallpaperWindow?.querySelector("#wallpaper-select");
@@ -14,10 +16,12 @@ const wallpapers = [
 	["Animated Grid (50%)", "./medias/bg/animgridbg50.gif"],
 	["Bliss", "./medias/bg/bliss.jpg"],
 	["Grid", "./medias/bg/gridbg.jpg"],
+	["Halloween", "./medias/bg/halloween.jpg"],
 ];
 
 let customWallpaperUrl = null;
 let themeRequest = 0;
+let seasonalEffectsActive = false;
 
 function setStatus(message, isError = false) {
 	if (!status) return;
@@ -40,11 +44,21 @@ async function applySelectedTheme() {
 	const source = wallpaperSelect?.selectedOptions[0]?.dataset.source;
 	if (!source) return;
 	const request = ++themeRequest;
+	const selectedTheme = wallpaperWindow.querySelector(
+		'input[name="wallpaper-theme"]:checked',
+	)?.value;
+	document.documentElement.classList.toggle(
+		"halloween-palette",
+		selectedTheme === "halloween",
+	);
 
-	if (
-		wallpaperWindow.querySelector('input[name="wallpaper-theme"]:checked')
-			?.value === "default"
-	) {
+	if (selectedTheme === "halloween") {
+		applyTheme(halloweenTheme);
+		setStatus("Using the Halloween color theme.");
+		return;
+	}
+
+	if (selectedTheme === "default") {
 		resetTheme();
 		setStatus("Using the default theme.");
 		return;
@@ -97,6 +111,28 @@ if (wallpaperWindow && wallpaperSelect && wallpaperFile) {
 	themeMode.forEach((input) =>
 		input.addEventListener("change", applySelectedTheme),
 	);
+
+	document.addEventListener("seasons:statechange", (event) => {
+		seasonalEffectsActive = event.detail.active;
+		const halloweenOption = wallpaperWindow.querySelector(
+			'input[name="wallpaper-theme"][value="halloween"]',
+		);
+		const selectedTheme = wallpaperWindow.querySelector(
+			'input[name="wallpaper-theme"]:checked',
+		)?.value;
+		if (!seasonalEffectsActive) {
+			const defaultOption = wallpaperWindow.querySelector(
+				'input[name="wallpaper-theme"][value="default"]',
+			);
+			if (defaultOption) defaultOption.checked = true;
+			document.documentElement.classList.remove("halloween-palette");
+			setStatus("Using the default theme.");
+			return;
+		}
+		if (halloweenOption && selectedTheme === "default") {
+			halloweenOption.checked = true;
+		}
+	});
 
 	selectWallpaper(wallpapers[0][1]);
 }

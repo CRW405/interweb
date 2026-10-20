@@ -1,0 +1,157 @@
+:root.halloween-theme {
+	--wallpaper-image: url("../../medias/bg/halloween.jpg");
+	--window-background: #18131d;
+	--window-border-light: #ff8a1f;
+	--window-border-dark: #7a145c;
+	--interactive-background-light: #3b293d;
+	--interactive-background-dark: #251b2b;
+	--interactive-border-light: #d66b31;
+	--interactive-border-dark: #521444;
+	--interactive-select: #74315e;
+	--text: #f5d6bc;
+	--text-grey: #e4b594;
+	--text-light: #fff4dc;
+	--link: #ffb347;
+	--link-hover: #ff6f61;
+	--danger: #ff5252;
+	color-scheme: dark;
+}
+
+.halloween-theme body::before {
+	filter: saturate(1.2) brightness(0.62);
+}
+
+:where(.halloween-theme, .halloween-palette) window,
+:where(.halloween-theme, .halloween-palette) body {
+	color: var(--text);
+}
+
+:where(.halloween-theme, .halloween-palette) window a {
+	color: var(--link);
+}
+
+:where(.halloween-theme, .halloween-palette) window a:hover {
+	color: var(--link-hover);
+}
+
+:where(.halloween-theme, .halloween-palette) taskbar {
+	background-color: var(--interactive-background-light);
+	color: var(--text);
+}
+
+:where(.halloween-theme, .halloween-palette) taskbar .tasks li,
+:where(.halloween-theme, .halloween-palette) taskbar .time,
+:where(.halloween-theme, .halloween-palette) taskbar .start-menu {
+	background-color: var(--interactive-background-light);
+	color: var(--text);
+	border-color: var(--interactive-border-light);
+	box-shadow: inset -1px -1px var(--interactive-border-dark);
+}
+
+:where(.halloween-theme, .halloween-palette) taskbar .tasks li:hover,
+:where(.halloween-theme, .halloween-palette) taskbar .tasks li.status-minimized {
+	background-color: var(--interactive-background-dark);
+	color: var(--text-light);
+}
+
+:where(.halloween-theme, .halloween-palette) window-controls button,
+:where(.halloween-theme, .halloween-palette) taskbar button {
+	background-color: var(--interactive-background-light);
+	color: var(--text-light);
+	border-color: var(--interactive-border-light);
+}
+
+:where(.halloween-theme, .halloween-palette) window-controls button:hover,
+:where(.halloween-theme, .halloween-palette) taskbar button:hover {
+	background-color: var(--interactive-background-dark);
+	color: var(--text-light);
+}
+
+:where(.halloween-theme, .halloween-palette) window-controls svg,
+:where(.halloween-theme, .halloween-palette) taskbar svg,
+:where(.halloween-theme, .halloween-palette) window-controls svg path,
+:where(.halloween-theme, .halloween-palette) taskbar svg path {
+	color: var(--text-light);
+	fill: currentColor;
+	stroke: currentColor;
+}
+
+.halloween-season-ui,
+.halloween-effect {
+	position: fixed;
+	pointer-events: none;
+	z-index: 2147483000;
+}
+
+.halloween-season-ui {
+	pointer-events: auto;
+	right: 0.75rem;
+	bottom: 3.25rem;
+	padding: 0.4rem 0.65rem;
+	background: #251b2b;
+	color: #ffcf9d;
+	border: 2px solid #ff8a1f;
+	box-shadow: 3px 3px #521444;
+	font: 14px "w95", sans-serif;
+}
+
+.halloween-season-ui.normal-preview {
+	background: #e0e0e0;
+	color: #555;
+	border-color: #add8e6;
+	box-shadow: 2px 2px #7777ea;
+}
+
+.halloween-season-ui.halloween-preview {
+	background: #251b2b;
+	color: #ffcf9d;
+	border-color: #ff8a1f;
+	box-shadow: 2px 2px #521444;
+}
+
+.halloween-blood {
+	width: 74px;
+	transform: translate(-18%, -18%);
+	opacity: 1;
+	transition: opacity 2.8s ease-out, transform 2.8s ease-out;
+}
+
+.halloween-skeleton {
+	inset: 0;
+	width: 100vw;
+	height: 100vh;
+	object-fit: contain;
+	background: rgb(0 0 0 / 72%);
+}
+
+.halloween-ghost {
+	width: clamp(70px, 10vw, 150px);
+	opacity: 0.52;
+}
+
+.halloween-bat {
+	width: clamp(70px, 11vw, 150px);
+}
+
+.halloween-pumpkin {
+	display: block;
+	float: right;
+	clear: right;
+	width: clamp(55px, 9vw, 120px);
+	max-width: 35%;
+	height: auto;
+	margin: 0.25rem 0 0.25rem 0.5rem;
+	opacity: 0.9;
+}
+
+.halloween-drip {
+	position: fixed;
+	display: block;
+	height: clamp(22px, 5vw, 58px);
+	pointer-events: none;
+	object-fit: fill;
+}
+
+.halloween-drip[hidden] {
+	display: none !important;
+}

@@ -186,7 +186,6 @@ export class Taskbar {
 		button.textContent = instance.element.getAttribute("name") || "Window";
 		button.addEventListener("click", () => {
 			instance.open();
-			this.startMenu.hidden = true;
 		});
 		item.append(button);
 		list.append(item);

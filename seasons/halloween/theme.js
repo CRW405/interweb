@@ -1,0 +1,16 @@
+export const theme = {
+	"--window-background": "#18131d",
+	"--window-border-light": "#ff8a1f",
+	"--window-border-dark": "#7a145c",
+	"--interactive-background-light": "#3b293d",
+	"--interactive-background-dark": "#251b2b",
+	"--interactive-border-light": "#d66b31",
+	"--interactive-border-dark": "#521444",
+	"--interactive-select": "#74315e",
+	"--text": "#f5d6bc",
+	"--text-grey": "#e4b594",
+	"--text-light": "#fff4dc",
+	"--link": "#ffb347",
+	"--link-hover": "#ff6f61",
+	"--danger": "#ff5252",
+};
