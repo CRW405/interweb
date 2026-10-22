@@ -89,7 +89,12 @@ function announceState() {
 }
 
 async function startSeason() {
-	const season = SEASONS[new Date().getMonth()];
+	const today = new Date();
+	const season =
+		today.getMonth() === 9 ||
+		(today.getMonth() === 10 && today.getDate() <= 15)
+			? SEASONS[9]
+			: SEASONS[today.getMonth()];
 	if (!season) return;
 	state.season = season;
 	state.themeClass = season.themeClass;

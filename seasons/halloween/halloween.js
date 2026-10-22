@@ -97,7 +97,7 @@ function showBlood(event) {
 	}, 20);
 	later(() => blood.remove(), 3000);
 	play("blood.mp3");
-	if (Math.random() < 0.1) play("scream.mp3");
+	if (Math.random() < 0.03) play("scream.mp3");
 }
 
 function showSkeleton() {
@@ -113,6 +113,10 @@ function showSkeleton() {
 function spawnGhost() {
 	if (!state.active || document.querySelectorAll(".halloween-ghost").length >= 3) return;
 	const ghost = addNode(createImage("halloween-effect halloween-ghost", "ghost.gif"));
+	ghost.style.opacity = "0";
+	requestAnimationFrame(() => {
+		if (ghost.isConnected) ghost.style.opacity = "0.52";
+	});
 	let x = random(0, Math.max(0, window.innerWidth - 150));
 	let y = random(40, Math.max(40, window.innerHeight - 150));
 	let dx = random(-0.7, 0.7);
@@ -141,6 +145,7 @@ function spawnGhost() {
 }
 
 function spawnBat() {
+	if (!state.active || document.querySelector(".halloween-bat")) return;
 	const bat = addNode(createImage("halloween-effect halloween-bat", "bat.gif"));
 	let x = random(0, Math.max(0, window.innerWidth - 140));
 	let y = random(0, Math.max(0, window.innerHeight - 100));
@@ -161,10 +166,6 @@ function spawnBat() {
 		state.animationFrames.add(frame);
 	};
 	state.animationFrames.add(requestAnimationFrame(move));
-	later(() => {
-		bat.remove();
-		state.nodes.delete(bat);
-	}, 20000);
 }
 
 function addPumpkins() {
@@ -274,7 +275,6 @@ function startHalloween() {
 		if (Math.random() < 0.01) showSkeleton();
 	}, 1000));
 	state.intervals.push(window.setInterval(spawnGhost, 6500));
-	state.intervals.push(window.setInterval(spawnBat, 18000));
 	const observer = new MutationObserver(addDrips);
 	observer.observe(document.body, { childList: true, subtree: true });
 	state.listeners.push(() => observer.disconnect());

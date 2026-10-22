@@ -127,6 +127,7 @@
 .halloween-ghost {
 	width: clamp(70px, 10vw, 150px);
 	opacity: 0.52;
+	transition: opacity 2s ease-out;
 }
 
 .halloween-bat {
