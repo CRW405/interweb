@@ -9,6 +9,7 @@ const state = {
 	nodes: new Set(),
 	audio: new Map(),
 	animationFrames: new Set(),
+	dripFrame: null,
 	drips: new Map(),
 	pumpkins: new Set(),
 	clockClicks: 0,
@@ -216,6 +217,12 @@ function updateDrips() {
 	});
 }
 
+function trackDrips() {
+	if (!state.active) return;
+	updateDrips();
+	state.dripFrame = requestAnimationFrame(trackDrips);
+}
+
 function restore() {
 	if (!state.active) return;
 	state.active = false;
@@ -225,6 +232,8 @@ function restore() {
 	state.intervals = [];
 	state.animationFrames.forEach(cancelAnimationFrame);
 	state.animationFrames.clear();
+	if (state.dripFrame !== null) cancelAnimationFrame(state.dripFrame);
+	state.dripFrame = null;
 	state.listeners.forEach((remove) => remove());
 	state.listeners = [];
 	state.audio.forEach((audio) => {
@@ -280,8 +289,8 @@ function startHalloween() {
 	state.listeners.push(() => observer.disconnect());
 	listen(window, "scroll", updateDrips, { passive: true });
 	listen(window, "resize", updateDrips);
-	state.intervals.push(window.setInterval(updateDrips, 250));
 	addDrips();
+	state.dripFrame = requestAnimationFrame(trackDrips);
 	addPumpkins();
 	spawnGhost();
 	spawnBat();
