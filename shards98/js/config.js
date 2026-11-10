@@ -6,7 +6,7 @@ export const SELECTORS = {
 
 export const ICONS = {
 	maximize:
-		'<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3h10v10H3zm1 1v8h8V4z"/></svg>',
+		'<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3h10v10H3zm1 1v8h8V4z" fill="currentColor"/></svg>',
 	restore:
 		'<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 5h8v8H5zM3 3h8v1H4v7H3zm3 3h6v6H6z" fill="none" stroke="currentColor" stroke-width="1.25"/></svg>',
 	dock:

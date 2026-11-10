@@ -112,6 +112,20 @@ if (wallpaperWindow && wallpaperSelect && wallpaperFile) {
 		input.addEventListener("change", applySelectedTheme),
 	);
 
+	function chooseDefaultTheme() {
+		const defaultOption = wallpaperWindow.querySelector(
+			'input[name="wallpaper-theme"][value="default"]',
+		);
+		if (defaultOption) defaultOption.checked = true;
+		document.documentElement.classList.remove("halloween-palette");
+		resetTheme();
+		setStatus("Using the default theme.");
+	}
+
+	// Before a season changes (including month navigation and "Return to
+	// normal"), reset the chosen theme to the default.
+	document.addEventListener("seasons:beforechange", chooseDefaultTheme);
+
 	document.addEventListener("seasons:statechange", (event) => {
 		seasonalEffectsActive = event.detail.active;
 		const halloweenOption = wallpaperWindow.querySelector(
@@ -121,15 +135,14 @@ if (wallpaperWindow && wallpaperSelect && wallpaperFile) {
 			'input[name="wallpaper-theme"]:checked',
 		)?.value;
 		if (!seasonalEffectsActive) {
-			const defaultOption = wallpaperWindow.querySelector(
-				'input[name="wallpaper-theme"][value="default"]',
-			);
-			if (defaultOption) defaultOption.checked = true;
-			document.documentElement.classList.remove("halloween-palette");
-			setStatus("Using the default theme.");
+			chooseDefaultTheme();
 			return;
 		}
-		if (halloweenOption && selectedTheme === "default") {
+		if (
+			event.detail.name === "Halloween" &&
+			halloweenOption &&
+			selectedTheme === "default"
+		) {
 			halloweenOption.checked = true;
 		}
 	});

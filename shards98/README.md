@@ -198,3 +198,14 @@ using the single entrypoint.
   <div class="time"></div>
 </taskbar>
 ```
+
+Changing the calendar month dispatches a bubbling `shards98:calendarmonthchange`
+event from the taskbar. The event's `detail` contains the displayed `month`
+(zero-based, so `0` is January) and `year`:
+
+```js
+document.addEventListener("shards98:calendarmonthchange", (event) => {
+  const { month, year } = event.detail;
+  console.log(`Showing ${month + 1}/${year}`);
+});
+```

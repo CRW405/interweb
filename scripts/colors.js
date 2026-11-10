@@ -559,8 +559,23 @@ export function paletteToHex(palette) {
 	);
 }
 
+// How much each palette entry should count when judging how dark an image is.
+// Extracted palettes expose both `ratio` (0..1) and `population` (pixel count).
+function paletteWeight(color) {
+	if (color && typeof color === "object") {
+		if (Number.isFinite(color.ratio) && color.ratio > 0) return color.ratio;
+		if (Number.isFinite(color.population) && color.population > 0) {
+			return color.population;
+		}
+	}
+	return 1;
+}
+
 export function createTheme(palette, extra = {}) {
 	if (!palette || palette.length === 0) return { ...extra };
+
+	// `mode` lets callers force a variant; otherwise the palette decides.
+	const { mode = "auto", ...themeOverrides } = extra;
 
 	const colors = palette.map((color) =>
 		typeof color === "string" ? hexToRgb(color) : color.rgb,
@@ -574,6 +589,16 @@ export function createTheme(palette, extra = {}) {
 	const lightest = byLuminance[byLuminance.length - 1];
 	const mid = byLuminance[Math.floor(byLuminance.length / 2)];
 
+	const weights = palette.map(paletteWeight);
+	const totalWeight = weights.reduce((sum, weight) => sum + weight, 0) || 1;
+	// Weighted average lightness (L* 0..100) approximates how bright the image
+	// reads, which is a better dark/light clue than raw RGB luminance.
+	const averageLightness =
+		labs.reduce((sum, lab, index) => sum + lab.L * weights[index], 0) /
+		totalWeight;
+
+	const isDark = mode === "dark" || (mode !== "light" && averageLightness < 50);
+
 	let accent = colors[0];
 	let bestChroma = -1;
 	for (let i = 0; i < colors.length; i++) {
@@ -583,6 +608,39 @@ export function createTheme(palette, extra = {}) {
 			bestChroma = value;
 			accent = colors[i];
 		}
+	}
+
+	if (isDark) {
+		// Keep the background genuinely dark so light text stays readable,
+		// while retaining a tint from the image's mid-tone.
+		const windowBackground = darken(mid, 0.72);
+		const textBase = lighten(desaturate(lightest, 0.25), 0.35);
+		const textLight = lighten(desaturate(lightest, 0.6), 0.85);
+
+		return {
+			"--window-background": rgbToHex(windowBackground),
+			"--window-border-light": rgbToHex(lighten(accent, 0.3)),
+			"--window-border-dark": rgbToHex(darken(accent, 0.45)),
+			"--interactive-background-light": rgbToHex(
+				lighten(windowBackground, 0.18),
+			),
+			"--interactive-background-dark": rgbToHex(
+				darken(windowBackground, 0.2),
+			),
+			"--interactive-border-light": rgbToHex(
+				lighten(windowBackground, 0.42),
+			),
+			"--interactive-border-dark": rgbToHex(
+				darken(windowBackground, 0.28),
+			),
+			"--interactive-select": rgbToHex(lighten(windowBackground, 0.3)),
+			"--text": readableText(windowBackground, textBase),
+			"--text-grey": readableGray(windowBackground),
+			"--text-light": rgbToHex(textLight),
+			"--link": readableText(windowBackground, lighten(accent, 0.25)),
+			"--link-hover": readableText(windowBackground, lighten(accent, 0.6)),
+			...themeOverrides,
+		};
 	}
 
 	const windowBackground = lighten(lightest, 0.5);
@@ -603,7 +661,7 @@ export function createTheme(palette, extra = {}) {
 		"--text-light": rgbToHex(textLight),
 		"--link": readableText(windowBackground, accent),
 		"--link-hover": rgbToHex(darken(accent, 0.35)),
-		...extra,
+		...themeOverrides,
 	};
 }
 
@@ -615,7 +673,7 @@ export function applyTheme(theme, target = document.documentElement) {
 }
 
 export async function themeFromImage(source, options = {}) {
-	const { count = 6, ...rest } = options;
+	const { count = 6, mode, ...rest } = options;
 	const palette = await extractPalette(source, { count, ...rest });
-	return { palette, theme: createTheme(palette) };
+	return { palette, theme: createTheme(palette, mode ? { mode } : {}) };
 }

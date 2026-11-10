@@ -71,20 +71,14 @@ export class Taskbar {
 		previous.type = "button";
 		previous.setAttribute("aria-label", "Previous month");
 		previous.textContent = "<";
-		previous.addEventListener("click", () => {
-			this.calendarDate.setMonth(this.calendarDate.getMonth() - 1);
-			this._renderCalendar();
-		});
+		previous.addEventListener("click", () => this._navigateMonth(-1));
 		const title = document.createElement("strong");
 		title.textContent = monthName;
 		const next = document.createElement("button");
 		next.type = "button";
 		next.setAttribute("aria-label", "Next month");
 		next.textContent = ">";
-		next.addEventListener("click", () => {
-			this.calendarDate.setMonth(this.calendarDate.getMonth() + 1);
-			this._renderCalendar();
-		});
+		next.addEventListener("click", () => this._navigateMonth(1));
 		header.append(previous, title, next);
 
 		const grid = document.createElement("div");
@@ -109,6 +103,21 @@ export class Taskbar {
 			grid.append(cell);
 		}
 		this.calendar.append(header, grid);
+	}
+
+	_navigateMonth(offset) {
+		this.calendarDate.setDate(1);
+		this.calendarDate.setMonth(this.calendarDate.getMonth() + offset);
+		this._renderCalendar();
+		this.element.dispatchEvent(
+			new CustomEvent("shards98:calendarmonthchange", {
+				bubbles: true,
+				detail: {
+					month: this.calendarDate.getMonth(),
+					year: this.calendarDate.getFullYear(),
+				},
+			}),
+		);
 	}
 
 	_updateTime() {

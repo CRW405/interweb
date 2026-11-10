@@ -14,6 +14,7 @@ const themeProperties = [
 	"--text-light",
 	"--link",
 	"--link-hover",
+	"--danger",
 ];
 
 const defaultTheme = Object.fromEntries(
@@ -43,13 +44,45 @@ const imageSource = (image) => {
 	return unwrapProxy(raw);
 };
 
-export async function themeElementFromImage(target, image, options) {
+// Many image CDNs (Bandcamp, DuckDuckGo, ...) serve images without the CORS
+// headers canvas needs. Re-fetch those through an image proxy that does.
+const IMAGE_PROXY = "https://images.weserv.nl/?url=";
+
+function proxySource(source) {
+	try {
+		const url = new URL(source, document.baseURI);
+		if (url.protocol !== "http:" && url.protocol !== "https:") return "";
+		if (url.origin === window.location.origin) return "";
+		if (url.hostname === "images.weserv.nl" || url.hostname === "wsrv.nl") {
+			return "";
+		}
+		return `${IMAGE_PROXY}${encodeURIComponent(
+			url.href.replace(/^https?:\/\//, ""),
+		)}`;
+	} catch {
+		return "";
+	}
+}
+
+async function extractPaletteWithFallback(source, options) {
+	try {
+		return await extractPalette(source, options);
+	} catch (error) {
+		const proxied = proxySource(source);
+		if (!proxied) throw error;
+		return extractPalette(proxied, options);
+	}
+}
+
+export async function themeElementFromImage(target, image, options = {}) {
 	const source = imageSource(image);
 	if (!target || !source) return null;
 
+	const { mode, ...paletteOptions } = options;
+
 	try {
-		const palette = await extractPalette(source, options);
-		const theme = createTheme(palette);
+		const palette = await extractPaletteWithFallback(source, paletteOptions);
+		const theme = createTheme(palette, mode ? { mode } : {});
 		applyTheme(theme, target);
 		return { palette, theme };
 	} catch (error) {

@@ -113,33 +113,37 @@ window.maximized#guestbook iframe {
 	padding: 0;
 }
 
+.image-window > .window-content {
+	height: 100%;
+	overflow: hidden;
+}
+
 .image-window img {
 	display: block;
 	width: 100%;
 	height: 100%;
+	object-fit: fill;
 }
 
 #hello-img-window {
 	left: -100px;
 	bottom: -15px;
-}
-
-#hello-img-window img {
-	width: 200px;
+	width: 210px;
+	height: 163px;
 }
 
 #katz-img-window {
 	bottom: -25px;
 	right: -100px;
-}
-
-#katz-img-window img {
-	width: 250px;
+	width: 260px;
+	height: 300px;
 }
 
 #light-img-window {
 	right: -70px;
 	top: 75px;
+	width: 210px;
+	height: 235px;
 }
 
 /* ------------------------------------------------------------------ *
@@ -341,7 +345,7 @@ taskbar .start-menu {
 		right: auto;
 		top: auto;
 		bottom: auto;
-		width: fit-content;
+		height: auto;
 		max-width: 100%;
 	}
 

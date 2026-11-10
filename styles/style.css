@@ -180,6 +180,7 @@ window-controls {
 window-controls button {
 	width: var(--shards98-titlebar-height);
 	height: var(--shards98-titlebar-height);
+	color: var(--text);
 	background-color: var(--interactive-background-light);
 	border: 1px solid var(--interactive-border-light);
 	border-right: 2px solid var(--interactive-border-dark);
@@ -248,6 +249,7 @@ window.maximized {
  * ------------------------------------------------------------------ */
 taskbar {
 	background-color: var(--interactive-background-light);
+	color: var(--text);
 }
 
 taskbar .tasks {
@@ -406,7 +408,7 @@ taskbar .start-menu ul {
 
 .warning {
 	background-color: var(--warning);
-	color: var(--text-grey);
+	color: #000;
 }
 
 .ok {
