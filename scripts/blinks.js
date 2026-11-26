@@ -9,6 +9,7 @@ const blinks = [
 	"bestused.png",
 	"bestview.gif",
 	"bestviewed.gif",
+	"brainmade.png",
 	"chrmevil.gif",
 	"chrome.gif",
 	"debian.gif",
@@ -22,7 +23,7 @@ const blinks = [
 	"jesus.gif",
 	"mouse.gif",
 	"muchstatic.gif",
-	// "munch.gif", // too tall, either shrink or remove
+	"munch.gif",
 	"nap.avif",
 	"neko scape.gif",
 	"neocities.png",

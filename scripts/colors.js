@@ -1,3 +1,5 @@
+// them from colors
+
 const D65 = { x: 0.95047, y: 1.0, z: 1.08883 };
 const LAB_EPSILON = 216 / 24389; // (6 / 29) ** 3
 const LAB_KAPPA = 24389 / 27;
@@ -624,15 +626,9 @@ export function createTheme(palette, extra = {}) {
 			"--interactive-background-light": rgbToHex(
 				lighten(windowBackground, 0.18),
 			),
-			"--interactive-background-dark": rgbToHex(
-				darken(windowBackground, 0.2),
-			),
-			"--interactive-border-light": rgbToHex(
-				lighten(windowBackground, 0.42),
-			),
-			"--interactive-border-dark": rgbToHex(
-				darken(windowBackground, 0.28),
-			),
+			"--interactive-background-dark": rgbToHex(darken(windowBackground, 0.2)),
+			"--interactive-border-light": rgbToHex(lighten(windowBackground, 0.42)),
+			"--interactive-border-dark": rgbToHex(darken(windowBackground, 0.28)),
 			"--interactive-select": rgbToHex(lighten(windowBackground, 0.3)),
 			"--text": readableText(windowBackground, textBase),
 			"--text-grey": readableGray(windowBackground),

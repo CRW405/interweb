@@ -1,3 +1,5 @@
+// Manage and animate the strip of blinkies
+
 import blinks from "./blinks.js";
 
 const aerialBanner = document.querySelector("aerial-banner");

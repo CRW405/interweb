@@ -1,3 +1,5 @@
+// gets the recent updates of the sites repo
+
 const url = "https://api.github.com/repos/CRW405/interweb/commits";
 const MAX_COMMITS = 5;
 const CACHE_TTL = 60 * 60 * 1000;

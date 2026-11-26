@@ -1,3 +1,5 @@
+// handles last fm fetching and displaying
+
 import { themeElementFromImage } from "./imageTheme.js";
 
 const USERNAME = "CRW405"; // Put your LastFM username here

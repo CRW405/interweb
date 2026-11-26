@@ -1,5 +1,5 @@
 :root.halloween-theme {
-	--wallpaper-image: url("../../medias/bg/halloween.jpg");
+	--wallpaper-image: url("./assets/halloween.jpg");
 	--window-background: #18131d;
 	--window-border-light: #ff8a1f;
 	--window-border-dark: #7a145c;

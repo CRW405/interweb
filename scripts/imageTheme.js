@@ -1,3 +1,5 @@
+// generate a theme from the colors in an image
+
 import { applyTheme, createTheme, extractPalette } from "./colors.js";
 
 const themeProperties = [

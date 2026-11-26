@@ -1,6 +1,4 @@
-/* ------------------------------------------------------------------ *
- * Theme tokens
- * ------------------------------------------------------------------ */
+/* base */
 :root {
 	--shards98-titlebar-height: 25px;
 	--shards98-taskbar-height: 2rem;
@@ -10,42 +8,45 @@
 	--wallpaper-position: center;
 	--wallpaper-repeat: no-repeat;
 	--wallpaper-size: cover;
-	--window-background: #ffffff;
+	--window-background: #fff;
 	--interactive-background-light: #e0e0e0;
 	--interactive-background-dark: #c0c0c0;
-	--interactive-border-light: #eeeeee;
+	--interactive-border-light: #eee;
 	--interactive-border-dark: #a0a0a0;
-	--interactive-select: #dddddd;
+	--interactive-select: #ddd;
 	--interactive-border-select: var(--interactive-select);
-	--text: #555555;
-	--text-grey: #000000;
-	--text-light: #ffffff;
-	--link: #0000ee;
+	--text: #555;
+	--text-grey: #000;
+	--text-light: #fff;
+	--link: #00e;
 	--link-hover: #33008b;
 	--danger: #ff4c4c;
 	--warning: #ffcc00;
 	--ok: #4caf50;
+	--wallpaper: var(--wallpaper-image) var(--wallpaper-position) /
+		var(--wallpaper-size) var(--wallpaper-repeat);
+	--cursor-pointer: url("../cursor/Cursor_15.cur"), pointer;
 }
-
 @font-face {
-	font-family: "w95";
+	font-family: w95;
 	src: url("../font/W95FA.otf") format("opentype");
 }
-
-/* ------------------------------------------------------------------ *
- * Reset + global typography
- * ------------------------------------------------------------------ */
+@font-face {
+	font-family: "Departure Mono";
+	src:
+		url("../font/DepartureMono-Regular.woff2") format("woff2"),
+		url("../font/DepartureMono-Regular.woff") format("woff");
+	font-display: swap;
+}
 * {
 	box-sizing: border-box;
-	font-family: "w95", sans-serif;
+	font-family: w95, sans-serif;
 	cursor: url("../cursor/arrow.cur"), default;
 }
-
 html {
-	background-color: black;
+	background: #000;
 	overflow-x: hidden;
 }
-
 body {
 	margin: 0;
 	min-height: 100dvh;
@@ -53,20 +54,14 @@ body {
 	overflow-x: hidden;
 	background: transparent;
 }
-
 body::before {
 	content: "";
 	position: fixed;
 	inset: 0;
-	background-color: black;
-	background-image: var(--wallpaper-image);
-	background-position: var(--wallpaper-position);
-	background-repeat: var(--wallpaper-repeat);
-	background-size: var(--wallpaper-size);
+	background: #000 var(--wallpaper);
 	z-index: -1;
 	pointer-events: none;
 }
-
 main {
 	width: min(1250px, 100%);
 	padding: 0 clamp(0.75rem, 5vw, 5rem)
@@ -75,52 +70,49 @@ main {
 	display: flex;
 	flex-direction: column;
 }
-
 header,
 footer {
 	width: min(1250px, 100%);
 	margin: auto;
 	text-align: center;
 }
-
 footer {
 	margin-bottom: 5rem;
 }
-
 footer ul {
 	list-style: none;
 	padding: 0;
 }
-
 footer ul li {
 	display: inline;
 	margin: 0 10px;
 }
-
 footer ul li::before,
 footer ul li::after {
 	content: "|";
 }
-
 ul {
 	list-style-type: square;
 }
-
 hr {
 	border-color: var(--interactive-border-light);
 	margin: 2rem 0;
 }
-
 window-group {
 	padding: 1rem 0;
 }
+pre {
+	font-family: "Departure Mono", monospace;
+	font-size: 16px;
+	line-height: 1;
+}
 
-/* ------------------------------------------------------------------ *
- * Cursors
- * ------------------------------------------------------------------ */
+/* cursors */
 a,
 a *,
 button,
+window-controls button,
+taskbar .start-list button,
 select,
 summary,
 input[type="button"],
@@ -131,21 +123,28 @@ input[type="reset"],
 taskbar .tasks li,
 .time,
 .icon {
-	cursor: url("../cursor/Cursor_15.cur"), pointer;
+	cursor: var(--cursor-pointer);
 }
-
 window input:not([type="button"]):not([type="submit"]):not([type="reset"]),
 window textarea,
 window [contenteditable="true"] {
 	cursor: url("../cursor/Beam.cur"), text;
 }
 
-/* ------------------------------------------------------------------ *
- * Window chrome
- * ------------------------------------------------------------------ */
+/* windows */
+/* resolve locally so per-window image themes are used */
+window,
+.mobile-warning-window {
+	--titlebar-gradient: linear-gradient(
+		to left,
+		var(--window-border-light),
+		var(--window-border-dark)
+	);
+}
 window {
 	background-color: var(--window-background);
 	border: 5px solid var(--window-border-light);
+	border-bottom: 5px solid var(--window-border-dark);
 	border-top: calc(var(--shards98-titlebar-height) + 5px) solid
 		var(--window-border-light);
 	padding: 1rem;
@@ -154,128 +153,96 @@ window {
 	margin: 1rem 0.25rem;
 	z-index: 0;
 }
-
 window > .window-content {
 	width: 100%;
 	height: auto;
 	max-width: 100%;
 }
-
 window[floating] {
 	z-index: 10;
 }
-
 window a {
 	color: var(--link);
 }
-
 window a:hover {
 	color: var(--link-hover);
 }
-
 window-controls {
 	gap: 0.15rem;
 }
-
 window-controls button {
 	width: var(--shards98-titlebar-height);
 	height: var(--shards98-titlebar-height);
 	color: var(--text);
 	background-color: var(--interactive-background-light);
-	border: 1px solid var(--interactive-border-light);
-	border-right: 2px solid var(--interactive-border-dark);
-	border-bottom: 2px solid var(--interactive-border-dark);
 	padding: 0;
 	margin: 0;
 	font-weight: bold;
 }
-
 window-controls button:hover {
 	background-color: var(--interactive-background-dark);
 	border-color: var(--interactive-border-dark);
 	border-right-color: var(--interactive-border-select);
 	border-bottom-color: var(--interactive-border-select);
 }
-
 window-controls .minimize,
 window-controls .close {
 	font-size: 1rem;
 	line-height: 1;
 }
-
 window-title {
 	padding: 0 0.35rem;
 	line-height: var(--shards98-titlebar-height);
 	cursor: url("../cursor/Cursor_10.cur"), move;
-	background: linear-gradient(
-		to left,
-		var(--window-border-light),
-		var(--window-border-dark)
-	);
+	background: var(--titlebar-gradient);
 	color: var(--text-light);
 }
-
 window-title:active,
 window-title.is-dragging {
 	cursor: url("../cursor/Cursor_10.cur"), move;
 }
-
 window.maximized {
 	border-radius: 0;
 }
-
 .resize-n,
 .resize-s {
 	cursor: url("../cursor/Cursor_9.cur"), ns-resize;
 }
-
 .resize-e,
 .resize-w {
 	cursor: url("../cursor/Cursor_8.cur"), ew-resize;
 }
-
 .resize-se,
 .resize-nw {
 	cursor: url("../cursor/Cursor_6.cur"), nwse-resize;
 }
-
 .resize-sw,
 .resize-ne {
 	cursor: url("../cursor/Cursor_7.cur"), nesw-resize;
 }
 
-/* ------------------------------------------------------------------ *
- * Taskbar chrome
- * ------------------------------------------------------------------ */
+/* taskbar */
 taskbar {
 	background-color: var(--interactive-background-light);
 	color: var(--text);
 }
-
 taskbar .tasks {
 	gap: 0.2rem;
 }
-
 taskbar ul li {
-	border: 1px solid var(--interactive-border-light);
-	border-right: 2px solid var(--interactive-border-dark);
-	border-bottom: 2px solid var(--interactive-border-dark);
 	padding: 0 0.5rem;
 	line-height: 1;
 }
-
 taskbar ul li:hover {
 	background-color: var(--interactive-background-dark);
 	border-color: var(--interactive-background-dark);
 	border-right-color: var(--interactive-border-select);
 	border-bottom-color: var(--interactive-border-select);
 }
-
 taskbar ul li.status-minimized,
 taskbar ul li.status-minimized > button:first-child {
 	background-color: var(--interactive-background-dark);
 }
-
 taskbar ul li .close-btn {
 	width: 1.25rem;
 	height: 1.5rem;
@@ -284,17 +251,14 @@ taskbar ul li .close-btn {
 	background-color: inherit;
 	font-weight: bold;
 }
-
 taskbar ul li .close-btn:hover {
 	background-color: inherit;
 	color: var(--danger);
 }
-
 taskbar .time {
 	border-left: 1px solid var(--interactive-border-dark);
 	background-color: var(--interactive-background-light);
 }
-
 taskbar .taskbar-calendar {
 	position: fixed;
 	right: 0;
@@ -306,16 +270,11 @@ taskbar .taskbar-calendar {
 	box-sizing: border-box;
 	padding: 0.5rem;
 	background-color: var(--interactive-background-light);
-	border: 1px solid var(--interactive-border-light);
-	border-right: 2px solid var(--interactive-border-dark);
-	border-bottom: 2px solid var(--interactive-border-dark);
 	z-index: 1004;
 }
-
 taskbar .taskbar-calendar[hidden] {
 	display: none;
 }
-
 taskbar .taskbar-calendar header {
 	display: flex;
 	align-items: center;
@@ -323,13 +282,11 @@ taskbar .taskbar-calendar header {
 	width: 100%;
 	margin: 0 0 0.5rem;
 }
-
 taskbar .taskbar-calendar header button {
 	width: 1.5rem;
 	height: 1.5rem;
 	padding: 0;
 }
-
 taskbar .calendar-grid {
 	display: grid;
 	grid-template-columns: repeat(7, 1fr);
@@ -338,31 +295,23 @@ taskbar .calendar-grid {
 	height: calc(100% - 2rem);
 	text-align: center;
 }
-
 taskbar .calendar-grid > span {
 	padding: 0.2rem 0;
 }
-
 taskbar .calendar-weekday {
 	font-weight: bold;
 }
-
 taskbar .calendar-today {
 	background-color: var(--interactive-background-dark);
 	font-weight: bold;
 }
-
 taskbar .start-menu {
 	height: 150px;
 	padding-left: 2rem;
 	overflow-y: scroll;
-	background-color: var(--interactive-background-dark);
 	border: 1px solid var(--interactive-border-light);
-	background-position: var(--wallpaper-position);
-	background-repeat: var(--wallpaper-repeat);
-	background-size: var(--wallpaper-size);
+	background: var(--interactive-background-light) var(--wallpaper);
 }
-
 taskbar .start-menu h2 {
 	padding: 0;
 	margin: 0;
@@ -370,7 +319,6 @@ taskbar .start-menu h2 {
 	text-align: center;
 	border-bottom: 1px solid var(--interactive-border-dark);
 }
-
 taskbar .start-menu ul {
 	background-color: var(--interactive-background-light);
 	list-style: none;
@@ -378,51 +326,277 @@ taskbar .start-menu ul {
 	padding: 0;
 }
 
-/* ------------------------------------------------------------------ *
- * Shared utilities
- * ------------------------------------------------------------------ */
-/* Inset box, e.g. list panels and status chips. */
+/* utilities */
 .border {
 	border: 2px inset var(--interactive-border-light);
 	padding: 0.25rem;
 	margin: 0.25rem;
 }
-
-/* Lists with their markers and spacing removed. */
 .plain-list {
 	list-style: none;
 	padding: 0;
 	margin: 0;
 }
-
-/* Lay a flex container's children out horizontally. */
 .row {
 	flex-direction: row;
 }
-
-/* Status colours. */
+/* raised border for controls and anything marked .bevel */
+:where(
+	window-controls button,
+	taskbar ul li,
+	taskbar .taskbar-calendar,
+	.bevel
+) {
+	border: 1px solid var(--interactive-border-light);
+	border-right: 2px solid var(--interactive-border-dark);
+	border-bottom: 2px solid var(--interactive-border-dark);
+}
 .danger {
 	background-color: var(--danger);
 	color: var(--text-light);
 }
-
 .warning {
 	background-color: var(--warning);
 	color: #000;
 }
-
 .ok {
 	background-color: var(--ok);
 	color: var(--text-light);
 }
+.center {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+}
 
-/* ------------------------------------------------------------------ *
- * Mobile warning
- * ------------------------------------------------------------------ */
+/* image windows */
+.image-window {
+	position: absolute;
+	margin: 0;
+	padding: 0;
+}
+.image-window > .window-content {
+	height: 100%;
+	overflow: hidden;
+}
+.image-window img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: fill;
+}
+
+/* welcome group */
+/* #welcome */
+#welcome .window-content {
+	padding-bottom: 100px;
+}
+
+#visitor-span {
+	vertical-align: -5px;
+}
+
+/* #hello-img-window */
+#hello-img-window {
+	left: -100px;
+	bottom: -15px;
+	width: 210px;
+	height: 163px;
+}
+
+/* info group */
+/* #katz-img-window */
+#katz-img-window {
+	bottom: -25px;
+	right: -100px;
+	width: 260px;
+	height: 300px;
+}
+
+/* updates group */
+/* #updates */
+#updates ul {
+	height: 300px;
+	overflow-y: scroll;
+}
+window.maximized#updates ul {
+	height: auto;
+	min-height: 0;
+	flex: 1 1 auto;
+}
+#updates ul li {
+	border-bottom: 1px solid var(--interactive-border-dark);
+	padding: 0.5rem 0;
+}
+#updates ul li a {
+	text-decoration: none;
+}
+#updates ul li div {
+	color: var(--text);
+}
+#updates ul li h3 {
+	color: var(--link);
+	text-decoration: underline;
+}
+#updates ul li h3:hover {
+	color: var(--link-hover);
+}
+.update-timestamp {
+	float: right;
+}
+.update-additions {
+	color: var(--ok);
+	margin-right: 1rem;
+}
+.update-deletions {
+	color: var(--danger);
+}
+.update-message,
+.update-notice {
+	color: var(--text);
+	font-style: italic;
+	opacity: 0.8;
+}
+.update-error {
+	color: var(--danger);
+}
+
+/* site group */
+/* #status */
+#status {
+	flex-grow: 2;
+}
+#status .window-content {
+	padding-bottom: 200px;
+}
+
+/* #todo */
+#todo {
+	flex-grow: 3;
+}
+#todo img {
+	height: 20rem;
+}
+
+#construction-gif {
+	display: block;
+	width: 100%;
+	min-height: 0;
+	max-height: none;
+	flex: 1 1 auto;
+	object-fit: contain;
+	object-position: center bottom;
+	margin: 0.75rem auto 0;
+}
+
+/* #light-img-window */
+#light-img-window {
+	right: -70px;
+	top: 75px;
+	width: 210px;
+	height: 235px;
+}
+
+/* #lastfm-window */
+#lastfm-window {
+	position: absolute;
+	left: -100px;
+	bottom: -10px;
+	width: 300px;
+}
+#listening {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+#listening h2 {
+	margin: 0;
+	padding: 0 0 1rem;
+	font-size: 1rem;
+}
+#listening a {
+	display: flex;
+	align-items: stretch;
+	gap: 0.75rem;
+}
+#lastfm-window img {
+	display: block;
+	flex: 0 0 auto;
+	width: 64px;
+	height: 64px;
+	object-fit: cover;
+}
+#trackInfo {
+	height: 64px;
+	padding: 0;
+	margin: 0;
+	min-width: 0;
+	flex: 1 1 auto;
+}
+#trackInfo h3,
+#trackInfo h4 {
+	margin: 0;
+	font-size: 1rem;
+	line-height: 1.2rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+#trackInfo h4 {
+	padding-top: 0.25rem;
+}
+
+/* stuff group */
+/* #guestbook */
+#guestbook iframe {
+	display: block;
+	width: 100%;
+	min-height: 550px;
+	height: 20rem;
+}
+window.maximized#guestbook iframe {
+	height: auto;
+	min-height: 0;
+	flex: 1 1 auto;
+}
+
+/* etc group */
+#etc-group > window {
+	flex: 1 1 0;
+}
+
+/* banner */
+.blink {
+	display: block;
+	width: 7.5rem;
+}
+aerial-banner {
+	display: block;
+	width: 100%;
+	max-width: 100vw;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+aerial-banner ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	width: max-content;
+	max-width: none;
+}
+
+/* widgets */
+.cursors-root {
+	border-radius: 0;
+}
+
+/* mobile */
 .mobile-warning {
 	display: none;
 }
-
 .mobile-warning-window {
 	background-color: var(--window-background);
 	border: 5px solid var(--window-border-light);
@@ -434,31 +608,21 @@ taskbar .start-menu ul {
 	padding: 1rem;
 	position: relative;
 }
-
 .mobile-warning-window h2 {
-	background: linear-gradient(
-		to left,
-		var(--window-border-light),
-		var(--window-border-dark)
-	);
+	background: var(--titlebar-gradient);
 	color: var(--text-light);
 	font-size: 1rem;
 	font-weight: normal;
 	margin: calc(-1rem - var(--shards98-titlebar-height) - 5px) -1rem 1rem;
 	padding: 0.25rem 0.35rem;
 }
-
 .mobile-warning-window button {
 	background-color: var(--interactive-background-light);
-	border: 1px solid var(--interactive-border-light);
-	border-right: 2px solid var(--interactive-border-dark);
-	border-bottom: 2px solid var(--interactive-border-dark);
 	color: var(--text-grey);
 	display: block;
 	margin: 1rem auto 0;
 	padding: 0.35rem 0.75rem;
 }
-
 .mobile-warning-window button:active {
 	border-top-color: var(--interactive-border-dark);
 	border-left-color: var(--interactive-border-dark);
@@ -466,20 +630,16 @@ taskbar .start-menu ul {
 	border-bottom-color: var(--interactive-border-light);
 }
 
-/* ------------------------------------------------------------------ *
- * Responsive
- * ------------------------------------------------------------------ */
+/* responsive */
 @media (max-width: 600px) {
 	:root {
 		--shards98-titlebar-height: 1.75rem;
 		--shards98-taskbar-height: 2.5rem;
 	}
-
 	taskbar .tasks li > button {
 		align-self: stretch;
 		height: auto;
 	}
-
 	.mobile-warning:not([hidden]) {
 		align-items: center;
 		display: flex;
@@ -487,5 +647,42 @@ taskbar .start-menu ul {
 		justify-content: center;
 		position: fixed;
 		z-index: 1000;
+	}
+}
+@media (max-width: 900px) {
+	/* #info-group and #site-group */
+	#info-group,
+	#site-group {
+		flex-direction: column;
+	}
+	/* #lastfm-window */
+	#lastfm-window {
+		position: relative;
+		left: auto;
+		top: auto;
+		width: auto;
+	}
+	/* image windows */
+	#hello-img-window,
+	#katz-img-window,
+	#light-img-window {
+		position: relative;
+		margin: 0.5rem auto;
+		left: auto;
+		right: auto;
+		top: auto;
+		bottom: auto;
+		height: auto;
+		max-width: 100%;
+	}
+	#hello-img-window img,
+	#katz-img-window img,
+	#light-img-window img {
+		max-width: 100%;
+		height: auto;
+	}
+	/* #welcome */
+	#welcome {
+		padding-bottom: 0;
 	}
 }

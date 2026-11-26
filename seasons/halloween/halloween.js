@@ -1,6 +1,6 @@
 import { theme as halloweenTheme } from "./theme.js";
 
-const asset = (name) => new URL(`../../medias/halloween/${name}`, import.meta.url).href;
+const asset = (name) => new URL(`./assets/${name}`, import.meta.url).href;
 const state = {
 	active: false,
 	timers: [],
@@ -18,7 +18,7 @@ const state = {
 };
 
 export const theme = {
-	"--wallpaper-image": `url("${new URL("../../medias/bg/halloween.jpg", import.meta.url).href}")`,
+	"--wallpaper-image": `url("${new URL("./assets/halloween.jpg", import.meta.url).href}")`,
 	...halloweenTheme,
 };
 

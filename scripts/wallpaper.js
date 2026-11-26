@@ -1,3 +1,5 @@
+// this file handles wallpapers and themes
+
 import { resetTheme, themeElementFromImage } from "./imageTheme.js";
 import { applyTheme } from "./colors.js";
 import { theme as halloweenTheme } from "../seasons/halloween/theme.js";
@@ -16,7 +18,7 @@ const wallpapers = [
 	["Animated Grid (50%)", "./medias/bg/animgridbg50.gif"],
 	["Bliss", "./medias/bg/bliss.jpg"],
 	["Grid", "./medias/bg/gridbg.jpg"],
-	["Halloween", "./medias/bg/halloween.jpg"],
+	["Halloween", "./seasons/halloween/assets/halloween.jpg"],
 ];
 
 let customWallpaperUrl = null;
